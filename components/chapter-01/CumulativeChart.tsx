@@ -19,6 +19,7 @@ interface ChartPoint extends TimelineNode {
 
 export function CumulativeChart({ timeline }: { timeline: Chapter01Data['timeline'] }) {
   const t = useTranslations('ch01.chart')
+  const narrativeT = useTranslations()
   const locale = useLocale() as 'zh' | 'en'
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -265,7 +266,7 @@ export function CumulativeChart({ timeline }: { timeline: Chapter01Data['timelin
               </div>
             </div>
             <div className="mt-2 text-[11px] leading-snug text-[color:var(--muted)]">
-              {t(activePoint.narrativeKey as never)}
+              {narrativeT(activePoint.narrativeKey as never)}
             </div>
             <div className="mt-2 flex items-center justify-between">
               <div className="flex gap-1">
