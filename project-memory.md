@@ -12,7 +12,7 @@ Last updated: 2026-05-11
 
 The site has four chapter sections, in time order:
 
-1. §01 进化之路 / The Evolution Path — horizontal pin-and-translate timeline of every Unicode emoji version (DoCoMo 1999 → Apple Genmoji 2024)
+1. §01 进化之路 / The Evolution Path — horizontal pin-and-translate timeline of every Unicode emoji version (DoCoMo 1999 → Apple Genmoji 2024), followed by an **interactive cumulative-growth chart** (`components/chapter-01/CumulativeChart.tsx`) where every version is a hoverable/focusable/tappable marker with a flip-aware, pinnable tooltip
 2. §02 谁能成为 emoji / Who Gets In — Unicode proposal pipeline + 6 selection criteria + 4 case cards + cultural-origins world map
 3. §03 Z 世代手机依赖 / Always On — generational screen-time stats, top-emoji-by-generation, semantic-shift, 24h day-in-life
 4. §04 屏幕之外 / Beyond the Screen — 9 case cards across AI / AR-3D / Brand / Interface / Art categories with chip-filtered grid
@@ -52,8 +52,9 @@ Data sources investigated in the prior brainstorm (some used here, some not):
 
 - **§02 rejected case** — the spec called for a verified rejected Unicode proposal. The current data ships with a "deity category" policy-based rejection (citing the Unicode exclusion factors page) because no specific L2 PDF for a rejected proposal could be confirmed during the implementation pass. If a real rejected proposal can be found in the L2 archive, swap it in.
 - **§04 emoji wallet** — the plan originally called for an emoji-mnemonic crypto-wallet case, which was substituted with GitHub Emoji Reactions (same `interface` category) when no primary source could be verified. Documented in the commit message.
-- **A11y verification in a real browser** — code-level fixes are in place (MotionConfig, prefers-reduced-motion CSS, focus-visible rings), but a Lighthouse / axe-core run in an actual browser was not performed during the implementation session.
+- **A11y verification in a real browser** — code-level fixes are in place (MotionConfig, prefers-reduced-motion CSS, focus-visible rings, 44 px touch targets on chart markers, role/aria-expanded/aria-live on tooltips), but a Lighthouse / axe-core run in an actual browser was not performed during the implementation session.
 - **Content depth** — §02 has 4 cases / 8 origin pins, §03 has 4 stats per block, §04 has 9 cases. Each chapter could comfortably take more rows; the data structures and i18n keying support it without any code changes.
+- **Stale `cumulative` array** — the §01 chart now computes the running total from `timeline` directly (see commit `a7f85c0`). The `cumulative` field in `data/chapter-01.json` and the `Chapter01Data['cumulative']` type are no longer read by any component. They're still validated by `tests/data/chapter-01.test.ts` for shape consistency, but could be removed in a future cleanup pass.
 
 ## Conventions for future edits
 

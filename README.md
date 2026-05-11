@@ -13,7 +13,9 @@ Published on port **7777**.
 | 03 | genz | Z 世代手机依赖 | Always On | `#ffc857` sunshine |
 | 04 | future | 屏幕之外 | Beyond the Screen | `#8a7fff` violet |
 
-§01 uses Framer Motion `useScroll` + `useTransform` to drive a horizontal pin-and-translate timeline of every Unicode emoji version from DoCoMo 1999 to Apple Genmoji 2024. The other sections stack sub-blocks with intersection-observer reveals.
+§01 uses Framer Motion `useScroll` + `useTransform` to drive a horizontal pin-and-translate timeline of every Unicode emoji version from DoCoMo 1999 to Apple Genmoji 2024. Below the pin sits an **interactive cumulative-growth chart**: every Unicode-version data point is a focusable marker that reveals a tooltip with the version's year, label, new-emoji count, running total, narrative, highlight emojis, and source URL on hover / Tab+Enter / tap. Tooltips can be pinned by clicking and dismissed via outside-click or Escape; edge-aware flipping keeps them on-screen.
+
+The other sections stack sub-blocks with intersection-observer reveals.
 
 Every quantitative claim carries a public, citable source — every number, percentage, date, and ranking has a `source` field in the data JSON and surfaces in the footer bibliography.
 
@@ -94,7 +96,9 @@ The Footer aggregates every cited `source` into a deduplicated bibliography grou
 ## Accessibility
 
 - **Reduced motion** — `<MotionConfig reducedMotion="user">` makes Framer Motion automatically substitute opacity-only or no-op animations when the OS preference is set. A global CSS `@media (prefers-reduced-motion: reduce)` rule catches anything outside Framer Motion (animation, transition, scroll-behavior). The §01 horizontal pin specifically degrades to a horizontally-swipe-able scroll-snap container.
-- **Keyboard** — All interactive elements (chapter chips, language toggle, decade index, category chips, footer source links) carry `focus-visible:ring-2` styles in the appropriate accent color.
+- **Keyboard** — All interactive elements (chapter chips, language toggle, decade index, category chips, footer source links, cumulative-chart markers) carry `focus-visible:ring-2` styles in the appropriate accent color. The §01 chart markers are reachable via Tab and activatable with Enter/Space; Escape dismisses any pinned tooltip.
+- **Touch** — Every interactive chart marker carries a 44 × 44 px invisible hit area around its visible dot to meet the WCAG / Apple-HIG touch-target minimum on mobile.
+- **Screen readers** — Chart markers are `role="button"` with an `aria-label` that reads `"<year> <version>: +<added> new emoji, <total> cumulative. Press Enter for details."` Pinned tooltips switch to `role="dialog"` with `aria-live="polite"`.
 - **Bilingual** — The `<html lang>` attribute is set per locale; the language toggle is labelled with `aria-label="Switch to <other locale>"`.
 
 ## Implementation history
@@ -104,5 +108,7 @@ This project was brainstormed, spec-written, plan-authored, reviewed, and execut
 1. `superpowers:brainstorming` — clarifying questions, design proposals, mockups
 2. `superpowers:writing-plans` — 7-chunk / 42-task implementation plan
 3. `superpowers:subagent-driven-development` — execution with implementer + reviewer subagents per task
+
+Post-build refinements added the interactive cumulative-growth chart in §01 (designed against `ui-ux-pro-max` and `frontend-design` skills) and the global a11y pass (MotionConfig + reduced-motion CSS + focus-visible rings).
 
 The spec lives at `docs/superpowers/specs/2026-05-11-emoji-trends-multi-topic-design.md` and the plan at `docs/superpowers/plans/2026-05-11-emoji-trends-multi-topic.md`.
