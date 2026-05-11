@@ -1,0 +1,83 @@
+{
+  "sources": [
+    {
+      "id": "pew-teens-2023",
+      "title": { "zh": "Pew · 青少年、社媒与科技 2023", "en": "Pew · Teens, Social Media and Technology 2023" },
+      "publisher": "Pew Research",
+      "url": "https://www.pewresearch.org/internet/2023/12/11/teens-social-media-and-technology-2023/",
+      "accessed": "2026-05-11"
+    }
+  ],
+  "hero": [
+    {
+      "id": "screen-time",
+      "value": "—",
+      "labelKey": "ch03.hero.screenTime.label",
+      "source": {
+        "id": "csm-2024",
+        "title": { "zh": "Common Sense Media 2024 Census", "en": "Common Sense Media 2024 Census" },
+        "publisher": "Common Sense Media",
+        "url": "https://www.commonsensemedia.org/research",
+        "accessed": "2026-05-11"
+      }
+    }
+  ],
+  "screenTime": [
+    {
+      "id": "gen-z",
+      "labelKey": "ch03.screenTime.gen-z.label",
+      "minutes": 432,
+      "display": "—",
+      "source": {
+        "id": "csm-2024",
+        "title": { "zh": "Common Sense Media 2024 Census", "en": "Common Sense Media 2024 Census" },
+        "publisher": "Common Sense Media",
+        "url": "https://www.commonsensemedia.org/research",
+        "accessed": "2026-05-11"
+      }
+    }
+  ],
+  "topByGen": [
+    {
+      "id": "gen-z",
+      "labelKey": "ch03.topByGen.gen-z.label",
+      "emojis": ["💀","😭","🥺","✨","🫶"],
+      "descKey": "ch03.topByGen.gen-z.desc",
+      "source": {
+        "id": "snap-friendship-2023",
+        "title": { "zh": "Snap Friendship Report 2023", "en": "Snap Friendship Report 2023" },
+        "publisher": "Snap",
+        "url": "https://snap.com/en-US/friendship-report",
+        "accessed": "2026-05-11"
+      }
+    }
+  ],
+  "semanticShift": [
+    {
+      "emoji": "👍",
+      "olderMeaningKey": "ch03.semantic.thumbsup.older",
+      "genZMeaningKey": "ch03.semantic.thumbsup.genZ",
+      "source": {
+        "id": "wsj-thumbsup-2022",
+        "title": { "zh": "Z 世代如何杀死大拇指", "en": "How Gen Z Killed the Thumbs-Up" },
+        "publisher": "Wall Street Journal",
+        "url": "https://www.wsj.com",
+        "accessed": "2026-05-11"
+      }
+    }
+  ],
+  "dayInLife": [
+    {
+      "hour": 7,
+      "intensity": 0.6,
+      "labelKey": "ch03.dayInLife.morning",
+      "source": {
+        "id": "csm-2024",
+        "title": { "zh": "Common Sense Media 2024 Census", "en": "Common Sense Media 2024 Census" },
+        "publisher": "Common Sense Media",
+        "url": "https://www.commonsensemedia.org/research",
+        "accessed": "2026-05-11"
+      }
+    }
+  ]
+}
