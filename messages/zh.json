@@ -74,16 +74,58 @@
       "vendor": { "label": "厂商绘制", "desc": "Vendor design" }
     },
     "criteria": {
-      "freq": { "title": "使用频次", "desc": "Google Trends · 社媒搜索数据" }
+      "freq": {
+        "title": "使用频次",
+        "desc": "通过 Google Trends、社交媒体搜索量等可量化指标评估——证明有足够多的人想发送这个 emoji。"
+      },
+      "multi-use": {
+        "title": "多义性与延伸用法",
+        "desc": "该 emoji 是否具有超出字面意思的隐喻或象征意义？多用途符号（如火箭象征雄心、火焰象征激情）得分更高。"
+      },
+      "distinct": {
+        "title": "辨识度与独特性",
+        "desc": "必须在视觉和语义上与现有 emoji 有明显区别，并在 18×18 像素的典型显示尺寸下仍可辨认。不允许近似重复。"
+      },
+      "representativeness": {
+        "title": "文化代表性",
+        "desc": "填补未被充分代表的群体、文化、食物或传统的视觉空白。Unicode 委员会会评估某个社群的视觉符号是否在标准中缺失。"
+      },
+      "no-brand-deity": {
+        "title": "禁止品牌与神明",
+        "desc": "公司 Logo、与特定品牌强关联的产品、宗教神明，以及任何具名人物（在世、历史或虚构）均自动拒绝。"
+      },
+      "short-term-fad": {
+        "title": "非短期流行",
+        "desc": "昙花一现或过于时效性的概念不适合编入标准。预期使用寿命须持久——不能只是一时的病毒式热度。"
+      }
     },
     "cases": {
       "dumpling": {
-        "proposer": "饺子 · 提案人 Yiying Lu",
-        "story": "Yiying Lu 与多位设计师共同推动亚洲食物文化代表性，2017 年随 Unicode 10.0 正式入选。"
+        "proposer": "饺子 🥟 · 提案人 Yiying Lu（L2/16-024）",
+        "story": "设计师 Yiying Lu 于 2016 年 1 月提交提案 L2/16-024，主张将饺子——中、日、韩及东欧饮食的共同主食——纳入 Unicode。提案提供了跨地区使用频次数据与广泛的文化覆盖论证，并于 2017 年 6 月随 Unicode 10.0 正式入选。"
+      },
+      "headscarf": {
+        "proposer": "戴头巾的女性 🧕 · 提案人 Rayouf Alhumedhi（L2/16-284）",
+        "story": "时年 15 岁的 Rayouf Alhumedhi 于 2016 年 10 月提交提案 L2/16-284，指出全球数亿戴头巾的穆斯林女性在 emoji 世界中毫无代表。ESC 审核时认可了提案中的频次数据与明确的代表性缺口，并于 2017 年 6 月随 Unicode 10.0 批准通过。"
+      },
+      "mate": {
+        "proposer": "马黛茶 🧉 · 南美文化饮品（L2/18-122）",
+        "story": "提案 L2/18-122 为马黛茶请命——这款热浸泡饮品遍布阿根廷、乌拉圭、巴西和巴拉圭，是南美洲的日常文化符号。提案展示了强劲的区域搜索量与现有 emoji 无法覆盖的文化意涵，于 2019 年 3 月随 Unicode 12.0 正式入选。"
+      },
+      "deity-rejected": {
+        "proposer": "宗教神明提案——自动拒绝",
+        "story": "Unicode 委员会的《提案指南》明确将「神明（Deities）」列为自动拒绝类别。涉及印度教、佛教等宗教神明的提案无需经过评估即被驳回——因为将神明编入标准可能被视为对某一宗教的背书，引发不可逆的争议。该排除政策公开发布于 unicode.org/emoji/proposals.html。"
       }
     },
     "origins": {
-      "dumpling-cn": { "label": "饺子 · 中国" }
+      "dumpling-cn": { "label": "饺子 · 中国" },
+      "headscarf-sa": { "label": "头巾 · 中东" },
+      "mate-ar": { "label": "马黛茶 · 阿根廷" },
+      "sari-in": { "label": "纱丽 · 印度" },
+      "matryoshka-ru": { "label": "套娃 · 俄罗斯" },
+      "taco-mx": { "label": "墨西哥卷饼 · 墨西哥" },
+      "pretzel-de": { "label": "椒盐卷饼 · 德国" },
+      "mooncake-cn": { "label": "月饼 · 中国" }
     }
   },
   "ch03": {

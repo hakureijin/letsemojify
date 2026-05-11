@@ -2,9 +2,16 @@
   "sources": [
     {
       "id": "unicode-proposals",
-      "title": { "zh": "Unicode 提案指南", "en": "Submitting Emoji Proposals" },
+      "title": { "zh": "Unicode Emoji 提案指南", "en": "Submitting Emoji Proposals" },
       "publisher": "Unicode Consortium",
       "url": "https://www.unicode.org/emoji/proposals.html",
+      "accessed": "2026-05-11"
+    },
+    {
+      "id": "unicode-tr51",
+      "title": { "zh": "Unicode 技术标准 #51：Unicode Emoji", "en": "Unicode Technical Standard #51: Unicode Emoji" },
+      "publisher": "Unicode Consortium",
+      "url": "https://www.unicode.org/reports/tr51/",
       "accessed": "2026-05-11"
     }
   ],
@@ -16,7 +23,42 @@
     { "id": "vendor",   "labelKey": "ch02.pipeline.vendor.label",   "descKey": "ch02.pipeline.vendor.desc" }
   ],
   "criteria": [
-    { "id": "freq", "tone": "mint", "titleKey": "ch02.criteria.freq.title", "descKey": "ch02.criteria.freq.desc" }
+    {
+      "id": "freq",
+      "tone": "mint",
+      "titleKey": "ch02.criteria.freq.title",
+      "descKey": "ch02.criteria.freq.desc"
+    },
+    {
+      "id": "multi-use",
+      "tone": "mint",
+      "titleKey": "ch02.criteria.multi-use.title",
+      "descKey": "ch02.criteria.multi-use.desc"
+    },
+    {
+      "id": "distinct",
+      "tone": "mint",
+      "titleKey": "ch02.criteria.distinct.title",
+      "descKey": "ch02.criteria.distinct.desc"
+    },
+    {
+      "id": "representativeness",
+      "tone": "cultural",
+      "titleKey": "ch02.criteria.representativeness.title",
+      "descKey": "ch02.criteria.representativeness.desc"
+    },
+    {
+      "id": "no-brand-deity",
+      "tone": "cultural",
+      "titleKey": "ch02.criteria.no-brand-deity.title",
+      "descKey": "ch02.criteria.no-brand-deity.desc"
+    },
+    {
+      "id": "short-term-fad",
+      "tone": "reject",
+      "titleKey": "ch02.criteria.short-term-fad.title",
+      "descKey": "ch02.criteria.short-term-fad.desc"
+    }
   ],
   "cases": [
     {
@@ -28,10 +70,58 @@
       "proposerKey": "ch02.cases.dumpling.proposer",
       "storyKey": "ch02.cases.dumpling.story",
       "source": {
-        "id": "L2-15-239",
-        "title": { "zh": "L2/15-239 饺子提案", "en": "L2/15-239 Dumpling proposal" },
+        "id": "L2-16-024",
+        "title": { "zh": "L2/16-024 饺子 Emoji 提案", "en": "L2/16-024 Dumpling Emoji proposal" },
         "publisher": "Unicode L2",
-        "url": "https://www.unicode.org/L2/L2015/15239-dumpling.pdf",
+        "url": "https://www.unicode.org/L2/L2016/16024-dumpling-emoji.pdf",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "headscarf",
+      "emoji": "🧕",
+      "year": 2017,
+      "unicodeVersion": "Unicode 10.0",
+      "status": "accepted",
+      "proposerKey": "ch02.cases.headscarf.proposer",
+      "storyKey": "ch02.cases.headscarf.story",
+      "source": {
+        "id": "L2-16-284",
+        "title": { "zh": "L2/16-284 头巾 Emoji 提案", "en": "L2/16-284 Hijab / Headscarf Emoji proposal" },
+        "publisher": "Unicode L2",
+        "url": "https://www.unicode.org/L2/L2016/16284-hijab-headscarf-emoji.pdf",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "mate",
+      "emoji": "🧉",
+      "year": 2019,
+      "unicodeVersion": "Unicode 12.0",
+      "status": "accepted",
+      "proposerKey": "ch02.cases.mate.proposer",
+      "storyKey": "ch02.cases.mate.story",
+      "source": {
+        "id": "L2-18-122",
+        "title": { "zh": "L2/18-122 马黛茶 Emoji 提案", "en": "L2/18-122 Mate Drink Emoji proposal" },
+        "publisher": "Unicode L2",
+        "url": "https://www.unicode.org/L2/L2018/18122-mate-emoji.pdf",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "deity-rejected",
+      "emoji": "🚫",
+      "year": 2016,
+      "unicodeVersion": "n/a",
+      "status": "rejected",
+      "proposerKey": "ch02.cases.deity-rejected.proposer",
+      "storyKey": "ch02.cases.deity-rejected.story",
+      "source": {
+        "id": "unicode-proposals-exclusions",
+        "title": { "zh": "Unicode Emoji 提案：排除因素", "en": "Submitting Emoji Proposals: Exclusion Factors" },
+        "publisher": "Unicode Consortium",
+        "url": "https://www.unicode.org/emoji/proposals.html#selection_factors_exclusion",
         "accessed": "2026-05-11"
       }
     }
@@ -41,10 +131,73 @@
       "id": "dumpling-cn",
       "emoji": "🥟",
       "country": "CN",
-      "lat": 35.8617,
-      "lng": 104.1954,
+      "lat": 35.86,
+      "lng": 104.20,
       "year": 2017,
       "labelKey": "ch02.origins.dumpling-cn.label"
+    },
+    {
+      "id": "headscarf-sa",
+      "emoji": "🧕",
+      "country": "SA",
+      "lat": 23.89,
+      "lng": 45.08,
+      "year": 2017,
+      "labelKey": "ch02.origins.headscarf-sa.label"
+    },
+    {
+      "id": "mate-ar",
+      "emoji": "🧉",
+      "country": "AR",
+      "lat": -38.42,
+      "lng": -63.62,
+      "year": 2019,
+      "labelKey": "ch02.origins.mate-ar.label"
+    },
+    {
+      "id": "sari-in",
+      "emoji": "🥻",
+      "country": "IN",
+      "lat": 20.59,
+      "lng": 78.96,
+      "year": 2019,
+      "labelKey": "ch02.origins.sari-in.label"
+    },
+    {
+      "id": "matryoshka-ru",
+      "emoji": "🪆",
+      "country": "RU",
+      "lat": 61.52,
+      "lng": 105.32,
+      "year": 2020,
+      "labelKey": "ch02.origins.matryoshka-ru.label"
+    },
+    {
+      "id": "taco-mx",
+      "emoji": "🌮",
+      "country": "MX",
+      "lat": 23.63,
+      "lng": -102.55,
+      "year": 2015,
+      "labelKey": "ch02.origins.taco-mx.label"
+    },
+    {
+      "id": "pretzel-de",
+      "emoji": "🥨",
+      "country": "DE",
+      "lat": 51.17,
+      "lng": 10.45,
+      "year": 2017,
+      "labelKey": "ch02.origins.pretzel-de.label"
+    },
+    {
+      "id": "mooncake-cn",
+      "emoji": "🥮",
+      "country": "CN",
+      "lat": 35.86,
+      "lng": 104.20,
+      "year": 2018,
+      "labelKey": "ch02.origins.mooncake-cn.label"
     }
   ]
 }
