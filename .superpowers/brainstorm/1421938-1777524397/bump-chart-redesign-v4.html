@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emoji Bump Chart Redesign</title>
+  <style>
+    :root {
+      --ink: #181817;
+      --muted: #6f706d;
+      --line: #dedbd3;
+      --paper: #f6f3ec;
+      --panel: #fffdf8;
+      --cyan: #5fc9d4;
+      --coral: #ff6f61;
+      --gold: #f3bf45;
+      --blue: #6d95d8;
+      --green: #8fc36e;
+      --pink: #d878b5;
+      --violet: #9c77d7;
+      --teal: #75b9aa;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { padding: 26px; }
+    .shell { max-width: 1240px; margin: 0 auto; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 18px; align-items: stretch; }
+    .board, .side, .note, .metric { background: var(--panel); border: 1px solid rgba(24,24,23,.09); border-radius: 8px; box-shadow: 0 18px 50px rgba(48,42,30,.08); }
+    .board { padding: 28px 30px 22px; position: relative; overflow: hidden; }
+    .title-row { display: flex; justify-content: space-between; gap: 18px; align-items: start; margin-bottom: 18px; }
+    h1 { font-size: clamp(27px, 3vw, 44px); line-height: 1; margin: 0; letter-spacing: 0; max-width: 720px; }
+    .subtitle { color: var(--muted); margin-top: 9px; font-size: 14px; max-width: 680px; line-height: 1.45; }
+    .badge { border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; font-size: 12px; color: #4d4b47; background: #fbf8f1; white-space: nowrap; }
+    .chart-wrap { position: relative; height: 570px; margin-top: 8px; border-left: 1px solid #d9d5ca; border-bottom: 1px solid #d9d5ca; }
+    .grid { position: absolute; inset: 0; display: grid; grid-template-rows: repeat(9, 1fr); }
+    .lane { border-top: 1px solid rgba(160,151,133,.22); position: relative; }
+    .lane:first-child { border-top: 0; }
+    .lane::before { content: attr(data-rank); position: absolute; left: -42px; top: -9px; width: 26px; text-align: right; color: #55524c; font-size: 13px; font-variant-numeric: tabular-nums; }
+    .lane::after { content: ""; position: absolute; inset: 8px 0; background: linear-gradient(90deg, rgba(245,240,229,.9), rgba(255,255,255,0)); opacity: .75; }
+    .months { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(8, 1fr); pointer-events: none; }
+    .months span { border-left: 1px solid rgba(160,151,133,.18); }
+    .axis-title { position: absolute; left: -44px; top: -24px; font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .month-labels { display: grid; grid-template-columns: repeat(8, 1fr); margin-left: 1px; margin-top: 10px; font-size: 11px; color: #716c61; text-align: center; }
+    svg.paths { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .route { fill: none; stroke-linecap: round; stroke-linejoin: round; opacity: .92; filter: drop-shadow(0 5px 8px rgba(60,45,25,.12)); }
+    .ghost { opacity: .12; }
+    .node { position: absolute; width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 3px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 6px 14px rgba(36,27,18,.16); transform: translate(-50%, -50%); }
+    .node.big { width: 50px; height: 50px; font-size: 28px; border-width: 4px; }
+    .node small { position: absolute; right: -22px; bottom: -6px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 1px 6px; font-size: 10px; color: #4b4944; font-weight: 800; }
+    .annotation { position: absolute; width: 210px; background: rgba(255,253,248,.96); border: 1px solid rgba(24,24,23,.15); border-radius: 7px; padding: 10px 12px; font-size: 12px; line-height: 1.35; box-shadow: 0 12px 26px rgba(42,34,20,.12); }
+    .annotation b { display: block; font-size: 12px; margin-bottom: 3px; }
+    .annotation::after { content: ""; position: absolute; width: 36px; height: 1px; background: #8b8374; }
+    .annotation.one { left: 30%; top: 42px; }
+    .annotation.one::after { left: 44%; bottom: -18px; transform: rotate(62deg); }
+    .annotation.two { right: 6%; top: 248px; }
+    .annotation.two::after { left: -30px; top: 50%; }
+    .side { padding: 22px; display: grid; gap: 14px; }
+    .side h2 { margin: 0; font-size: 18px; }
+    .side p { margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .rank-list { display: grid; gap: 8px; margin-top: 3px; }
+    .rank-item { display: grid; grid-template-columns: 28px 42px 1fr 58px; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 7px; background: #f7f2e8; border: 1px solid rgba(24,24,23,.06); }
+    .rank-num { font-size: 12px; color: #777168; font-weight: 800; }
+    .emoji { font-size: 25px; line-height: 1; }
+    .spark { height: 8px; border-radius: 999px; background: linear-gradient(90deg, var(--c), rgba(0,0,0,.08)); width: var(--w); min-width: 30px; }
+    .pct { font-size: 12px; color: #3f3c38; font-weight: 800; font-variant-numeric: tabular-nums; text-align: right; }
+    .metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 18px; }
+    .metric { padding: 14px 16px; min-height: 86px; }
+    .metric .k { font-size: 12px; color: var(--muted); }
+    .metric .v { font-size: 24px; font-weight: 850; margin-top: 5px; }
+    .metric .d { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.35; }
+    .footer-note { margin-top: 14px; border-top: 1px dashed #c5beaf; padding-top: 10px; color: #666056; font-size: 11px; line-height: 1.45; }
+    .tools { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .pill { border: 1px solid #d8d0c0; background: #fbf8f1; border-radius: 999px; padding: 7px 10px; font-size: 12px; color: #4f4a42; }
+    @media (max-width: 980px) {
+      body { padding: 14px; }
+      .hero { grid-template-columns: 1fr; }
+      .chart-wrap { height: 500px; margin-left: 18px; }
+      .metrics { grid-template-columns: 1fr; }
+      .annotation { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="hero">
+      <main class="board">
+        <div class="title-row">
+          <div>
+            <h1>Top Emojis on X.com: 2023-2026</h1>
+            <div class="subtitle">Bump chart redesigned as a rank-course view: thick routes show changes in position, emoji medallions mark the moments users will actually read, and frequency values sit in the detail layer.</div>
+          </div>
+          <div class="badge">Figure 4.17 update · visual mockup</div>
+        </div>
+
+        <div class="chart-wrap" aria-label="Bump chart preview">
+          <div class="axis-title">Rank</div>
+          <div class="grid">
+            <div class="lane" data-rank="1"></div><div class="lane" data-rank="2"></div><div class="lane" data-rank="3"></div><div class="lane" data-rank="4"></div><div class="lane" data-rank="5"></div>
+            <div class="lane" data-rank="6"></div><div class="lane" data-rank="7"></div><div class="lane" data-rank="8"></div><div class="lane" data-rank="9"></div><div class="lane" data-rank="10"></div>
+          </div>
+          <div class="months"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+          <svg class="paths" viewBox="0 0 1000 560" preserveAspectRatio="none">
+            <path class="route" d="M0 28 C90 30, 150 28, 230 82 S390 28, 500 30 S690 30, 760 28 S890 28, 1000 30" stroke="var(--coral)" stroke-width="18"/>
+            <path class="route" d="M0 88 C100 148, 150 148, 250 30 S390 92, 500 94 S650 150, 760 88 S900 88, 1000 88" stroke="var(--blue)" stroke-width="18"/>
+            <path class="route" d="M0 150 C120 88, 170 88, 250 150 S390 150, 500 148 S650 88, 760 150 S900 148, 1000 148" stroke="var(--gold)" stroke-width="16"/>
+            <path class="route" d="M0 208 C140 210, 240 210, 350 270 S500 208, 620 210 S800 210, 1000 210" stroke="var(--cyan)" stroke-width="16"/>
+            <path class="route" d="M0 270 C160 270, 260 270, 380 210 S510 270, 640 270 S790 270, 1000 330" stroke="var(--green)" stroke-width="15"/>
+            <path class="route" d="M0 330 C150 330, 260 330, 390 330 S520 330, 650 330 S800 390, 1000 270" stroke="var(--violet)" stroke-width="15"/>
+            <path class="route" d="M0 392 C150 392, 280 392, 420 392 S600 450, 760 330 S890 392, 1000 392" stroke="var(--teal)" stroke-width="14"/>
+            <path class="route ghost" d="M0 450 C180 510, 300 450, 460 510 S720 450, 1000 510" stroke="#777" stroke-width="12"/>
+            <path class="route ghost" d="M0 510 C180 450, 300 510, 470 450 S700 510, 1000 450" stroke="#777" stroke-width="12"/>
+          </svg>
+
+          <div class="node big" style="left:0%;top:5%;color:var(--coral)">😂<small>#1</small></div>
+          <div class="node" style="left:25%;top:15%;color:var(--coral)">😂</div>
+          <div class="node big" style="left:100%;top:5%;color:var(--coral)">😂<small>#1</small></div>
+
+          <div class="node big" style="left:0%;top:16%;color:var(--blue)">😭<small>#2</small></div>
+          <div class="node big" style="left:25%;top:5%;color:var(--blue)">😭<small>#1</small></div>
+          <div class="node" style="left:100%;top:16%;color:var(--blue)">😭</div>
+
+          <div class="node" style="left:0%;top:27%;color:var(--gold)">❤️</div>
+          <div class="node" style="left:63%;top:16%;color:var(--gold)">❤️</div>
+          <div class="node" style="left:100%;top:27%;color:var(--gold)">❤️</div>
+
+          <div class="node" style="left:0%;top:38%;color:var(--cyan)">🤣</div>
+          <div class="node" style="left:100%;top:38%;color:var(--cyan)">🤣</div>
+          <div class="node" style="left:0%;top:49%;color:var(--green)">🙏</div>
+          <div class="node" style="left:100%;top:60%;color:var(--green)">🙏</div>
+          <div class="node" style="left:0%;top:60%;color:var(--violet)">🫶</div>
+          <div class="node big" style="left:100%;top:49%;color:var(--violet)">🫶<small>#5</small></div>
+          <div class="node" style="left:0%;top:71%;color:var(--teal)">🥰</div>
+          <div class="node" style="left:100%;top:71%;color:var(--teal)">🥰</div>
+
+          <div class="annotation one"><b>Rank reversal</b>😭 briefly overtakes 😂 in early 2024. The route width and medallion make the crossover readable without inspecting line intersections.</div>
+          <div class="annotation two"><b>New emotional shorthand</b>🫶 rises into the top group by 2026, making the newer gesture visible as a story point.</div>
+        </div>
+        <div class="month-labels"><span>2023/01</span><span>2023/07</span><span>2024/01</span><span>2024/07</span><span>2025/01</span><span>2025/07</span><span>2026/01</span><span>2026/04</span></div>
+
+        <div class="metrics">
+          <div class="metric"><div class="k">Primary reading</div><div class="v">Rank first</div><div class="d">The viewer understands position change before reading exact values.</div></div>
+          <div class="metric"><div class="k">Detail layer</div><div class="v">%</div><div class="d">Frequency appears on hover, endpoint labels, and selected emoji panel.</div></div>
+          <div class="metric"><div class="k">Visual density</div><div class="v">Top 10</div><div class="d">Top 7 emphasized; lower ranks can be muted to prevent spaghetti lines.</div></div>
+        </div>
+        <div class="footer-note">Design note: this screen uses placeholder data to demonstrate the Bump chart interface. Production data must be collected from a compliant X.com archive/API workflow, then ranked by monthly share of sampled posts containing each emoji at least once. Repeated instances of the same emoji in one post count once.</div>
+      </main>
+
+      <aside class="side">
+        <div>
+          <h2>Endpoint ranking</h2>
+          <p>Right-side list gives users a stable endpoint summary, so they do not have to trace every route.</p>
+        </div>
+        <div class="rank-list">
+          <div class="rank-item"><span class="rank-num">01</span><span class="emoji">😂</span><span class="spark" style="--c:var(--coral);--w:96%"></span><span class="pct">mock</span></div>
+          <div class="rank-item"><span class="rank-num">02</span><span class="emoji">😭</span><span class="spark" style="--c:var(--blue);--w:84%"></span><span class="pct">mock</span></div>
+          <div class="rank-item"><span class="rank-num">03</span><span class="emoji">❤️</span><span class="spark" style="--c:var(--gold);--w:78%"></span><span class="pct">mock</span></div>
+          <div class="rank-item"><span class="rank-num">04</span><span class="emoji">🤣</span><span class="spark" style="--c:var(--cyan);--w:70%"></span><span class="pct">mock</span></div>
+          <div class="rank-item"><span class="rank-num">05</span><span class="emoji">🫶</span><span class="spark" style="--c:var(--violet);--w:58%"></span><span class="pct">mock</span></div>
+          <div class="rank-item"><span class="rank-num">06</span><span class="emoji">🙏</span><span class="spark" style="--c:var(--green);--w:51%"></span><span class="pct">mock</span></div>
+          <div class="rank-item"><span class="rank-num">07</span><span class="emoji">🥰</span><span class="spark" style="--c:var(--teal);--w:46%"></span><span class="pct">mock</span></div>
+        </div>
+        <div class="note" style="padding:14px">
+          <h2>Interaction</h2>
+          <p>Click an emoji to lock focus. Other routes fade to 15%, endpoint card expands, and the footer displays raw monthly counts.</p>
+          <div class="tools">
+            <span class="pill">All</span><span class="pill">Faces</span><span class="pill">Hearts</span><span class="pill">Gestures</span><span class="pill">Top 5</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

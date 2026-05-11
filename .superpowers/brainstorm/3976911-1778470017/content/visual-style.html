@@ -1,0 +1,73 @@
+<h2>视觉风格：3 个方向</h2>
+<p class="subtitle">每个 card 是一个 hero + 一个 section 的微缩样本。考虑情绪、可读性、与"严谨数据新闻"的契合度。</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="academic" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#f6f3ec">
+      <div style="padding:14px;font-family:Inter,system-ui">
+        <div style="font-size:11px;color:#888;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px">EMOJI · CHAPTER 1</div>
+        <div style="font-size:18px;font-weight:800;color:#181817;line-height:1.1;margin-bottom:4px">A short history of emoji</div>
+        <div style="font-size:11px;color:#6f706d;margin-bottom:10px;line-height:1.4">From DoCoMo 1999 to Unicode 16</div>
+        <div style="background:#fffdf8;border:1px solid #dedbd3;border-radius:6px;padding:10px;box-shadow:0 6px 18px rgba(48,42,30,.06)">
+          <div style="display:flex;align-items:end;gap:4px;height:50px">
+            <div style="width:7px;background:#5fc9d4;height:30%"></div>
+            <div style="width:7px;background:#5fc9d4;height:45%"></div>
+            <div style="width:7px;background:#5fc9d4;height:60%"></div>
+            <div style="width:7px;background:#ff6f61;height:70%"></div>
+            <div style="width:7px;background:#ff6f61;height:85%"></div>
+            <div style="width:7px;background:#ff6f61;height:100%"></div>
+          </div>
+          <div style="font-size:9px;color:#888;margin-top:6px">Unicode 6.0 → 16.0</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>方向 A · 学术 / 数据新闻</h3>
+      <p>延续现 Fig 4.17 的米黄纸 (#f6f3ec) + Inter 字体 + 派系色板 (青/珊瑚/金/紫)。沉静、可信、可读性强。</p>
+      <p style="color:#888;font-size:11px;margin-top:6px"><b>气质</b> 严谨、克制、学术友好<br><b>类比</b> NYT graphics, Pudding, FT charts</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="editorial-dark" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:#111111">
+      <div style="padding:14px;font-family:'Times New Roman',Georgia,serif">
+        <div style="font-size:10px;color:#888;letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px">EMOJI · 01</div>
+        <div style="font-size:20px;font-weight:300;color:#fff;line-height:1.05;margin-bottom:4px;font-family:'Playfair Display',Georgia,serif;font-style:italic">A short history<br>of emoji</div>
+        <div style="font-size:11px;color:#888;margin-bottom:10px;border-top:1px solid #333;padding-top:6px;letter-spacing:.02em">DoCoMo 1999 → Unicode 16</div>
+        <div style="position:relative;height:50px">
+          <svg viewBox="0 0 200 50" style="width:100%;height:100%">
+            <path d="M0 40 L40 38 L80 30 L120 20 L160 12 L200 5" stroke="#fff" stroke-width="1.5" fill="none"/>
+            <circle cx="40" cy="38" r="2" fill="#fff"/><circle cx="80" cy="30" r="2" fill="#fff"/><circle cx="120" cy="20" r="2" fill="#fff"/><circle cx="160" cy="12" r="3" fill="#ff5252"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>方向 B · 编辑暗黑 (Editorial dark)</h3>
+      <p>深色 (#111) 背景 + 衬线字体 (Playfair / Times) + 极细的图表线。杂志感、电影感。</p>
+      <p style="color:#888;font-size:11px;margin-top:6px"><b>气质</b> 高级、文艺、印刷质感<br><b>类比</b> The Atlantic, Bloomberg Pursuits, Rest of World</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="playful" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;background:linear-gradient(135deg,#ffd5e5 0%,#c4d9ff 100%)">
+      <div style="padding:14px;font-family:'Inter',system-ui">
+        <div style="display:inline-block;background:#fff;border-radius:999px;padding:3px 10px;font-size:10px;font-weight:700;color:#111;margin-bottom:6px">CHAPTER 01</div>
+        <div style="font-size:22px;font-weight:900;color:#111;line-height:1;margin-bottom:6px">EMOJI HISTORY 🕰️</div>
+        <div style="font-size:11px;color:#3f3f3f;margin-bottom:10px;font-weight:600">From 📟 to 🤖</div>
+        <div style="background:#fff;border-radius:10px;padding:10px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
+          <span style="font-size:24px">😀</span><div style="flex:1;height:6px;background:linear-gradient(90deg,#ff6b9d,#ffc857);margin:0 8px;border-radius:999px"></div><span style="font-size:11px;font-weight:800">3,790</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>方向 C · 社交友好 / 玩味 (Playful)</h3>
+      <p>渐变背景、圆角、emoji 大字主导、加粗 sans-serif。Social-share 友好，活泼。</p>
+      <p style="color:#888;font-size:11px;margin-top:6px"><b>气质</b> 年轻、活泼、好分享<br><b>类比</b> Snapchat Reports, Spotify Wrapped, Instagram Insights</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:18px"><b>推荐：方向 A</b> · 你之前选了"严谨 · 所有数字必须有可追溯出处"。这个气质和 A 最契合，也复用了 Fig 4.17 mockup 已经磨过的 design tokens，启动成本低。如果想给"Z 世代"那一章注入一点"玩味"，可以在 A 的基础上做局部点缀，整体框架仍是 A。</p>

@@ -1,0 +1,78 @@
+<h2>页面结构：4 个话题怎么组织？</h2>
+<p class="subtitle">数据新闻式的常见形态分这三种。颜色块表示一屏可见的内容。可以点击你倾向的方案。</p>
+
+<div class="cards" data-multiselect="false">
+
+  <div class="card" data-choice="scrolly" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:14px;background:#f7f3ea">
+      <div style="background:#fffdf8;border:1px solid #d8d2c2;border-radius:6px;overflow:hidden">
+        <div style="background:#e8e0cd;padding:8px 10px;font-size:11px;color:#4d4943">URL: /</div>
+        <div style="padding:12px;display:flex;flex-direction:column;gap:8px">
+          <div style="background:#5fc9d4;color:#fff;padding:14px;border-radius:4px;font-size:12px">① 历史回顾 — 时间轴 viz</div>
+          <div style="background:#ff6f61;color:#fff;padding:14px;border-radius:4px;font-size:12px">② 文化选拔标准 — 标准 + 案例</div>
+          <div style="background:#f3bf45;color:#181817;padding:14px;border-radius:4px;font-size:12px">③ Z 世代使用习惯 — 数据对比</div>
+          <div style="background:#9c77d7;color:#fff;padding:14px;border-radius:4px;font-size:12px">④ 未来创意应用 — 概念展示</div>
+          <div style="text-align:center;color:#888;font-size:11px;padding:4px">↓ 一路滚动</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>方案 A · 单页 Scrollytelling</h3>
+      <p>4 章节作为单页面的 4 个 section，顺序滚动。章节间有过渡动画/锚点导航。数据新闻最经典形态（NYT/Pudding/Reuters Graphics）。</p>
+      <p style="color:#888;font-size:11px;margin-top:6px"><b>+</b> 故事连贯、阅读流畅、移动友好<br><b>−</b> 单页加载偏重，分享细分话题不便</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="multipage" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:14px;background:#f7f3ea">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <div style="background:#fffdf8;border:1px solid #d8d2c2;border-radius:4px;padding:8px">
+          <div style="font-size:10px;color:#888">/history</div>
+          <div style="background:#5fc9d4;height:50px;border-radius:3px;margin-top:4px"></div>
+        </div>
+        <div style="background:#fffdf8;border:1px solid #d8d2c2;border-radius:4px;padding:8px">
+          <div style="font-size:10px;color:#888">/criteria</div>
+          <div style="background:#ff6f61;height:50px;border-radius:3px;margin-top:4px"></div>
+        </div>
+        <div style="background:#fffdf8;border:1px solid #d8d2c2;border-radius:4px;padding:8px">
+          <div style="font-size:10px;color:#888">/genz</div>
+          <div style="background:#f3bf45;height:50px;border-radius:3px;margin-top:4px"></div>
+        </div>
+        <div style="background:#fffdf8;border:1px solid #d8d2c2;border-radius:4px;padding:8px">
+          <div style="font-size:10px;color:#888">/future</div>
+          <div style="background:#9c77d7;height:50px;border-radius:3px;margin-top:4px"></div>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:10px;color:#666;margin-top:8px">+ 首页索引 /</div>
+    </div>
+    <div class="card-body">
+      <h3>方案 B · 多页站点 (1 首页 + 4 子页)</h3>
+      <p>每个话题独立 URL，首页给目录卡片入口。单独话题可单独分享/收藏。</p>
+      <p style="color:#888;font-size:11px;margin-top:6px"><b>+</b> 单话题可深度展开、SEO 友好、分享细分话题方便<br><b>−</b> 故事连贯性弱、构建工作量大</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="tabbed" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:14px;background:#f7f3ea">
+      <div style="background:#fffdf8;border:1px solid #d8d2c2;border-radius:6px;overflow:hidden">
+        <div style="background:#e8e0cd;padding:6px 10px;display:flex;gap:4px;font-size:10px">
+          <div style="background:#fffdf8;padding:3px 8px;border-radius:3px;color:#181817">历史</div>
+          <div style="padding:3px 8px;color:#666">文化</div>
+          <div style="padding:3px 8px;color:#666">Z 世代</div>
+          <div style="padding:3px 8px;color:#666">未来</div>
+        </div>
+        <div style="padding:14px">
+          <div style="background:#5fc9d4;height:110px;border-radius:4px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>方案 C · 单页 SPA + Tab 切换</h3>
+      <p>4 个 tab 在同一页内切换，URL 不变（或 hash 路由）。每次只显示一个话题的可视化。</p>
+      <p style="color:#888;font-size:11px;margin-top:6px"><b>+</b> 单页轻量、切换快、可视化单独占满视口<br><b>−</b> 故事性最弱、像数据 dashboard 不像数据新闻</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:18px"><b>我的推荐：方案 A</b> · 4 个话题在时间上有自然递进关系（历史 → 当代标准 → 当代使用 → 未来），scrollytelling 能把这个递进做成"故事"，最契合"数据新闻式"的定位。方案 B 的多页 navigation 会割裂叙事；方案 C 的 tab 切换偏向工具 dashboard。</p>

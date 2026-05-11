@@ -1,0 +1,62 @@
+<h2>Figure 4.17 更新项目</h2>
+<p class="subtitle">目标：用 2023-2026 年 X.com 推文数据更新 Top Emojis 可视化，并做成可发布到 7777 端口的网页展示。</p>
+
+<div class="mockup">
+  <div class="mockup-header">Proposed Data Flow</div>
+  <div class="mockup-body">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch">
+      <div class="placeholder" style="min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center">X API<br>Full-Archive / Counts</div>
+      <div class="placeholder" style="min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center">Monthly emoji<br>frequency pipeline</div>
+      <div class="placeholder" style="min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center">CSV / JSON<br>research dataset</div>
+      <div class="placeholder" style="min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center">Interactive<br>web visualization</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Visualization Direction</h3>
+  <div class="cards">
+    <div class="card" data-choice="rank-river" onclick="toggleSelect(this)">
+      <div class="card-image">
+        <div style="height:130px;display:flex;align-items:end;gap:8px;padding:16px;background:#f7f7f4">
+          <div style="flex:1;height:88%;background:#ff7062;border-radius:12px 12px 0 0"></div>
+          <div style="flex:1;height:68%;background:#6f98d8;border-radius:12px 12px 0 0"></div>
+          <div style="flex:1;height:54%;background:#ffe36d;border-radius:12px 12px 0 0"></div>
+          <div style="flex:1;height:42%;background:#92cf7c;border-radius:12px 12px 0 0"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3>A. Rank River</h3>
+        <p>延续 Figure 4.17 的流动排名风格，适合和论文原图保持一致。</p>
+      </div>
+    </div>
+    <div class="card" data-choice="dashboard" onclick="toggleSelect(this)">
+      <div class="card-image">
+        <div style="height:130px;display:grid;grid-template-columns:1.2fr .8fr;gap:10px;padding:14px;background:#f7f7f4">
+          <div class="placeholder"></div>
+          <div style="display:grid;gap:8px">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3>B. Research Dashboard</h3>
+        <p>主图加指标卡、筛选器和方法说明，更适合网页交互展示。</p>
+      </div>
+    </div>
+    <div class="card" data-choice="story" onclick="toggleSelect(this)">
+      <div class="card-image">
+        <div style="height:130px;padding:18px;background:#f7f7f4">
+          <div style="height:18px;width:70%;background:#111;border-radius:4px;margin-bottom:14px"></div>
+          <div style="height:10px;width:92%;background:#ccc;border-radius:4px;margin-bottom:22px"></div>
+          <div class="placeholder" style="height:54px"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3>C. Scrollytelling</h3>
+        <p>按年份和事件解释 emoji 变化，叙事性强，但开发量更大。</p>
+      </div>
+    </div>
+  </div>
+</div>
