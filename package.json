@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 7777",
-    "build": "next build",
+    "dev": "next dev --turbopack -p 7777",
+    "build": "next build --turbopack",
     "start": "next start -p 7777",
     "lint": "eslint",
     "test": "vitest run",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.3.0",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
