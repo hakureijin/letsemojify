@@ -1,3 +1,10 @@
 {
-  "hello": "Hello, World"
+  "hello": "Hello, World",
+  "nav": {
+    "ch01": "01",
+    "ch02": "02",
+    "ch03": "03",
+    "ch04": "04",
+    "switchLangAria": "Switch to Chinese"
+  }
 }
