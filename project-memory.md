@@ -1,268 +1,69 @@
-# VINCI Emoji Figure 4.17 Project Memory
+# VINCI · Project Memory
 
-Date: 2026-04-30
+Last updated: 2026-05-11
 
-## Goal
+## Current project
 
-Update the paper's Figure 4.17 and build a web visualization published on port `7777`.
+**Emoji 进化志 · The Evolution of Emoji** — a single-page bilingual (zh/en) scrollytelling web feature about emoji as a cultural artifact, deployed on port `7777`.
 
-The target figure is about emoji popularity over time. The current preferred visual form is a **Bump chart**, not a bar chart race. The chart should show rank movement by month, with frequency/count values available as detail labels or tooltips.
+- README · `./README.md`
+- Spec · `docs/superpowers/specs/2026-05-11-emoji-trends-multi-topic-design.md`
+- Plan · `docs/superpowers/plans/2026-05-11-emoji-trends-multi-topic.md`
 
-## Paper Context
+The site has four chapter sections, in time order:
 
-Source document:
+1. §01 进化之路 / The Evolution Path — horizontal pin-and-translate timeline of every Unicode emoji version (DoCoMo 1999 → Apple Genmoji 2024)
+2. §02 谁能成为 emoji / Who Gets In — Unicode proposal pipeline + 6 selection criteria + 4 case cards + cultural-origins world map
+3. §03 Z 世代手机依赖 / Always On — generational screen-time stats, top-emoji-by-generation, semantic-shift, 24h day-in-life
+4. §04 屏幕之外 / Beyond the Screen — 9 case cards across AI / AR-3D / Brand / Interface / Art categories with chip-filtered grid
 
-- `/root/tyx/VINCI/article.docx`
+Visual register is intentionally playful (gradient backgrounds, rounded cards, emoji-led big type) while content discipline is strict — every quantitative claim has a source URL and surfaces in the footer bibliography.
 
-Relevant section:
+Tech stack: Next.js 15 App Router · React 19 · TypeScript · Tailwind v4 · next-intl · Framer Motion · d3-* + world-atlas · Vitest.
 
-- Chapter `4.3 Emotional Conveyance`
-- Research question: `RQ3: What are the most popular emojis in the past three years?`
-- Original Figure 4.17 caption: `Top emojis on Twitter: 2020-2023, visualized by the author`
+## Run
 
-Original metric described in the paper:
+```bash
+cd /root/tyx/VINCI
+npm install
+npm run dev          # port 7777
+# or
+npm run build && npm run start
+```
 
-- Monthly percentage of tweets/posts containing at least one instance of each emoji.
-- If one tweet/post contains the same emoji multiple times, that emoji is counted once for that tweet/post.
-- The original text cites a sample of about 6.5 billion tweets collected by Internet Archive and Emojipedia.
+## Relationship to the previous Figure 4.17 work
 
-Important interpretation in the paper:
+The prior brainstorm in this repo was a single-page mockup for Figure 4.17 of the paper (a bump chart of "Top emojis on X.com: 2023-2026"). Per the new spec's §1, this current project is **intentionally decoupled** from that work — it occupies the same port 7777 but is not a continuation. The Figure 4.17 mockup artifacts still live under `.superpowers/brainstorm/1421938-1777524397/` and are tracked in git, in case they're useful as a style reference.
 
-- `😂` Face with Tears of Joy had long-term dominance.
-- `😭` Loudly Crying Face challenged/overtook `😂` around the pandemic period.
-- `🥺` Pleading Face declined after its pandemic-era rise.
+Useful research notes carried over from the Figure 4.17 brainstorm (still accurate as background):
 
-## Current Preview
+- **`😂` Face with Tears of Joy** had long-term dominance on Twitter through the 2010s.
+- **`😭` Loudly Crying Face** challenged/overtook `😂` around the COVID pandemic.
+- **`🥺` Pleading Face** declined after its pandemic-era rise.
+- These shifts informed §03's "same emoji, different meaning by generation" block — `😂` is now Gen-Z code for "cringe" (use `💀` instead).
 
-Visual companion / preview URL:
+Data sources investigated in the prior brainstorm (some used here, some not):
 
-- `http://117.72.27.33:7777/`
+- Emojipedia · `https://emojipedia.org/emoji-versions` — authoritative for per-version emoji counts; **heavily used in §01**.
+- X.com / Twitter API — full-archive search and counts. Not used in current project (would need paid access).
+- Emojitracker · `https://emojitracker.com/` — real-time popularity; not used.
 
-Current preview is a design mockup only. It must not be treated as real research data.
+## Open follow-ups
 
-Current visual direction:
+- **§02 rejected case** — the spec called for a verified rejected Unicode proposal. The current data ships with a "deity category" policy-based rejection (citing the Unicode exclusion factors page) because no specific L2 PDF for a rejected proposal could be confirmed during the implementation pass. If a real rejected proposal can be found in the L2 archive, swap it in.
+- **§04 emoji wallet** — the plan originally called for an emoji-mnemonic crypto-wallet case, which was substituted with GitHub Emoji Reactions (same `interface` category) when no primary source could be verified. Documented in the commit message.
+- **A11y verification in a real browser** — code-level fixes are in place (MotionConfig, prefers-reduced-motion CSS, focus-visible rings), but a Lighthouse / axe-core run in an actual browser was not performed during the implementation session.
+- **Content depth** — §02 has 4 cases / 8 origin pins, §03 has 4 stats per block, §04 has 9 cases. Each chapter could comfortably take more rows; the data structures and i18n keying support it without any code changes.
 
-- Bump chart redesigned as a "rank-course" view.
-- Use thick colored routes/ribbons instead of thin lines.
-- Use large emoji medallion nodes at key points.
-- Add endpoint ranking panel on the right.
-- Add annotation cards for important rank reversals or new emoji growth.
-- Add detail layer for frequency percentage/counts.
+## Conventions for future edits
 
-Current mockup note:
+- **Adding a data row**: add to `data/chapter-XX.json` with a `source` block, then add the corresponding string keys to BOTH `messages/zh.json` and `messages/en.json`. The i18n parity test enforces this.
+- **Adding a new section / chapter**: extend the types under `types/`, add a `data/chapter-XX.json`, write the components under `components/chapter-XX/`, wire into `app/[locale]/page.tsx`. Follow the existing per-chapter accent-color pattern (each chapter has one primary CSS variable accent).
+- **Animations**: prefer Framer Motion gated by the global `<MotionConfig reducedMotion="user">` over hand-rolled CSS transitions. The CSS `@media (prefers-reduced-motion: reduce)` block in `globals.css` is the safety net for anything outside Framer Motion.
+- **Commits**: project uses git on `master` branch. Commit messages follow `<type>: <imperative>` form (e.g., `feat:`, `fix:`, `data:`, `test:`, `chore:`).
 
-- The values and post-2023走势 currently shown in the preview are placeholder/mock data.
-- Production data must replace all mock trajectories and endpoint values.
+## Known dependency quirks
 
-## Data Source Findings
-
-### 1. Emojipedia / Flourish Reference
-
-Useful for visual and historical context:
-
-- Emojipedia article: https://blog.emojipedia.org/10-years-of-emojipedia-10-years-of-record-breaking-emoji-popularity/
-- Reference Flourish visual: https://public.flourish.studio/visualisation/14054577/
-
-The Flourish reference is:
-
-- Title: `The World's Top Smiley Emojis #WorldEmojiDay2023`
-- Author: Keith Broni
-- Template: Bar chart race
-- Tags include `race`, `change-over-time`, `ranks`, `images`
-
-This is useful as style/data-journalism reference, but the user requested the final visualization as a **Bump chart**.
-
-### 2. X.com / Twitter API
-
-Best source for a true update of Figure 4.17 if the figure remains about X/Twitter posts.
-
-Official docs checked:
-
-- Post Counts: https://docs.x.com/x-api/posts/counts/introduction
-- Search Operators: https://docs.x.com/x-api/posts/search/integrate/operators
-- Full Archive Search: https://docs.x.com/enterprise-api/posts/search/quickstart/full-archive-search
-- Rate Limits: https://docs.x.com/x-api/fundamentals/rate-limits
-
-Relevant facts:
-
-- X search supports emoji query matching.
-- Full-archive counts/search can cover historical data, but requires the correct access level.
-- Recent counts only cover recent windows and cannot rebuild 2023-2026 history.
-- Full-archive / enterprise access is needed for a rigorous 2023-2026 monthly series.
-
-Recommended production metric if X data is available:
-
-- For each month and emoji:
-  - numerator: number of posts containing the emoji at least once
-  - denominator: number of sampled posts or total posts in the same sampling frame
-  - frequency: numerator / denominator
-  - rank: rank emojis by monthly frequency
-
-Need to confirm:
-
-- Whether the user has X Full-Archive/Enterprise API access and Bearer Token.
-- Whether the paper must remain strictly X/Twitter-based or can switch to another source.
-
-### 3. Emojitracker
-
-User asked whether Emojitracker data can be used.
-
-Site:
-
-- https://emojitracker.com/
-
-Current Emojitracker homepage description:
-
-- Real-time emoji analysis powered by Emojipedia's global user base.
-- It tracks emojis copied from Emojipedia and GetEmoji in real time.
-- It shows the most popular 1,000 emojis globally and across select countries.
-
-Current public endpoints discovered:
-
-- `GET /api/ranking?s=<session_hash>&country=ALL`
-- `GET /api/countries?s=<session_hash>`
-- `GET /api/updates?s=<session_hash>` via Server-Sent Events
-- `GET /api/detail?s=<session_hash>&lang=en&emoji=<emoji>`
-
-Implementation detail:
-
-- The `s` value is embedded in the homepage in `<script type="application/json" id="hm2">`.
-- Do not hard-code the observed `s`; parse it from the page before API requests.
-
-Example current ranking observed during this session:
-
-- `❤️`, `✅`, `😭`, `✨`, `🔥`, `😂`, `😊`, `💀`, `⭐`, `🥹`
-
-Important limitation:
-
-- The new Emojitracker is **not X/Twitter post data**.
-- It is real-time/global user interaction data from Emojipedia/GetEmoji.
-- It can support an alternative chart title such as:
-  - `Real-time Emoji Popularity from Emojitracker`
-  - `Emoji Copy/Lookup Popularity: 2026 onward`
-- It should not be labeled `Top Emojis on X.com` or used as a direct replacement for the paper's Twitter/X metric.
-
-Classic Twitter Emojitracker:
-
-- https://emojitracker.com/twitter/
-- The page explicitly says the classic tracker is offline due to Twitter API changes.
-- It still exposes frozen historical cumulative endpoints:
-  - `/twitter/api/rankings.json`
-  - `/twitter/api/details/1F602.json`
-- Example observed for `😂`:
-  - `score`: about 3.84B
-  - `popularity_rank`: 1
-- This is a frozen cumulative score, not a monthly 2023-2026 series.
-
-Conclusion on Emojitracker:
-
-- Good for a live/current ranking or for a forward-looking snapshot archive started now.
-- Not enough to reconstruct monthly 2023-2026 X/Twitter trends.
-- If used, the methodology must say "Emojitracker real-time copy/usage data", not "X.com posts".
-
-## Scraper Planning Notes
-
-### Option A: True X/Twitter Update
-
-Use if X Full-Archive/Enterprise access is available.
-
-Pipeline:
-
-1. Define emoji candidate set.
-   - Start with original Figure 4.17 top emojis plus 2023 Emojipedia top emojis.
-   - Add newly relevant emojis such as `🫶`, `🥹`, `🩷`, `🫡` if needed.
-2. Query monthly counts per emoji.
-3. Query denominator counts for the same monthly sampling frame.
-4. Compute monthly frequency and rank.
-5. Export:
-   - `data/monthly_emoji_counts.csv`
-   - `data/monthly_emoji_ranks.csv`
-   - `data/metadata.json`
-6. Feed the Bump chart.
-
-Risks:
-
-- API access/cost.
-- Query length and rate limits.
-- Need denominator design and sampling reproducibility.
-
-### Option B: Emojitracker Forward Archive
-
-Use if the project accepts switching from X/Twitter posts to Emojitracker popularity.
-
-Pipeline:
-
-1. Fetch homepage and parse `s` session hash.
-2. Fetch `/api/ranking?s=<s>&country=ALL` regularly.
-3. Store snapshots with timestamp.
-4. Compute interval deltas for each emoji.
-5. Aggregate deltas by day/week/month.
-6. Generate Bump chart from monthly delta ranks.
-
-Risks:
-
-- Cannot backfill 2023-2025 from current public API.
-- Data source measures Emojipedia/GetEmoji user behavior, not tweets/posts.
-- Need snapshot collection to begin before a meaningful trend exists.
-
-### Option C: Hybrid / Literature-Supported
-
-Use if X archive access is unavailable but the paper needs historical context.
-
-Approach:
-
-- Keep 2020-2023 from Emojipedia/paper context.
-- Use Emojitracker only as a clearly labeled 2026 real-time supplement.
-- Do not draw a continuous 2023-2026 trend unless a real historical source is obtained.
-
-## Visualization Requirements
-
-Final web page should:
-
-- Run on / publish to port `7777`.
-- Use Bump chart as primary chart.
-- Keep rank as the main visual signal.
-- Show frequency/count values on hover and endpoint labels.
-- Include source/method note directly on the page.
-- Clearly state whether data source is X.com, Emojitracker, or mixed.
-- Avoid presenting mock data as measured data.
-
-Design direction:
-
-- Data-journalism style.
-- Light background, strong typography, restrained color palette.
-- Emoji nodes should help identify lines without relying only on color.
-- Avoid spaghetti-line effect by:
-  - emphasizing top 5-7 routes
-  - muting lower ranks
-  - allowing click-to-focus
-  - using endpoint ranking panel
-
-## Open Decisions
-
-1. Data source:
-   - X Full-Archive/Enterprise
-   - Emojitracker forward snapshots
-   - hybrid/literature-supported
-
-2. Title:
-   - If X data: `Top Emojis on X.com: 2023-2026`
-   - If Emojitracker data: `Real-time Emoji Popularity from Emojitracker`
-
-3. Time coverage:
-   - True historical monthly series from 2023-2026
-   - Forward-only series from the first scrape date
-   - Snapshot-only current ranking
-
-4. Emoji set:
-   - Top 10 overall
-   - Top 10 smileys only
-   - Mixed categories: faces, hearts, gestures, symbols
-
-## Immediate Next Steps
-
-1. Decide whether the production chart must use X/Twitter post data.
-2. If yes, confirm X Full-Archive/Enterprise access.
-3. If no, rename the chart and build an Emojitracker snapshot collector.
-4. Replace current mock data with real snapshot/API data only after data collection is implemented.
-5. Keep all methodology and source notes visible in the final web page.
+- **Node 18.20** is enough to run, but `@tailwindcss/oxide` prefers Node 20+. The native binding `@tailwindcss/oxide-linux-x64-gnu` had to be installed explicitly (it's now a `devDependency`) to work around an npm optional-deps bug. If you upgrade to Node 20+, this manual dep can be removed.
+- **`pnpm` is not installed** on the dev host. Project scripts use `npm`. The package-lock.json is committed.
+- Production build uses **Turbopack** (`next build --turbopack`). Dev too.
