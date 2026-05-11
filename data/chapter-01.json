@@ -1,0 +1,33 @@
+{
+  "sources": [
+    {
+      "id": "emojipedia-versions",
+      "title": { "zh": "Emoji 版本列表", "en": "Emoji Versions" },
+      "publisher": "Emojipedia",
+      "url": "https://emojipedia.org/emoji-versions",
+      "accessed": "2026-05-11"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "docomo-1999",
+      "year": 1999,
+      "versionLabel": "DoCoMo",
+      "kind": "milestone",
+      "newEmojiCount": 176,
+      "highlightEmojis": ["☀️","☁️","☂️"],
+      "narrativeKey": "ch01.timeline.docomo-1999.narrative",
+      "source": {
+        "id": "moma-docomo",
+        "title": { "zh": "MoMA 原 DoCoMo emoji 收藏", "en": "MoMA · NTT DoCoMo Emoji" },
+        "publisher": "MoMA",
+        "url": "https://www.moma.org/collection/works/196070",
+        "accessed": "2026-05-11"
+      }
+    }
+  ],
+  "decadeIndex": [1999, 2010, 2015, 2020, 2024],
+  "cumulative": [
+    { "year": 1999, "total": 176, "sourceId": "emojipedia-versions" }
+  ]
+}
