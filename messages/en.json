@@ -18,11 +18,15 @@
     "chart": {
       "eyebrow": "Cumulative growth",
       "title": "Unicode emoji total · 1999 → 2024",
-      "hint": "Hover or focus a node to see version details; click to pin",
-      "ariaLabel": "Line chart of cumulative Unicode emoji count over time. {count} version nodes are interactive.",
+      "yAxis": "TOTAL EMOJI",
+      "totalBy": "emoji by {year}",
+      "hint": "Hover or focus any version medallion for details; click to pin. Larger medallions mark decade milestones.",
+      "ariaLabel": "Line chart of cumulative Unicode emoji count over time. {count} interactive version nodes.",
       "markerAria": "{year} {version}: +{added} new emoji, {total} cumulative. Press Enter for details.",
       "added": "Added",
       "total": "Cumulative",
+      "growth": "vs. previous",
+      "milestone": "Decade milestone",
       "close": "Close"
     },
     "timeline": {

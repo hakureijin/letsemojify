@@ -18,11 +18,15 @@
     "chart": {
       "eyebrow": "累计增长",
       "title": "Unicode emoji 总数 · 1999 → 2024",
-      "hint": "悬停或聚焦每个节点查看版本详情，点击可固定",
-      "ariaLabel": "Unicode emoji 累计总数随时间变化的折线图。共有 {count} 个版本节点。",
+      "yAxis": "EMOJI 总数",
+      "totalBy": "{year} 年累计 emoji",
+      "hint": "悬停或聚焦任意一个版本徽章查看详情，点击可固定；徽章变大的是十年节点",
+      "ariaLabel": "Unicode emoji 累计总数折线图，共 {count} 个版本节点。",
       "markerAria": "{year} 年 {version}：新增 {added} 个 emoji，累计 {total} 个。按 Enter 键查看详情。",
       "added": "新增",
       "total": "累计",
+      "growth": "环比增长",
+      "milestone": "十年里程碑",
       "close": "关闭"
     },
     "timeline": {
