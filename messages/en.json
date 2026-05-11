@@ -81,10 +81,10 @@
         "narrative": "Apple's iOS 18 introduces Genmoji: natural-language-prompted personalized emoji."
       },
       "emoji-17-0": {
-        "narrative": "163 new emojis ship with Unicode 17.0 in September 2025 — including 🫪 distorted face, 🫯 fight cloud, 🫍 orca, 🪎 treasure chest, 🪊 trombone, 🛘 landslide."
+        "narrative": "163 new emojis ship with Unicode 17.0 in September 2025. Headline new characters include the distorted face, fight cloud, orca, hairy creature, trombone, landslide, and treasure chest. The medallion 🫨 is a visual stand-in — 17.0 codepoints render as placeholder boxes until your system font is updated (rolling out through 2026)."
       },
       "emoji-18-0": {
-        "narrative": "Draft: 9 core new emojis + 10 skin-tone variants (19 total). Candidates include a cracking face, pickle, lighthouse, meteor, and new thumb gestures. Expected September 2026 release with Unicode 18.0."
+        "narrative": "Draft: 9 core new emojis + 10 skin-tone variants (19 total). Candidates include a cracking face, pickle, lighthouse, meteor, and new thumb gestures. Expected September 2026 release with Unicode 18.0. Medallion is a visual stand-in — draft codepoints and final glyphs are still subject to change."
       }
     }
   },
