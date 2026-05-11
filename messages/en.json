@@ -1,10 +1,96 @@
 {
-  "hello": "Hello, World",
   "nav": {
     "ch01": "01",
     "ch02": "02",
     "ch03": "03",
     "ch04": "04",
     "switchLangAria": "Switch to Chinese"
+  },
+  "hero": {
+    "eyebrow": "A DATA STORY",
+    "title": "The Evolution of Emoji",
+    "subtitle": "From 📟 to 🤖 · 1999–2026",
+    "scrollCue": "scroll"
+  },
+  "ch01": {
+    "title": "The Evolution Path",
+    "intro": "In 26 years, emoji grew from one mobile carrier's 176 12×12-pixel icons into a 3,790+ cross-platform, cross-cultural visual vocabulary.",
+    "timeline": {
+      "docomo-1999": {
+        "narrative": "Shigetaka Kurita designed 176 12×12-pixel icons for NTT DoCoMo's i-mode service."
+      }
+    }
+  },
+  "ch02": {
+    "title": "Who Gets In",
+    "intro": "About 100 proposals are submitted to Unicode each year. The acceptance rate is roughly 30–60% — and it hinges on more than technical merit.",
+    "pipeline": {
+      "submit": { "label": "Proposal", "desc": "Submitted to Unicode" },
+      "esc": { "label": "ESC Review", "desc": "Emoji Subcommittee" },
+      "utc": { "label": "UTC Vote", "desc": "Unicode Technical Committee" },
+      "release": { "label": "Release", "desc": "Unicode standard" },
+      "vendor": { "label": "Vendor", "desc": "Apple, Google, Samsung, …" }
+    },
+    "criteria": {
+      "freq": { "title": "Frequency", "desc": "Google Trends, social-media search signals" }
+    },
+    "cases": {
+      "dumpling": {
+        "proposer": "Dumpling · proposed by Yiying Lu",
+        "story": "Designer Yiying Lu helped push for Asian-food cultural representation; the dumpling shipped with Unicode 10.0 in 2017."
+      }
+    },
+    "origins": {
+      "dumpling-cn": { "label": "Dumpling · China" }
+    }
+  },
+  "ch03": {
+    "title": "Always On",
+    "intro": "Gen Z is the first generation that has never put the phone out of sight. For them, emoji aren't decoration — they're a new grammar, punctuation, and tone of voice.",
+    "hero": {
+      "screenTime": { "label": "Screen time" }
+    },
+    "screenTime": {
+      "gen-z": { "label": "Gen Z" }
+    },
+    "topByGen": {
+      "gen-z": { "label": "Gen Z", "desc": "Irony · feeling · self-compassion" }
+    },
+    "semantic": {
+      "heading": "Same emoji, different meaning by generation",
+      "older": "Older generation",
+      "genZ": "Gen Z",
+      "disclosure": "Based on cited reporting and journalism — not a primary survey dataset.",
+      "thumbsup": {
+        "older": "“OK / agreed”",
+        "genZ": "“dismissive / passive / annoyed”"
+      }
+    },
+    "dayInLife": {
+      "heading": "24-hour phone-engagement intensity",
+      "morning": "First-thing-morning phone check"
+    }
+  },
+  "ch04": {
+    "title": "Beyond the Screen",
+    "intro": "26 years on, emoji are escaping the keyboard — generated, dimensionalized, worn on faces, made into brands, and stepped into space.",
+    "categories": {
+      "all": "All",
+      "ai": "AI",
+      "ar3d": "AR/3D",
+      "brand": "Brand",
+      "interface": "Interface",
+      "art": "Art"
+    },
+    "cases": {
+      "apple-genmoji": {
+        "title": "Genmoji",
+        "story": "iOS 18 generates personalized emoji from a natural-language prompt. Every user can now produce their own."
+      }
+    }
+  },
+  "footer": {
+    "heading": "Sources & Methodology",
+    "credits": "Every quantitative claim on this page carries a public, citable source."
   }
 }

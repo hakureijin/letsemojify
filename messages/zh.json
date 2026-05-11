@@ -1,10 +1,96 @@
 {
-  "hello": "你好，世界",
   "nav": {
     "ch01": "01",
     "ch02": "02",
     "ch03": "03",
     "ch04": "04",
     "switchLangAria": "切换到英文"
+  },
+  "hero": {
+    "eyebrow": "A DATA STORY",
+    "title": "Emoji 进化志",
+    "subtitle": "从 📟 到 🤖 · 1999–2026",
+    "scrollCue": "scroll"
+  },
+  "ch01": {
+    "title": "进化之路",
+    "intro": "26 年间，emoji 从一个手机网络的 176 个 12×12 像素图标，扩张为 3,790+ 个跨平台、跨文化的视觉词汇。",
+    "timeline": {
+      "docomo-1999": {
+        "narrative": "栗田穰崇为 i-mode 设计 176 个 12×12 像素图标。"
+      }
+    }
+  },
+  "ch02": {
+    "title": "谁能成为 emoji",
+    "intro": "每年约 100 份提案，Unicode 通过率约 30–60%。能否通过，不只看技术，更看文化代表性。",
+    "pipeline": {
+      "submit": { "label": "提交提案", "desc": "Proposal" },
+      "esc": { "label": "小组委评审", "desc": "ESC review" },
+      "utc": { "label": "UTC 表决", "desc": "UTC vote" },
+      "release": { "label": "Unicode 发布", "desc": "Standard release" },
+      "vendor": { "label": "厂商绘制", "desc": "Vendor design" }
+    },
+    "criteria": {
+      "freq": { "title": "使用频次", "desc": "Google Trends · 社媒搜索数据" }
+    },
+    "cases": {
+      "dumpling": {
+        "proposer": "饺子 · 提案人 Yiying Lu",
+        "story": "Yiying Lu 与多位设计师共同推动亚洲食物文化代表性，2017 年随 Unicode 10.0 正式入选。"
+      }
+    },
+    "origins": {
+      "dumpling-cn": { "label": "饺子 · 中国" }
+    }
+  },
+  "ch03": {
+    "title": "Always On",
+    "intro": "Gen Z 是第一代手机从未离开过视野的人类。他们的 emoji 不只是装饰，而是新一代的语法、标点、表情、情绪声调。",
+    "hero": {
+      "screenTime": { "label": "屏幕时间" }
+    },
+    "screenTime": {
+      "gen-z": { "label": "Gen Z" }
+    },
+    "topByGen": {
+      "gen-z": { "label": "Gen Z", "desc": "反讽 · 情绪 · 自我同情" }
+    },
+    "semantic": {
+      "heading": "同一 emoji，不同代际的意思",
+      "older": "较年长一代",
+      "genZ": "Z 世代",
+      "disclosure": "本节解读基于公开报道与新闻媒体引用，非一手调研数据。",
+      "thumbsup": {
+        "older": "“同意 / 收到”",
+        "genZ": "“敷衍 / 被动 / 烦”"
+      }
+    },
+    "dayInLife": {
+      "heading": "24 小时手机交互强度",
+      "morning": "早起查看手机"
+    }
+  },
+  "ch04": {
+    "title": "屏幕之外",
+    "intro": "26 年后，emoji 不再被键盘困住——它们正在生成、立体化、戴上身体、变成品牌、走进空间。",
+    "categories": {
+      "all": "全部",
+      "ai": "AI",
+      "ar3d": "AR/3D",
+      "brand": "品牌",
+      "interface": "界面",
+      "art": "艺术"
+    },
+    "cases": {
+      "apple-genmoji": {
+        "title": "Genmoji",
+        "story": "iOS 18 用自然语言生成个性化 emoji。AI 让每个用户都可以拥有专属表情。"
+      }
+    }
+  },
+  "footer": {
+    "heading": "来源与方法 · Sources & Methodology",
+    "credits": "本页所有定量数据均附公开可追溯来源。"
   }
 }
