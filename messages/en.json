@@ -192,15 +192,20 @@
       }
     },
     "dayInLife": {
-      "heading": "24-hour phone-engagement intensity",
-      "caption": "Each cell is one hour of the day; deeper color means heavier phone engagement during that hour. Five labeled spikes mark documented peak moments — click a highlighted cell for the source.",
-      "legendLow": "Low",
-      "legendHigh": "High",
-      "sources": "Sources",
-      "intensity": "Intensity",
+      "heading": "24-hour phone-engagement intensity · generational comparison",
+      "caption": "24 hours on the x-axis; the y-axis shows each group's relative phone-engagement frequency (peak = 100%). The two curves track teens (Gen Z) versus all adults; you can see their peaks fall at different hours — teens have a steeper late-night ridge and a much later morning ramp-up, while adults follow a commute + lunch + early-evening rhythm.",
+      "methodology": "Methodology: the curves are 24-point series reconstructed from descriptive findings in published reports (not raw published data points). The teen curve draws on Common Sense Media's 2021 Census (ages 8–18) findings about out-of-school usage intensity; the adult curve draws on Reviews.org's 2023 U.S. cellphone-usage survey findings about morning, lunch, and evening peaks. A fully reproducible hour-by-generation public dataset doesn't currently exist.",
+      "ariaLabel": "24-hour phone engagement comparison line chart with two curves: Gen Z and all adults.",
+      "cellAria": "{hour}:00 hour — Gen Z around {genZ}%, all adults around {adults}%. Press Enter for details.",
       "close": "Close",
-      "cellAria": "{hour}:00 hour, engagement intensity around {intensity}%.",
-      "cellAriaLabeled": "{hour}:00 hour, {label}, engagement intensity around {intensity}%. Press Enter to see the source.",
+      "genZ": {
+        "label": "Gen Z / teens",
+        "desc": "Ages 8–18. Peak engagement falls in out-of-school hours: after-school, evening, late-night."
+      },
+      "allAdults": {
+        "label": "All adults",
+        "desc": "U.S. adult mixed sample. Peaks track the morning commute, lunch break, and early-evening leisure window."
+      },
       "morning": "First-thing-morning phone check",
       "lunch": "Lunch peak",
       "afterSchool": "After-school surge",

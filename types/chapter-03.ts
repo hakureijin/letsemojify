@@ -34,8 +34,17 @@ export interface SemanticShiftEntry {
 
 export interface DayInLifeSpike {
   hour: number
-  intensity: number
   labelKey: string
+}
+
+export type DayInLifeCurveId = 'gen-z' | 'all-adults'
+
+export interface DayInLifeCurve {
+  id: DayInLifeCurveId
+  labelKey: string
+  descKey: string
+  hours: number[]
+  spikes: DayInLifeSpike[]
   source: Source
 }
 
@@ -45,5 +54,8 @@ export interface Chapter03Data {
   screenTime: GenerationBar[]
   topByGen: GenerationEmojis[]
   semanticShift: SemanticShiftEntry[]
-  dayInLife: DayInLifeSpike[]
+  dayInLife: {
+    methodologyKey: string
+    curves: DayInLifeCurve[]
+  }
 }

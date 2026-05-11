@@ -27,7 +27,7 @@ function collect(): Map<string, { source: Source; chapters: string[] }> {
   for (const b of data03.screenTime as WithSource[]) push(b.source, '03')
   for (const g of data03.topByGen as WithSource[]) push(g.source, '03')
   for (const e of data03.semanticShift as WithSource[]) push(e.source, '03')
-  for (const d of data03.dayInLife as WithSource[]) push(d.source, '03')
+  for (const c of (data03.dayInLife as { curves: WithSource[] }).curves) push(c.source, '03')
   for (const s of data04.sources as Source[]) push(s, '04')
   for (const c of data04.cases as WithSource[]) push(c.source, '04')
   return all

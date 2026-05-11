@@ -22,7 +22,7 @@ export function AlwaysOn({ data }: { data: Chapter03Data }) {
         <ScreenTimeBars bars={data.screenTime} />
         <TopEmojisByGen data={data.topByGen} />
         <SemanticShift entries={data.semanticShift} />
-        <DayInLife spikes={data.dayInLife} />
+        <DayInLife data={data.dayInLife} />
       </div>
     </Section>
   )

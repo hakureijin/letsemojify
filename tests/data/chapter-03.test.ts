@@ -17,12 +17,19 @@ describe('chapter-03 data', () => {
     typed.semanticShift.forEach(s => expect(s.source.url).toMatch(/^https?:\/\//))
   })
 
-  it('dayInLife hours are within 0–23 and intensity within 0–1', () => {
-    typed.dayInLife.forEach(d => {
-      expect(d.hour).toBeGreaterThanOrEqual(0)
-      expect(d.hour).toBeLessThanOrEqual(23)
-      expect(d.intensity).toBeGreaterThanOrEqual(0)
-      expect(d.intensity).toBeLessThanOrEqual(1)
+  it('dayInLife has two curves with 24 hourly intensity values each', () => {
+    expect(typed.dayInLife.curves.length).toBe(2)
+    typed.dayInLife.curves.forEach(curve => {
+      expect(curve.hours.length).toBe(24)
+      curve.hours.forEach(v => {
+        expect(v).toBeGreaterThanOrEqual(0)
+        expect(v).toBeLessThanOrEqual(1)
+      })
+      curve.spikes.forEach(s => {
+        expect(s.hour).toBeGreaterThanOrEqual(0)
+        expect(s.hour).toBeLessThanOrEqual(23)
+      })
+      expect(curve.source.url).toMatch(/^https?:\/\//)
     })
   })
 })
