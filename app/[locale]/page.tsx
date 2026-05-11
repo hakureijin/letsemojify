@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         </div>
         <EvolutionPath data={ch01 as Chapter01Data} />
         <div className="max-w-6xl mx-auto px-6 pt-10 pb-16">
-          <CumulativeChart data={(ch01 as Chapter01Data).cumulative} />
+          <CumulativeChart timeline={(ch01 as Chapter01Data).timeline} />
         </div>
       </Section>
       <WhoGetsIn data={ch02 as Chapter02Data} />

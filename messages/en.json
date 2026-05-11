@@ -15,6 +15,16 @@
   "ch01": {
     "title": "The Evolution Path",
     "intro": "In 26 years, emoji grew from one mobile carrier's 176 12×12-pixel icons into a 3,790+ cross-platform, cross-cultural visual vocabulary.",
+    "chart": {
+      "eyebrow": "Cumulative growth",
+      "title": "Unicode emoji total · 1999 → 2024",
+      "hint": "Hover or focus a node to see version details; click to pin",
+      "ariaLabel": "Line chart of cumulative Unicode emoji count over time. {count} version nodes are interactive.",
+      "markerAria": "{year} {version}: +{added} new emoji, {total} cumulative. Press Enter for details.",
+      "added": "Added",
+      "total": "Cumulative",
+      "close": "Close"
+    },
     "timeline": {
       "docomo-1999": {
         "narrative": "Shigetaka Kurita designed 176 12×12-pixel icons for NTT DoCoMo's i-mode service."

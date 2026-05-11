@@ -15,6 +15,16 @@
   "ch01": {
     "title": "进化之路",
     "intro": "26 年间，emoji 从一个手机网络的 176 个 12×12 像素图标，扩张为 3,790+ 个跨平台、跨文化的视觉词汇。",
+    "chart": {
+      "eyebrow": "累计增长",
+      "title": "Unicode emoji 总数 · 1999 → 2024",
+      "hint": "悬停或聚焦每个节点查看版本详情，点击可固定",
+      "ariaLabel": "Unicode emoji 累计总数随时间变化的折线图。共有 {count} 个版本节点。",
+      "markerAria": "{year} 年 {version}：新增 {added} 个 emoji，累计 {total} 个。按 Enter 键查看详情。",
+      "added": "新增",
+      "total": "累计",
+      "close": "关闭"
+    },
     "timeline": {
       "docomo-1999": {
         "narrative": "栗田穰崇为 i-mode 设计 176 个 12×12 像素图标。"
