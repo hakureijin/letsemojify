@@ -132,13 +132,22 @@
     "title": "Always On",
     "intro": "Gen Z 是第一代手机从未离开过视野的人类。他们的 emoji 不只是装饰，而是新一代的语法、标点、表情、情绪声调。",
     "hero": {
-      "screenTime": { "label": "屏幕时间" }
+      "screenTime": { "label": "每日屏幕时间（Z 世代）" },
+      "emojiDailyUse": { "label": "在线用户中使用 emoji 的比例" },
+      "phonePickups": { "label": "每天解锁手机次数（美国平均）" },
+      "almostConstantly": { "label": "几乎随时在线的青少年" }
     },
     "screenTime": {
-      "gen-z": { "label": "Gen Z" }
+      "gen-z": { "label": "Z 世代" },
+      "millennial": { "label": "千禧一代" },
+      "gen-x": { "label": "X 世代" },
+      "boomer": { "label": "婴儿潮一代" }
     },
     "topByGen": {
-      "gen-z": { "label": "Gen Z", "desc": "反讽 · 情绪 · 自我同情" }
+      "gen-z": { "label": "Z 世代", "desc": "反讽 · 情绪 · 自我同情" },
+      "millennial": { "label": "千禧一代", "desc": "直接 · 积极 · 肯定" },
+      "gen-x": { "label": "X 世代", "desc": "礼貌 · 实用 · 熟悉" },
+      "boomer": { "label": "婴儿潮一代", "desc": "陈述 · 鼓励 · 字面" }
     },
     "semantic": {
       "heading": "同一 emoji，不同代际的意思",
@@ -148,11 +157,23 @@
       "thumbsup": {
         "older": "“同意 / 收到”",
         "genZ": "“敷衍 / 被动 / 烦”"
+      },
+      "lol": {
+        "older": "“真的在笑”",
+        "genZ": "“过气了——用 💀 代替”"
+      },
+      "smile": {
+        "older": "“友好 / 礼貌”",
+        "genZ": "“阴阳怪气 / 皮笑肉不笑”"
       }
     },
     "dayInLife": {
       "heading": "24 小时手机交互强度",
-      "morning": "早起查看手机"
+      "morning": "早起查看手机",
+      "lunch": "午间高峰",
+      "afterSchool": "放学后激增",
+      "evening": "晚间高峰",
+      "lateNight": "深夜刷屏"
     }
   },
   "ch04": {

@@ -128,17 +128,26 @@
       "mooncake-cn": { "label": "Mooncake · China" }
     }
   },
-  "ch03": {
+   "ch03": {
     "title": "Always On",
     "intro": "Gen Z is the first generation that has never put the phone out of sight. For them, emoji aren't decoration — they're a new grammar, punctuation, and tone of voice.",
     "hero": {
-      "screenTime": { "label": "Screen time" }
+      "screenTime": { "label": "Daily screen time (Gen Z)" },
+      "emojiDailyUse": { "label": "Online users who use emoji" },
+      "phonePickups": { "label": "Phone checks per day (avg. American)" },
+      "almostConstantly": { "label": "Teens online “almost constantly”" }
     },
     "screenTime": {
-      "gen-z": { "label": "Gen Z" }
+      "gen-z": { "label": "Gen Z" },
+      "millennial": { "label": "Millennial" },
+      "gen-x": { "label": "Gen X" },
+      "boomer": { "label": "Boomer" }
     },
     "topByGen": {
-      "gen-z": { "label": "Gen Z", "desc": "Irony · feeling · self-compassion" }
+      "gen-z": { "label": "Gen Z", "desc": "Irony · feeling · self-compassion" },
+      "millennial": { "label": "Millennial", "desc": "Direct · positive · affirming" },
+      "gen-x": { "label": "Gen X", "desc": "Polite · pragmatic · familiar" },
+      "boomer": { "label": "Boomer", "desc": "Statement · encouragement · literal" }
     },
     "semantic": {
       "heading": "Same emoji, different meaning by generation",
@@ -148,11 +157,23 @@
       "thumbsup": {
         "older": "“OK / agreed”",
         "genZ": "“dismissive / passive / annoyed”"
+      },
+      "lol": {
+        "older": "“Actually laughing out loud”",
+        "genZ": "“Cringe — use 💀 instead”"
+      },
+      "smile": {
+        "older": "“Friendly / polite”",
+        "genZ": "“Passive-aggressive / fake-smiling”"
       }
     },
     "dayInLife": {
       "heading": "24-hour phone-engagement intensity",
-      "morning": "First-thing-morning phone check"
+      "morning": "First-thing-morning phone check",
+      "lunch": "Lunch peak",
+      "afterSchool": "After-school surge",
+      "evening": "Evening peak",
+      "lateNight": "Late-night doomscroll"
     }
   },
   "ch04": {
