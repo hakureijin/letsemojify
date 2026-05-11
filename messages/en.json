@@ -191,6 +191,38 @@
       "apple-genmoji": {
         "title": "Genmoji",
         "story": "iOS 18 generates personalized emoji from a natural-language prompt. Every user can now produce their own."
+      },
+      "vision-pro-persona": {
+        "title": "Vision Pro Persona",
+        "story": "Apple Vision Pro maps a user's face and hand movements in real time onto a photorealistic 3D avatar — a Persona — bringing emoji-style self-expression from a flat screen into immersive spatial computing."
+      },
+      "snap-bitmoji-ar": {
+        "title": "Bitmoji AR Lenses",
+        "story": "Snap deeply integrated Bitmoji personal avatars with AR Lenses, letting users project their custom cartoon selves into the real world; by 2023, Bitmoji surpassed 250 million monthly active users."
+      },
+      "world-emoji-day-brands": {
+        "title": "World Emoji Day Brand Activations",
+        "story": "Every July 17th, hundreds of brands — from Coca-Cola to McDonald's to Google — launch global social-media campaigns built around custom emoji; World Emoji Day has become the calendar's signature moment for corporate emoji marketing."
+      },
+      "slack-emoji-workflow": {
+        "title": "Slack Emoji Workflow Triggers",
+        "story": "Slack's Workflow Builder lets teams use emoji reactions as automation triggers, turning a single-tap sticker into the starting point for cross-app business processes — making emoji a structured interface meta-language for workplace collaboration."
+      },
+      "moma-docomo": {
+        "title": "MoMA Acquires the Original Emoji",
+        "story": "Shigetaka Kurita's 176 original 1999 emoji, designed for NTT DoCoMo's i-mode, were permanently acquired by the Museum of Modern Art in 2016 — placing a set of 12×12-pixel communication glyphs squarely inside the art-historical canon."
+      },
+      "google-noto-emoji": {
+        "title": "Google Noto Emoji Open Font",
+        "story": "Launched with the goal of eliminating \"tofu\" (missing-character boxes), Google's Noto Emoji project provides an open-source, Unicode-compliant color emoji font maintained through Unicode 17.0 — serving as shared visual infrastructure for cross-platform emoji consistency."
+      },
+      "github-emoji-reactions": {
+        "title": "GitHub Emoji Reactions API",
+        "story": "GitHub added emoji reactions (👍 ❤️ 🚀 and more) to its REST API in 2016, enabling developers to annotate and filter issues, pull requests, and commits with structured emoji signals — turning a playful sticker into a machine-readable workflow primitive."
+      },
+      "wechat-sticker-economy": {
+        "title": "WeChat Sticker Open Platform",
+        "story": "Tencent's WeChat sticker platform lets artists publish paid and free packs; cumulative downloads exceeded billions by 2024 — a uniquely Chinese-internet pattern of emoji personalization that spawned a thriving creator economy."
       }
     }
   },

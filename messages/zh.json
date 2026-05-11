@@ -191,6 +191,38 @@
       "apple-genmoji": {
         "title": "Genmoji",
         "story": "iOS 18 用自然语言生成个性化 emoji。AI 让每个用户都可以拥有专属表情。"
+      },
+      "vision-pro-persona": {
+        "title": "Vision Pro Persona",
+        "story": "Apple Vision Pro 将用户的面部与手部动作实时映射为 3D 数字分身 Persona，在 FaceTime 通话中呈现真实感十足的空间临场感——emoji 式的自我表达从平面进入立体空间。"
+      },
+      "snap-bitmoji-ar": {
+        "title": "Bitmoji AR 镜头",
+        "story": "Snap 将 Bitmoji 个人化卡通形象与 AR 镜头深度融合，让用户的专属表情人偶跃然于现实场景之中；截至 2023 年，Bitmoji 月活跃用户已超过 2.5 亿。"
+      },
+      "world-emoji-day-brands": {
+        "title": "品牌 Emoji 营销日",
+        "story": "每年 7 月 17 日，可口可乐、麦当劳、谷歌等数百家品牌通过定制 emoji 发起全球社交媒体活动——世界 Emoji 日已成为企业与消费者进行视觉对话的年度营销节点。"
+      },
+      "slack-emoji-workflow": {
+        "title": "Slack Emoji 工作流",
+        "story": "Slack 的 Workflow Builder 允许用户将 emoji 表情回应设置为自动化工作流的触发器，使一枚贴纸点击即可启动跨应用的业务流程——emoji 由此成为团队协作的结构化界面元语言。"
+      },
+      "moma-docomo": {
+        "title": "MoMA 收藏原始 Emoji",
+        "story": "栗田穰崇 1999 年为 NTT DoCoMo i-mode 设计的 176 个原始 emoji 于 2016 年被纽约现代艺术博物馆永久收藏，标志着这批 12×12 像素的通讯符号正式进入艺术史叙事。"
+      },
+      "google-noto-emoji": {
+        "title": "Google Noto Emoji 开源字体",
+        "story": "Google 以「No Tofu（消灭豆腐块）」为目标，将 Noto Emoji 打造为覆盖全部 Unicode 表情的开源彩色字体并持续迭代至 Unicode 17.0，成为跨平台 emoji 视觉一致性的公共基础设施。"
+      },
+      "github-emoji-reactions": {
+        "title": "GitHub Emoji 反应 API",
+        "story": "GitHub 于 2016 年将 emoji 反应（👍 ❤️ 🚀 等）纳入其 REST API，使开发者可以用结构化表情对议题、Pull Request 和提交进行标注与过滤——emoji 由此成为代码协作工作流中的机器可读界面原语。"
+      },
+      "wechat-sticker-economy": {
+        "title": "微信表情开放平台",
+        "story": "腾讯表情开放平台让艺术家发布付费/免费贴纸，截至 2024 年累计下载量已超数十亿次——中国互联网原生的「emoji 个性化扩展」现象催生了独特的创作者经济生态。"
       }
     }
   },
