@@ -262,9 +262,42 @@
         "url": "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/",
         "accessed": "2026-05-11"
       }
+    },
+    {
+      "id": "emoji-17-0",
+      "year": 2025,
+      "versionLabel": "Emoji 17.0",
+      "kind": "unicode",
+      "newEmojiCount": 163,
+      "highlightEmojis": ["🫪", "🫯", "🫍", "🪊"],
+      "narrativeKey": "ch01.timeline.emoji-17-0.narrative",
+      "source": {
+        "id": "emojipedia-17-0",
+        "title": { "zh": "Emoji 17.0", "en": "Emoji 17.0" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-17.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-18-0",
+      "year": 2026,
+      "versionLabel": "Emoji 18.0",
+      "kind": "unicode",
+      "newEmojiCount": 19,
+      "highlightEmojis": ["😬", "🥒", "🗼", "☄️"],
+      "narrativeKey": "ch01.timeline.emoji-18-0.narrative",
+      "draft": true,
+      "source": {
+        "id": "emojipedia-18-0",
+        "title": { "zh": "Emoji 18.0 草案", "en": "Emoji 18.0 (Draft)" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-18.0",
+        "accessed": "2026-05-11"
+      }
     }
   ],
-  "decadeIndex": [1999, 2010, 2015, 2020, 2024],
+  "decadeIndex": [1999, 2010, 2015, 2020, 2024, 2026],
   "cumulative": [
     { "year": 1999, "total": 176,  "sourceId": "emojipedia-versions" },
     { "year": 2010, "total": 898,  "sourceId": "emojipedia-versions" },

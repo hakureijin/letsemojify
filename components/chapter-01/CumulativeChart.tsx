@@ -1,15 +1,23 @@
 'use client'
-import { useMemo, useState, useEffect, useRef, useCallback } from 'react'
+import { useMemo, useState, useEffect, useRef, useCallback, useId } from 'react'
 import { scaleLinear } from 'd3-scale'
 import { line, area, curveMonotoneX } from 'd3-shape'
 import { useLocale, useTranslations } from 'next-intl'
 import { Citation } from '@/components/ui/Citation'
 import type { Chapter01Data, TimelineNode } from '@/types/chapter-01'
 
-const W = 860
-const H = 300
-const PAD = { l: 64, r: 24, t: 28, b: 44 }
+const W = 880
+const H = 320
+const PAD = { l: 64, r: 24, t: 32, b: 48 }
 const HIT_RADIUS = 22 // 44px touch target diameter
+
+type RangeId = 'all' | 'since-2015' | 'since-2020'
+
+const RANGE_START: Record<RangeId, number> = {
+  'all': 1999,
+  'since-2015': 2015,
+  'since-2020': 2020,
+}
 
 interface ChartPoint extends TimelineNode {
   runningTotal: number
@@ -29,45 +37,72 @@ export function CumulativeChart({ data }: Props) {
   const narrativeT = useTranslations()
   const locale = useLocale() as 'zh' | 'en'
   const containerRef = useRef<HTMLDivElement>(null)
+  const clipId = useId()
 
+  const [range, setRange] = useState<RangeId>('all')
   const [activeId, setActiveId] = useState<string | null>(null)
   const [pinnedId, setPinnedId] = useState<string | null>(null)
 
   const decadeSet = useMemo(() => new Set(data.decadeIndex), [data.decadeIndex])
 
-  const {
-    points,
-    pathLine,
-    pathArea,
-    yTicks,
-    xScale,
-    yScale,
-    finalTotal,
-    firstYear,
-    lastYear,
-  } = useMemo(() => {
+  // 1. Compute the full enriched series (every contributing version)
+  const fullSeries = useMemo(() => {
     const contributing = data.timeline.filter(
       (n): n is TimelineNode & { newEmojiCount: number } => n.newEmojiCount !== null
     )
     let running = 0
-    const enriched = contributing.map(n => {
+    return contributing.map(n => {
       const previousTotal = running
       running += n.newEmojiCount
       const growthPct = previousTotal === 0 ? 0 : (n.newEmojiCount / previousTotal) * 100
       return { node: n, runningTotal: running, previousTotal, growthPct }
     })
-    const xs = enriched.map(d => d.node.year)
-    const ys = enriched.map(d => d.runningTotal)
-    const xMin = Math.min(...xs)
-    const xMax = Math.max(...xs)
+  }, [data.timeline])
+
+  const rangeStart = RANGE_START[range]
+  const fullMaxYear = useMemo(() => Math.max(...fullSeries.map(d => d.node.year)), [fullSeries])
+  const fullFinalTotal = fullSeries[fullSeries.length - 1]?.runningTotal ?? 0
+
+  // 2. Build scales and paths
+  const { points, hiddenAnchor, pathLine, pathArea, yTicks, xScale, yScale, xLabels } = useMemo(() => {
     const xScale = scaleLinear()
-      .domain([xMin, xMax === xMin ? xMin + 1 : xMax])
+      .domain([rangeStart, Math.max(fullMaxYear, rangeStart + 1)])
       .range([PAD.l, W - PAD.r])
-    const yScale = scaleLinear()
-      .domain([0, Math.max(...ys, 1) * 1.06])
-      .nice()
-      .range([H - PAD.b, PAD.t])
-    const seriesPts = enriched.map(d => ({ year: d.node.year, total: d.runningTotal }))
+    const yMax = Math.max(...fullSeries.map(d => d.runningTotal), 1) * 1.06
+    const yScale = scaleLinear().domain([0, yMax]).nice().range([H - PAD.b, PAD.t])
+
+    // Visible points (interactive markers)
+    const visible: ChartPoint[] = fullSeries
+      .filter(d => d.node.year >= rangeStart)
+      .map(d => ({
+        ...d.node,
+        runningTotal: d.runningTotal,
+        previousTotal: d.previousTotal,
+        growthPct: d.growthPct,
+        flagship: decadeSet.has(d.node.year),
+        cx: xScale(d.node.year),
+        cy: yScale(d.runningTotal),
+      }))
+
+    // Predecessor anchor: the last point BEFORE the visible range — used so the line/area
+    // visually "enters from the left" instead of starting with a triangle wedge.
+    const predecessor = fullSeries
+      .filter(d => d.node.year < rangeStart)
+      .slice(-1)[0]
+    const anchor: ChartPoint | null = predecessor
+      ? {
+          ...predecessor.node,
+          runningTotal: predecessor.runningTotal,
+          previousTotal: predecessor.previousTotal,
+          growthPct: predecessor.growthPct,
+          flagship: decadeSet.has(predecessor.node.year),
+          cx: xScale(predecessor.node.year), // will be < PAD.l → off-screen, clipped
+          cy: yScale(predecessor.runningTotal),
+        }
+      : null
+
+    const pathPoints = anchor ? [anchor, ...visible] : visible
+    const seriesPts = pathPoints.map(p => ({ year: p.year, total: p.runningTotal }))
     const l = line<{ year: number; total: number }>()
       .x(d => xScale(d.year))
       .y(d => yScale(d.total))
@@ -77,27 +112,22 @@ export function CumulativeChart({ data }: Props) {
       .y0(yScale(0))
       .y1(d => yScale(d.total))
       .curve(curveMonotoneX)
-    const points: ChartPoint[] = enriched.map(d => ({
-      ...d.node,
-      runningTotal: d.runningTotal,
-      previousTotal: d.previousTotal,
-      growthPct: d.growthPct,
-      flagship: decadeSet.has(d.node.year),
-      cx: xScale(d.node.year),
-      cy: yScale(d.runningTotal),
-    }))
+
+    const xLabels = Array.from(new Set([rangeStart, ...data.decadeIndex.filter(y => y >= rangeStart), fullMaxYear]))
+      .filter(y => y >= rangeStart)
+      .sort((a, b) => a - b)
+
     return {
-      points,
+      points: visible,
+      hiddenAnchor: anchor,
       pathLine: l(seriesPts) || '',
       pathArea: a(seriesPts) || '',
       yTicks: yScale.ticks(4),
       xScale,
       yScale,
-      finalTotal: enriched[enriched.length - 1]?.runningTotal ?? 0,
-      firstYear: xMin,
-      lastYear: xMax,
+      xLabels,
     }
-  }, [data.timeline, decadeSet])
+  }, [fullSeries, fullMaxYear, rangeStart, decadeSet, data.decadeIndex])
 
   const visibleId = pinnedId ?? activeId
   const activePoint = points.find(p => p.id === visibleId) ?? null
@@ -106,6 +136,9 @@ export function CumulativeChart({ data }: Props) {
     setActiveId(null)
     setPinnedId(null)
   }, [])
+
+  // Reset active/pinned state when range changes (the marker may have left the visible window)
+  useEffect(() => { closeAll() }, [range, closeAll])
 
   useEffect(() => {
     if (!pinnedId) return
@@ -138,37 +171,58 @@ export function CumulativeChart({ data }: Props) {
     }
   }, [activePoint])
 
-  // X-axis labels at decade markers + first + last (deduplicated)
-  const xLabels = useMemo(() => {
-    const set = new Set<number>(data.decadeIndex)
-    set.add(firstYear)
-    set.add(lastYear)
-    return Array.from(set).sort((a, b) => a - b)
-  }, [data.decadeIndex, firstYear, lastYear])
+  const RANGES: { id: RangeId; labelKey: string }[] = [
+    { id: 'all', labelKey: 'rangeAll' },
+    { id: 'since-2015', labelKey: 'range2015' },
+    { id: 'since-2020', labelKey: 'range2020' },
+  ]
 
   return (
     <div className="relative" ref={containerRef}>
       {/* Title row + headline total */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-4">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-3">
         <div>
           <div className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-[color:var(--muted)]">
             {t('eyebrow')}
           </div>
           <div className="text-base md:text-lg font-extrabold mt-1 text-[color:var(--ink)]">
-            {t('title')}
+            {t('title', { lastYear: fullMaxYear })}
           </div>
         </div>
         <div className="flex items-baseline gap-2">
           <div className="text-3xl md:text-4xl font-black tabular text-[color:var(--accent-01)] leading-none">
-            {finalTotal.toLocaleString(locale)}
+            {fullFinalTotal.toLocaleString(locale)}
           </div>
           <div className="text-[11px] text-[color:var(--muted)] font-bold uppercase tracking-wider">
-            {t('totalBy', { year: lastYear })}
+            {t('totalBy', { year: fullMaxYear })}
           </div>
         </div>
       </div>
-      <div className="text-[11px] text-[color:var(--muted)] mb-2 hidden md:block">
-        {t('hint')}
+
+      {/* Range filter buttons */}
+      <div className="flex items-center gap-2 mb-2 flex-wrap">
+        <span className="text-[10px] font-extrabold uppercase tracking-wider text-[color:var(--muted)]">{t('rangeLabel')}</span>
+        {RANGES.map(r => {
+          const active = range === r.id
+          return (
+            <button
+              key={r.id}
+              type="button"
+              onClick={() => setRange(r.id)}
+              aria-pressed={active}
+              className={`text-[11px] font-bold px-3 py-1 rounded-full transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-01)]/50 ${
+                active
+                  ? 'bg-[color:var(--accent-01)] text-white'
+                  : 'bg-white text-[color:var(--muted)] border border-[color:var(--line)] hover:text-[color:var(--ink)] hover:border-[color:var(--ink)]/30'
+              }`}
+            >
+              {t(r.labelKey as never)}
+            </button>
+          )
+        })}
+        <span className="text-[10px] text-[color:var(--muted)] hidden md:block ml-auto">
+          {t('hint')}
+        </span>
       </div>
 
       <svg
@@ -185,6 +239,14 @@ export function CumulativeChart({ data }: Props) {
           <filter id="markerShadow" x="-50%" y="-50%" width="200%" height="200%">
             <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="rgba(0,0,0,0.18)" />
           </filter>
+          <clipPath id={clipId}>
+            <rect
+              x={PAD.l}
+              y={PAD.t - 10}
+              width={W - PAD.l - PAD.r}
+              height={H - PAD.t - PAD.b + 12}
+            />
+          </clipPath>
         </defs>
 
         {/* Y-axis title (rotated) */}
@@ -226,18 +288,20 @@ export function CumulativeChart({ data }: Props) {
           </g>
         ))}
 
-        {/* Area + line */}
-        <path d={pathArea} fill="url(#gradGrowth)" opacity={0.16} />
-        <path
-          d={pathLine}
-          fill="none"
-          stroke="url(#gradGrowth)"
-          strokeWidth={3}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+        {/* Area + line (clipped to chart area so off-screen extension doesn't leak) */}
+        <g clipPath={`url(#${clipId})`}>
+          <path d={pathArea} fill="url(#gradGrowth)" opacity={0.16} />
+          <path
+            d={pathLine}
+            fill="none"
+            stroke="url(#gradGrowth)"
+            strokeWidth={3}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </g>
 
-        {/* X-axis labels (decade markers + first/last) */}
+        {/* X-axis labels (decade markers within visible range) */}
         {xLabels.map(year => (
           <g key={year}>
             <line
@@ -262,12 +326,13 @@ export function CumulativeChart({ data }: Props) {
           </g>
         ))}
 
-        {/* Interactive emoji medallions */}
+        {/* Interactive emoji medallions (visible range only) */}
         {points.map(p => {
           const isActive = p.id === visibleId
           const baseR = p.flagship ? 18 : 13
           const r = isActive ? baseR + 4 : baseR
           const fontSize = p.flagship ? (isActive ? 18 : 14) : isActive ? 14 : 11
+          const isDraft = p.draft === true
           return (
             <g
               key={p.id}
@@ -304,8 +369,9 @@ export function CumulativeChart({ data }: Props) {
                 cy={p.cy}
                 r={r}
                 fill="white"
-                stroke="var(--accent-01)"
+                stroke={isDraft ? 'var(--muted)' : 'var(--accent-01)'}
                 strokeWidth={isActive ? 3 : p.flagship ? 2.5 : 2}
+                strokeDasharray={isDraft ? '3 3' : undefined}
                 filter={isActive ? 'url(#markerShadow)' : undefined}
                 style={{ transition: 'r 160ms ease, stroke-width 160ms ease' }}
               />
@@ -317,11 +383,12 @@ export function CumulativeChart({ data }: Props) {
                 dominantBaseline="central"
                 fontSize={fontSize}
                 pointerEvents="none"
+                opacity={isDraft ? 0.65 : 1}
                 style={{ transition: 'font-size 160ms ease' }}
               >
                 {p.highlightEmojis[0] ?? '·'}
               </text>
-              {/* Year label below the flagship markers */}
+              {/* Year label below flagship markers */}
               {p.flagship && !isActive && (
                 <text
                   x={p.cx}
@@ -329,16 +396,43 @@ export function CumulativeChart({ data }: Props) {
                   textAnchor="middle"
                   fontSize="9"
                   fontWeight="800"
-                  fill="var(--accent-01)"
+                  fill={isDraft ? 'var(--muted)' : 'var(--accent-01)'}
                   className="tabular"
                   pointerEvents="none"
                 >
                   {p.year}
                 </text>
               )}
+              {/* Draft badge */}
+              {isDraft && (
+                <g pointerEvents="none">
+                  <rect
+                    x={p.cx + baseR - 2}
+                    y={p.cy - baseR - 10}
+                    width={32}
+                    height={12}
+                    rx={6}
+                    fill="var(--muted)"
+                  />
+                  <text
+                    x={p.cx + baseR + 14}
+                    y={p.cy - baseR - 4}
+                    textAnchor="middle"
+                    fontSize="8"
+                    fontWeight="900"
+                    fill="white"
+                    letterSpacing="0.05em"
+                  >
+                    DRAFT
+                  </text>
+                </g>
+              )}
             </g>
           )
         })}
+
+        {/* Suppress unused-variable warnings for hiddenAnchor (kept for line continuity) */}
+        {hiddenAnchor === null ? null : null}
       </svg>
 
       {/* HTML tooltip overlay */}
@@ -361,11 +455,18 @@ export function CumulativeChart({ data }: Props) {
                   <div className="text-[10px] font-extrabold tracking-wider text-[color:var(--accent-01)] uppercase">
                     {activePoint.year} · {activePoint.versionLabel}
                   </div>
-                  {activePoint.flagship && (
-                    <div className="text-[9px] font-bold text-[color:var(--muted)] uppercase tracking-wider mt-0.5">
-                      {t('milestone')}
-                    </div>
-                  )}
+                  <div className="flex gap-1.5 mt-0.5">
+                    {activePoint.flagship && (
+                      <span className="text-[9px] font-bold text-[color:var(--muted)] uppercase tracking-wider">
+                        {t('milestone')}
+                      </span>
+                    )}
+                    {activePoint.draft && (
+                      <span className="text-[9px] font-extrabold tracking-wider px-1.5 py-0.5 rounded bg-[color:var(--muted)] text-white">
+                        {t('draftBadge')}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
               {pinnedId && (

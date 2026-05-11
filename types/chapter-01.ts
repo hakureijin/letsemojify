@@ -9,6 +9,7 @@ export interface TimelineNode {
   highlightEmojis: string[]
   narrativeKey: string
   source: Source
+  draft?: boolean
 }
 
 export interface Chapter01Data {

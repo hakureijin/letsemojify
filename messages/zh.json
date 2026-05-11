@@ -17,16 +17,21 @@
     "intro": "26 年间，emoji 从一个手机网络的 176 个 12×12 像素图标，扩张为 3,790+ 个跨平台、跨文化的视觉词汇。",
     "chart": {
       "eyebrow": "累计增长",
-      "title": "Unicode emoji 总数 · 1999 → 2024",
+      "title": "Unicode emoji 总数 · 1999 → {lastYear}",
       "yAxis": "EMOJI 总数",
       "totalBy": "{year} 年累计 emoji",
-      "hint": "悬停或聚焦任意一个版本徽章查看详情，点击可固定；徽章变大的是十年节点",
-      "ariaLabel": "Unicode emoji 累计总数折线图，共 {count} 个版本节点。",
+      "rangeLabel": "时间窗口",
+      "rangeAll": "全部",
+      "range2015": "2015 → 至今",
+      "range2020": "2020 → 至今",
+      "hint": "切换时间窗口聚焦密集时段。徽章变大的是十年节点，虚线徽章为草案版本。",
+      "ariaLabel": "Unicode emoji 累计总数折线图，当前窗口显示 {count} 个版本节点。",
       "markerAria": "{year} 年 {version}：新增 {added} 个 emoji，累计 {total} 个。按 Enter 键查看详情。",
       "added": "新增",
       "total": "累计",
       "growth": "环比增长",
       "milestone": "十年里程碑",
+      "draftBadge": "草案",
       "close": "关闭"
     },
     "timeline": {
@@ -74,6 +79,12 @@
       },
       "apple-genmoji": {
         "narrative": "Apple 在 iOS 18 推出 Genmoji：用自然语言生成个性化 emoji。"
+      },
+      "emoji-17-0": {
+        "narrative": "2025 年 9 月与 Unicode 17.0 一同发布的 163 个新 emoji，含 🫪 扭曲脸、🫯 战斗云、🫍 虎鲸、🪎 宝箱、🪊 长号、🛘 山体滑坡等。"
+      },
+      "emoji-18-0": {
+        "narrative": "草案：9 个核心新 emoji + 10 个肤色变体（共 19）。包含裂面、酸黄瓜、灯塔、流星、新拇指手势等。预计 2026 年 9 月与 Unicode 18.0 一同正式发布。"
       }
     }
   },

@@ -17,16 +17,21 @@
     "intro": "In 26 years, emoji grew from one mobile carrier's 176 12×12-pixel icons into a 3,790+ cross-platform, cross-cultural visual vocabulary.",
     "chart": {
       "eyebrow": "Cumulative growth",
-      "title": "Unicode emoji total · 1999 → 2024",
+      "title": "Unicode emoji total · 1999 → {lastYear}",
       "yAxis": "TOTAL EMOJI",
       "totalBy": "emoji by {year}",
-      "hint": "Hover or focus any version medallion for details; click to pin. Larger medallions mark decade milestones.",
-      "ariaLabel": "Line chart of cumulative Unicode emoji count over time. {count} interactive version nodes.",
+      "rangeLabel": "Window",
+      "rangeAll": "All",
+      "range2015": "2015 → now",
+      "range2020": "2020 → now",
+      "hint": "Switch the window to zoom the dense modern range. Larger medallions mark decade milestones; dashed medallions are draft versions.",
+      "ariaLabel": "Line chart of cumulative Unicode emoji count over time. {count} version nodes visible in the current window.",
       "markerAria": "{year} {version}: +{added} new emoji, {total} cumulative. Press Enter for details.",
       "added": "Added",
       "total": "Cumulative",
       "growth": "vs. previous",
       "milestone": "Decade milestone",
+      "draftBadge": "Draft",
       "close": "Close"
     },
     "timeline": {
@@ -74,6 +79,12 @@
       },
       "apple-genmoji": {
         "narrative": "Apple's iOS 18 introduces Genmoji: natural-language-prompted personalized emoji."
+      },
+      "emoji-17-0": {
+        "narrative": "163 new emojis ship with Unicode 17.0 in September 2025 — including 🫪 distorted face, 🫯 fight cloud, 🫍 orca, 🪎 treasure chest, 🪊 trombone, 🛘 landslide."
+      },
+      "emoji-18-0": {
+        "narrative": "Draft: 9 core new emojis + 10 skin-tone variants (19 total). Candidates include a cracking face, pickle, lighthouse, meteor, and new thumb gestures. Expected September 2026 release with Unicode 18.0."
       }
     }
   },
