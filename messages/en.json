@@ -84,6 +84,11 @@
       "vendor": { "label": "Vendor", "desc": "Apple, Google, Samsung, …" }
     },
     "criteria": {
+      "tone": {
+        "mint": "Acceptance",
+        "cultural": "Cultural factor",
+        "reject": "Reject when"
+      },
       "freq": {
         "title": "Frequency",
         "desc": "Measurable usage via Google Trends, social-media search signals, and web-search volume — evidence that people actively want to send this emoji."
@@ -126,6 +131,15 @@
         "proposer": "Religious deity proposal — automatically declined",
         "story": "The Unicode Consortium's guidelines explicitly list 'Deities' as an automatically declined category. Proposals featuring Hindu, Buddhist, or other religious deities have been submitted but declined without evaluation, because encoding a deity could imply endorsement of one religion over others and raise irreversible controversy. The exclusion policy is published at unicode.org/emoji/proposals.html."
       }
+    },
+    "map": {
+      "eyebrow": "Cultural representativeness · geographic origins",
+      "title": "Where recent emoji came from",
+      "hint": "Hover or focus a pin to see context; click to pin",
+      "ariaLabel": "World map showing geographic origins of {count} culturally-representative emojis.",
+      "pinAria": "{emoji} from {country}, added in {year}. Press Enter for details.",
+      "loading": "Map loading…",
+      "close": "Close"
     },
     "origins": {
       "dumpling-cn": { "label": "Dumpling · China" },

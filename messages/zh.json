@@ -84,6 +84,11 @@
       "vendor": { "label": "厂商绘制", "desc": "Vendor design" }
     },
     "criteria": {
+      "tone": {
+        "mint": "通过标准",
+        "cultural": "文化因素",
+        "reject": "拒绝信号"
+      },
       "freq": {
         "title": "使用频次",
         "desc": "通过 Google Trends、社交媒体搜索量等可量化指标评估——证明有足够多的人想发送这个 emoji。"
@@ -126,6 +131,15 @@
         "proposer": "宗教神明提案——自动拒绝",
         "story": "Unicode 委员会的《提案指南》明确将「神明（Deities）」列为自动拒绝类别。涉及印度教、佛教等宗教神明的提案无需经过评估即被驳回——因为将神明编入标准可能被视为对某一宗教的背书，引发不可逆的争议。该排除政策公开发布于 unicode.org/emoji/proposals.html。"
       }
+    },
+    "map": {
+      "eyebrow": "文化代表性 · 地理来源",
+      "title": "近年新增 emoji 的文化原点",
+      "hint": "悬停或聚焦每个图钉查看背景，点击可固定",
+      "ariaLabel": "世界地图，标记了 {count} 个文化代表性 emoji 的地理来源。",
+      "pinAria": "{emoji} 来自 {country}，{year} 年被收录。按 Enter 键查看详情。",
+      "loading": "地图加载中…",
+      "close": "关闭"
     },
     "origins": {
       "dumpling-cn": { "label": "饺子 · 中国" },
