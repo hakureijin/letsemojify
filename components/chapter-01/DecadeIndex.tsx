@@ -21,7 +21,7 @@ export function DecadeIndex({ years, outerRef }: Props) {
         <button
           key={y}
           onClick={() => onJump(y)}
-          className="text-xs font-bold px-3 py-1 rounded-full bg-white border border-[color:var(--line)] hover:bg-[color:var(--accent-01)] hover:text-white transition"
+          className="text-xs font-bold px-3 py-1 rounded-full bg-white border border-[color:var(--line)] hover:bg-[color:var(--accent-01)] hover:text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-01)]/50"
         >
           {y}
         </button>

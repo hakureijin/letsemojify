@@ -52,7 +52,7 @@ export function Footer() {
               {' — '}
               <span>{source.title[locale]}</span>
               {' — '}
-              <a className="underline text-blue-700" target="_blank" rel="noopener noreferrer" href={source.url}>{source.url}</a>
+              <a className="underline text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded" target="_blank" rel="noopener noreferrer" href={source.url}>{source.url}</a>
               {' '}
               <span className="text-xs text-[color:var(--muted)]">(accessed {source.accessed})</span>
             </li>
