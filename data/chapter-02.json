@@ -1,0 +1,50 @@
+{
+  "sources": [
+    {
+      "id": "unicode-proposals",
+      "title": { "zh": "Unicode 提案指南", "en": "Submitting Emoji Proposals" },
+      "publisher": "Unicode Consortium",
+      "url": "https://www.unicode.org/emoji/proposals.html",
+      "accessed": "2026-05-11"
+    }
+  ],
+  "pipeline": [
+    { "id": "submit",   "labelKey": "ch02.pipeline.submit.label",   "descKey": "ch02.pipeline.submit.desc" },
+    { "id": "esc",      "labelKey": "ch02.pipeline.esc.label",      "descKey": "ch02.pipeline.esc.desc" },
+    { "id": "utc",      "labelKey": "ch02.pipeline.utc.label",      "descKey": "ch02.pipeline.utc.desc" },
+    { "id": "release",  "labelKey": "ch02.pipeline.release.label",  "descKey": "ch02.pipeline.release.desc" },
+    { "id": "vendor",   "labelKey": "ch02.pipeline.vendor.label",   "descKey": "ch02.pipeline.vendor.desc" }
+  ],
+  "criteria": [
+    { "id": "freq", "tone": "mint", "titleKey": "ch02.criteria.freq.title", "descKey": "ch02.criteria.freq.desc" }
+  ],
+  "cases": [
+    {
+      "id": "dumpling",
+      "emoji": "🥟",
+      "year": 2017,
+      "unicodeVersion": "Unicode 10.0",
+      "status": "accepted",
+      "proposerKey": "ch02.cases.dumpling.proposer",
+      "storyKey": "ch02.cases.dumpling.story",
+      "source": {
+        "id": "L2-15-239",
+        "title": { "zh": "L2/15-239 饺子提案", "en": "L2/15-239 Dumpling proposal" },
+        "publisher": "Unicode L2",
+        "url": "https://www.unicode.org/L2/L2015/15239-dumpling.pdf",
+        "accessed": "2026-05-11"
+      }
+    }
+  ],
+  "origins": [
+    {
+      "id": "dumpling-cn",
+      "emoji": "🥟",
+      "country": "CN",
+      "lat": 35.8617,
+      "lng": 104.1954,
+      "year": 2017,
+      "labelKey": "ch02.origins.dumpling-cn.label"
+    }
+  ]
+}
