@@ -18,6 +18,48 @@
     "timeline": {
       "docomo-1999": {
         "narrative": "栗田穰崇为 i-mode 设计 176 个 12×12 像素图标。"
+      },
+      "iphone-jp-2007": {
+        "narrative": "SoftBank 率先将 emoji 键盘推向日本 iPhone 用户，加速了 emoji 走向全球手机平台。"
+      },
+      "emoji-6-0": {
+        "narrative": "722 个 emoji 进入 Unicode 国际标准，日本三大运营商的 emoji 集合被统一。"
+      },
+      "emoji-7-0": {
+        "narrative": "Unicode 7.0 新增约 250 个符号，包含 Webdings/Wingdings 字体字符，将 emoji 词汇大幅扩充。"
+      },
+      "emoji-8-0": {
+        "narrative": "Fitzpatrick 5 级肤色修饰符首次引入；多元家庭组合获得视觉表达。"
+      },
+      "emoji-11-0": {
+        "narrative": "157 个新 emoji 面世，包含超级英雄、寒热脸等；版本号从 5.0 跳至 11.0 以与 Unicode 版本对齐。"
+      },
+      "emoji-12-0": {
+        "narrative": "230 个新 emoji（含变体）加入，无性别中性人物及无障碍主题表情进入标准。"
+      },
+      "emoji-12-1": {
+        "narrative": "168 个 emoji 更新，进一步补充性别中立人物序列，扩大人物表达的包容性。"
+      },
+      "emoji-13-0": {
+        "narrative": "117 个新 emoji 登场，🥲 含泪微笑成为新冠疫情年代的情绪写照。"
+      },
+      "emoji-13-1": {
+        "narrative": "217 个新序列发布，心形修饰符与跨肤色握手等组合扩充了人与人连接的表达方式。"
+      },
+      "emoji-14-0": {
+        "narrative": "112 个新 emoji 带来握手心 🫶、融化脸 🫠 等，进一步丰富情感与手势词汇。"
+      },
+      "emoji-15-0": {
+        "narrative": "31 个新 emoji 中包含粉心 🩷 和颤抖脸 🫨，彰显 emoji 在细腻情绪表达上的持续演进。"
+      },
+      "emoji-15-1": {
+        "narrative": "118 个新 emoji 涵盖方向翻转的笑脸序列，体现 Unicode 对多向度人体动作的支持。"
+      },
+      "emoji-16-0": {
+        "narrative": "仅新增 8 个 emoji，标志着标准化阶段进入精炼而非扩张的新节奏。"
+      },
+      "apple-genmoji": {
+        "narrative": "Apple 在 iOS 18 推出 Genmoji：用自然语言生成个性化 emoji。"
       }
     }
   },

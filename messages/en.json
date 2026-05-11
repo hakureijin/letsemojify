@@ -18,6 +18,48 @@
     "timeline": {
       "docomo-1999": {
         "narrative": "Shigetaka Kurita designed 176 12×12-pixel icons for NTT DoCoMo's i-mode service."
+      },
+      "iphone-jp-2007": {
+        "narrative": "SoftBank brought an emoji keyboard to Japanese iPhone users, accelerating emoji's spread across global mobile platforms."
+      },
+      "emoji-6-0": {
+        "narrative": "722 emojis enter the Unicode Standard, unifying the emoji sets from Japan's three major carriers."
+      },
+      "emoji-7-0": {
+        "narrative": "Unicode 7.0 adds roughly 250 symbols — including Webdings and Wingdings characters — dramatically expanding the emoji vocabulary."
+      },
+      "emoji-8-0": {
+        "narrative": "5 Fitzpatrick skin-tone modifiers introduced; diverse family combinations gain visual representation."
+      },
+      "emoji-11-0": {
+        "narrative": "157 new emojis arrive including superheroes and hot/cold faces; the version number jumps from 5.0 to 11.0 to align with the Unicode Standard."
+      },
+      "emoji-12-0": {
+        "narrative": "230 new emojis (including variants) added, bringing gender-neutral figures and accessibility-themed characters into the standard."
+      },
+      "emoji-12-1": {
+        "narrative": "168 emojis updated, further expanding gender-neutral person sequences for greater inclusivity in human representation."
+      },
+      "emoji-13-0": {
+        "narrative": "117 new emojis debut, with 🥲 the smiling-face-with-tear capturing the bittersweet emotional register of the pandemic year."
+      },
+      "emoji-13-1": {
+        "narrative": "217 new sequences released, including heart-hand modifiers and cross-skin-tone handshakes, enriching human-connection expressions."
+      },
+      "emoji-14-0": {
+        "narrative": "112 new emojis bring heart-hands 🫶, melting face 🫠, and saluting face 🫡, deepening the gesture and emotion vocabulary."
+      },
+      "emoji-15-0": {
+        "narrative": "31 new emojis including pink heart 🩷 and shaking face 🫨 reflect the ongoing refinement of nuanced emotional expression."
+      },
+      "emoji-15-1": {
+        "narrative": "118 new emojis including direction-flipped face sequences demonstrate Unicode's support for multidirectional human-body motion."
+      },
+      "emoji-16-0": {
+        "narrative": "Only 8 new emojis added, signaling a shift from expansion to refinement in the standardization cycle."
+      },
+      "apple-genmoji": {
+        "narrative": "Apple's iOS 18 introduces Genmoji: natural-language-prompted personalized emoji."
       }
     }
   },

@@ -6,6 +6,20 @@
       "publisher": "Emojipedia",
       "url": "https://emojipedia.org/emoji-versions",
       "accessed": "2026-05-11"
+    },
+    {
+      "id": "moma-docomo",
+      "title": { "zh": "MoMA 原 DoCoMo emoji 收藏", "en": "MoMA · NTT DoCoMo Emoji" },
+      "publisher": "MoMA",
+      "url": "https://www.moma.org/collection/works/196070",
+      "accessed": "2026-05-11"
+    },
+    {
+      "id": "apple-intelligence-newsroom",
+      "title": { "zh": "Apple Intelligence 新闻稿 (WWDC24)", "en": "Introducing Apple Intelligence (WWDC24)" },
+      "publisher": "Apple Newsroom",
+      "url": "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/",
+      "accessed": "2026-05-11"
     }
   ],
   "timeline": [
@@ -15,7 +29,7 @@
       "versionLabel": "DoCoMo",
       "kind": "milestone",
       "newEmojiCount": 176,
-      "highlightEmojis": ["☀️","☁️","☂️"],
+      "highlightEmojis": ["☀️", "☁️", "☂️"],
       "narrativeKey": "ch01.timeline.docomo-1999.narrative",
       "source": {
         "id": "moma-docomo",
@@ -24,10 +38,246 @@
         "url": "https://www.moma.org/collection/works/196070",
         "accessed": "2026-05-11"
       }
+    },
+    {
+      "id": "iphone-jp-2007",
+      "year": 2007,
+      "versionLabel": "iPhone JP",
+      "kind": "milestone",
+      "newEmojiCount": null,
+      "highlightEmojis": ["📱", "🌸", "🍣"],
+      "narrativeKey": "ch01.timeline.iphone-jp-2007.narrative",
+      "source": {
+        "id": "wikipedia-emoji-history",
+        "title": { "zh": "Emoji 历史 — 维基百科", "en": "Emoji History — Wikipedia" },
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Emoji#History",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-6-0",
+      "year": 2010,
+      "versionLabel": "Unicode 6.0",
+      "kind": "unicode",
+      "newEmojiCount": 722,
+      "highlightEmojis": ["😀", "❤️", "👍", "🎉"],
+      "narrativeKey": "ch01.timeline.emoji-6-0.narrative",
+      "source": {
+        "id": "emojipedia-6-0",
+        "title": { "zh": "Unicode 6.0 Emoji", "en": "Unicode 6.0 Emoji" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/unicode-6.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-7-0",
+      "year": 2014,
+      "versionLabel": "Unicode 7.0",
+      "kind": "unicode",
+      "newEmojiCount": 250,
+      "highlightEmojis": ["🖕", "🙊", "😈"],
+      "narrativeKey": "ch01.timeline.emoji-7-0.narrative",
+      "source": {
+        "id": "emojipedia-7-0",
+        "title": { "zh": "Unicode 7.0 Emoji", "en": "Unicode 7.0 Emoji" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/unicode-7.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-8-0",
+      "year": 2015,
+      "versionLabel": "Unicode 8.0",
+      "kind": "unicode",
+      "newEmojiCount": 41,
+      "highlightEmojis": ["👍🏼", "👍🏾", "👨‍👩‍👧"],
+      "narrativeKey": "ch01.timeline.emoji-8-0.narrative",
+      "source": {
+        "id": "emojipedia-8-0",
+        "title": { "zh": "Unicode 8.0 Emoji", "en": "Unicode 8.0 Emoji" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/unicode-8.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-11-0",
+      "year": 2018,
+      "versionLabel": "Emoji 11.0",
+      "kind": "unicode",
+      "newEmojiCount": 157,
+      "highlightEmojis": ["🥶", "🥵", "🥳", "🦸"],
+      "narrativeKey": "ch01.timeline.emoji-11-0.narrative",
+      "source": {
+        "id": "emojipedia-11-0",
+        "title": { "zh": "Emoji 11.0", "en": "Emoji 11.0" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-11.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-12-0",
+      "year": 2019,
+      "versionLabel": "Emoji 12.0",
+      "kind": "unicode",
+      "newEmojiCount": 230,
+      "highlightEmojis": ["🦾", "🧏", "🥱"],
+      "narrativeKey": "ch01.timeline.emoji-12-0.narrative",
+      "source": {
+        "id": "emojipedia-12-0",
+        "title": { "zh": "Emoji 12.0", "en": "Emoji 12.0" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-12.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-12-1",
+      "year": 2019,
+      "versionLabel": "Emoji 12.1",
+      "kind": "unicode",
+      "newEmojiCount": 168,
+      "highlightEmojis": ["🧑‍🤝‍🧑", "🧑‍🦰", "🧑‍🦱"],
+      "narrativeKey": "ch01.timeline.emoji-12-1.narrative",
+      "source": {
+        "id": "emojipedia-12-1",
+        "title": { "zh": "Emoji 12.1", "en": "Emoji 12.1" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-12.1",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-13-0",
+      "year": 2020,
+      "versionLabel": "Emoji 13.0",
+      "kind": "unicode",
+      "newEmojiCount": 117,
+      "highlightEmojis": ["🥲", "🪆", "🫀"],
+      "narrativeKey": "ch01.timeline.emoji-13-0.narrative",
+      "source": {
+        "id": "emojipedia-13-0",
+        "title": { "zh": "Emoji 13.0", "en": "Emoji 13.0" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-13.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-13-1",
+      "year": 2020,
+      "versionLabel": "Emoji 13.1",
+      "kind": "unicode",
+      "newEmojiCount": 217,
+      "highlightEmojis": ["😶‍🌫️", "❤️‍🔥", "🧔‍♀️"],
+      "narrativeKey": "ch01.timeline.emoji-13-1.narrative",
+      "source": {
+        "id": "emojipedia-13-1",
+        "title": { "zh": "Emoji 13.1", "en": "Emoji 13.1" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-13.1",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-14-0",
+      "year": 2021,
+      "versionLabel": "Emoji 14.0",
+      "kind": "unicode",
+      "newEmojiCount": 112,
+      "highlightEmojis": ["🫶", "🫠", "🫡", "🩷"],
+      "narrativeKey": "ch01.timeline.emoji-14-0.narrative",
+      "source": {
+        "id": "emojipedia-14-0",
+        "title": { "zh": "Emoji 14.0", "en": "Emoji 14.0" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-14.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-15-0",
+      "year": 2022,
+      "versionLabel": "Emoji 15.0",
+      "kind": "unicode",
+      "newEmojiCount": 31,
+      "highlightEmojis": ["🩷", "🫨", "🪷"],
+      "narrativeKey": "ch01.timeline.emoji-15-0.narrative",
+      "source": {
+        "id": "emojipedia-15-0",
+        "title": { "zh": "Emoji 15.0", "en": "Emoji 15.0" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-15.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-15-1",
+      "year": 2023,
+      "versionLabel": "Emoji 15.1",
+      "kind": "unicode",
+      "newEmojiCount": 118,
+      "highlightEmojis": ["🙂‍↕️", "🍋‍🟩", "🍄‍🟫"],
+      "narrativeKey": "ch01.timeline.emoji-15-1.narrative",
+      "source": {
+        "id": "emojipedia-15-1",
+        "title": { "zh": "Emoji 15.1", "en": "Emoji 15.1" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-15.1",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "emoji-16-0",
+      "year": 2024,
+      "versionLabel": "Emoji 16.0",
+      "kind": "unicode",
+      "newEmojiCount": 8,
+      "highlightEmojis": ["🫩", "🪾", "🫆"],
+      "narrativeKey": "ch01.timeline.emoji-16-0.narrative",
+      "source": {
+        "id": "emojipedia-16-0",
+        "title": { "zh": "Emoji 16.0", "en": "Emoji 16.0" },
+        "publisher": "Emojipedia",
+        "url": "https://emojipedia.org/emoji-16.0",
+        "accessed": "2026-05-11"
+      }
+    },
+    {
+      "id": "apple-genmoji",
+      "year": 2024,
+      "versionLabel": "Apple Genmoji",
+      "kind": "milestone",
+      "newEmojiCount": null,
+      "highlightEmojis": ["🤖", "✨", "🎨"],
+      "narrativeKey": "ch01.timeline.apple-genmoji.narrative",
+      "source": {
+        "id": "apple-intelligence-newsroom",
+        "title": { "zh": "Apple Intelligence 新闻稿 (WWDC24)", "en": "Introducing Apple Intelligence (WWDC24)" },
+        "publisher": "Apple Newsroom",
+        "url": "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/",
+        "accessed": "2026-05-11"
+      }
     }
   ],
   "decadeIndex": [1999, 2010, 2015, 2020, 2024],
   "cumulative": [
-    { "year": 1999, "total": 176, "sourceId": "emojipedia-versions" }
+    { "year": 1999, "total": 176,  "sourceId": "emojipedia-versions" },
+    { "year": 2010, "total": 898,  "sourceId": "emojipedia-versions" },
+    { "year": 2014, "total": 1148, "sourceId": "emojipedia-versions" },
+    { "year": 2015, "total": 1189, "sourceId": "emojipedia-versions" },
+    { "year": 2018, "total": 1346, "sourceId": "emojipedia-versions" },
+    { "year": 2019, "total": 1576, "sourceId": "emojipedia-versions" },
+    { "year": 2019, "total": 1744, "sourceId": "emojipedia-versions" },
+    { "year": 2020, "total": 1861, "sourceId": "emojipedia-versions" },
+    { "year": 2020, "total": 2078, "sourceId": "emojipedia-versions" },
+    { "year": 2021, "total": 2190, "sourceId": "emojipedia-versions" },
+    { "year": 2022, "total": 2221, "sourceId": "emojipedia-versions" },
+    { "year": 2023, "total": 2339, "sourceId": "emojipedia-versions" },
+    { "year": 2024, "total": 2347, "sourceId": "emojipedia-versions" }
   ]
 }
