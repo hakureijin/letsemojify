@@ -95,6 +95,8 @@ export function CumulativeChart({ data }: Props) {
   const [range, setRange] = useState<RangeId>('all')
   const [activeId, setActiveId] = useState<string | null>(null)
   const [pinnedId, setPinnedId] = useState<string | null>(null)
+  const [fromId, setFromId] = useState<string>(DEFAULT_FROM_ID)
+  const [toId, setToId] = useState<string>(DEFAULT_TO_ID)
 
   const decadeSet = useMemo(() => new Set(data.decadeIndex), [data.decadeIndex])
 
@@ -115,6 +117,16 @@ export function CumulativeChart({ data }: Props) {
   const rangeStart = RANGE_START[range]
   const fullMaxYear = useMemo(() => Math.max(...fullSeries.map(d => d.node.year)), [fullSeries])
   const fullFinalTotal = fullSeries[fullSeries.length - 1]?.runningTotal ?? 0
+
+  const diffResult = useMemo(
+    () => computeVersionDiff(fullSeries, fromId, toId),
+    [fullSeries, fromId, toId],
+  )
+
+  const compareIds = useMemo(() => {
+    if (!diffResult) return new Set<string>()
+    return new Set<string>([diffResult.fromNode.node.id, diffResult.toNode.node.id])
+  }, [diffResult])
 
   // 2. Build scales and paths
   const { points, hiddenAnchor, pathLine, pathArea, yTicks, xScale, yScale, xLabels } = useMemo(() => {
@@ -229,6 +241,48 @@ export function CumulativeChart({ data }: Props) {
     { id: 'since-2015', labelKey: 'range2015' },
     { id: 'since-2020', labelKey: 'range2020' },
   ]
+
+  function DiffControls() {
+    return (
+      <div className="flex items-center gap-2 mt-3 flex-wrap">
+        <span className="text-[10px] font-extrabold uppercase tracking-wider text-[color:var(--muted)]">
+          {t('diff.eyebrow')}
+        </span>
+        <label className="flex items-center gap-1.5 text-[11px] font-bold text-[color:var(--muted)]">
+          {t('diff.from')}
+          <select
+            value={fromId}
+            onChange={(e) => setFromId(e.target.value)}
+            aria-label={t('diff.fromAria')}
+            className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-white border border-[color:var(--line)] text-[color:var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-01)]/50"
+          >
+            {fullSeries.map((n) => (
+              <option key={n.node.id} value={n.node.id}>
+                {t('diff.optionLabel', { version: n.node.versionLabel, year: n.node.year })}
+                {n.node.draft ? t('diff.draftSuffix') : ''}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="flex items-center gap-1.5 text-[11px] font-bold text-[color:var(--muted)]">
+          {t('diff.to')}
+          <select
+            value={toId}
+            onChange={(e) => setToId(e.target.value)}
+            aria-label={t('diff.toAria')}
+            className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-white border border-[color:var(--line)] text-[color:var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-01)]/50"
+          >
+            {fullSeries.map((n) => (
+              <option key={n.node.id} value={n.node.id}>
+                {t('diff.optionLabel', { version: n.node.versionLabel, year: n.node.year })}
+                {n.node.draft ? t('diff.draftSuffix') : ''}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+    )
+  }
 
   return (
     <div className="relative" ref={containerRef}>
@@ -487,6 +541,8 @@ export function CumulativeChart({ data }: Props) {
         {/* Suppress unused-variable warnings for hiddenAnchor (kept for line continuity) */}
         {hiddenAnchor === null ? null : null}
       </svg>
+
+      <DiffControls />
 
       {/* HTML tooltip overlay */}
       {activePoint && (
