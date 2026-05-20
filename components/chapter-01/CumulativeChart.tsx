@@ -19,6 +19,59 @@ const RANGE_START: Record<RangeId, number> = {
   'since-2020': 2020,
 }
 
+export const DEFAULT_FROM_ID = 'emoji-6-0'
+export const DEFAULT_TO_ID = 'emoji-17-0'
+
+export interface EnrichedNode {
+  node: TimelineNode & { newEmojiCount: number }
+  runningTotal: number
+  previousTotal: number
+  growthPct: number
+}
+
+export interface DiffResult {
+  fromNode: EnrichedNode
+  toNode: EnrichedNode
+  yearSpan: number
+  versionCount: number
+  addedTotal: number
+  growthPct: number | null
+  sampleEmojis: string[]
+  isDraft: boolean
+}
+
+export function computeVersionDiff(
+  contributingSeries: EnrichedNode[],
+  fromId: string,
+  toId: string,
+): DiffResult | null {
+  if (fromId === toId) return null
+  const idxA = contributingSeries.findIndex((n) => n.node.id === fromId)
+  const idxB = contributingSeries.findIndex((n) => n.node.id === toId)
+  if (idxA === -1 || idxB === -1) return null
+
+  const [earlyIdx, lateIdx] = idxA < idxB ? [idxA, idxB] : [idxB, idxA]
+  const fromNode = contributingSeries[earlyIdx]
+  const toNode = contributingSeries[lateIdx]
+
+  const intermediate = contributingSeries.slice(earlyIdx + 1, lateIdx + 1)
+  const addedTotal = intermediate.reduce((acc, n) => acc + n.node.newEmojiCount, 0)
+  const growthPct =
+    fromNode.runningTotal === 0 ? null : (addedTotal / fromNode.runningTotal) * 100
+  const sampleEmojis = intermediate.flatMap((n) => n.node.highlightEmojis)
+
+  return {
+    fromNode,
+    toNode,
+    yearSpan: toNode.node.year - fromNode.node.year,
+    versionCount: intermediate.length,
+    addedTotal,
+    growthPct,
+    sampleEmojis,
+    isDraft: toNode.node.draft === true,
+  }
+}
+
 interface ChartPoint extends TimelineNode {
   runningTotal: number
   previousTotal: number
