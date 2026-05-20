@@ -77,7 +77,7 @@ function computeVersionDiff(
 ): DiffResult | null
 ```
 
-`EnrichedNode` is the existing shape produced by the chart's `fullSeries` memo: `{ node: TimelineNode, runningTotal, previousTotal, growthPct }`.
+`EnrichedNode` is the existing shape produced by the chart's `fullSeries` memo: `{ node: TimelineNode, runningTotal, previousTotal, growthPct }`. `contributingSeries` is assumed pre-sorted ascending by `node.year` (this is the natural order of `data.timeline` in `chapter-01.json`); `computeVersionDiff` does **not** re-sort the input but does swap `fromId` / `toId` internally based on the indices of the matched nodes within the array.
 
 `DiffResult` shape:
 
@@ -219,7 +219,7 @@ Stat sub-labels (`added`, `total`, `growth`) reuse existing keys.
 | `toNode.year < fromNode.year` (reverse pick) | Internal swap by year; labels always reflect early → late |
 | Same year, different version (e.g. 12.0 + 12.1, both 2019) | `yearSpan === 0`; use `cardSpanSameYear` copy |
 | Adjacent versions (`versionCount === 1`) | Standard copy; no special case |
-| `sampleEmojis.length > 30` | Render first 30 + `moreCount` label |
+| `sampleEmojis.length > 30` | Render first 30 + `moreCount` label. Threshold of 30 is intentional — theoretical max with current data is ~60 (15 versions × ~4 highlights); 30 covers the typical "1999 → 18.0" case without overwhelming the card |
 | `sampleEmojis.length === 0` (defensive) | Skip the strip; render stats only |
 | Range-zoom hides A or B marker | Selection persists; A/B chip in the off-screen marker is clipped by the existing chart `clip-path`; diff card still renders normally |
 | `growthPct` denominator is zero | Render `—` for growth |
@@ -238,6 +238,7 @@ Stat sub-labels (`added`, `total`, `growth`) reuse existing keys.
 | Draft destination | same file | `(s, 'emoji-17-0', 'emoji-18-0')` has `isDraft === true` |
 | Sample order | same file | `sampleEmojis` length and order match the concat of highlightEmojis from (from, to] in time order |
 | Invalid id | same file | Either id missing from contributingSeries → returns `null` |
+| Adjacent versions | same file | `(s, 'emoji-17-0', 'emoji-18-0')` has `versionCount === 1`, `sampleEmojis === emoji-18-0.highlightEmojis`, `addedTotal === emoji-18-0.newEmojiCount` |
 | Message-key parity | `tests/i18n/message-keys.test.ts` (existing) | All 15 new keys present in both zh and en |
 
 Out of scope for automation:
