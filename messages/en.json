@@ -32,7 +32,24 @@
       "growth": "vs. previous",
       "milestone": "Decade milestone",
       "draftBadge": "Draft",
-      "close": "Close"
+      "close": "Close",
+      "diff": {
+        "eyebrow": "VERSION DIFF",
+        "from": "From",
+        "to": "To",
+        "fromAria": "Select start version",
+        "toAria": "Select end version",
+        "optionLabel": "{version} · {year}",
+        "draftSuffix": " (Draft)",
+        "cardEyebrow": "DIFF · {fromYear} → {toYear}",
+        "cardTitle": "{fromVersion} → {toVersion}",
+        "cardSpan": "{years} years · {versions} versions",
+        "cardSpanSameYear": "Same year · {versions} versions",
+        "sampleHeader": "Representative new emoji ({versions}-version sample)",
+        "moreCount": "…+{count} more",
+        "markerAriaA": "Compare A (start)",
+        "markerAriaB": "Compare B (end)"
+      }
     },
     "timeline": {
       "docomo-1999": {

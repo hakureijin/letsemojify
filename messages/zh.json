@@ -32,7 +32,24 @@
       "growth": "环比增长",
       "milestone": "十年里程碑",
       "draftBadge": "草案",
-      "close": "关闭"
+      "close": "关闭",
+      "diff": {
+        "eyebrow": "版本对比",
+        "from": "从",
+        "to": "到",
+        "fromAria": "选择起始版本",
+        "toAria": "选择结束版本",
+        "optionLabel": "{version} · {year}",
+        "draftSuffix": " (草案)",
+        "cardEyebrow": "DIFF · {fromYear} → {toYear}",
+        "cardTitle": "{fromVersion} → {toVersion}",
+        "cardSpan": "跨越 {years} 年 · {versions} 版本",
+        "cardSpanSameYear": "同年 · {versions} 版本",
+        "sampleHeader": "代表性新 EMOJI（中间 {versions} 版本样本）",
+        "moreCount": "…+{count} 更多",
+        "markerAriaA": "对比起始",
+        "markerAriaB": "对比结束"
+      }
     },
     "timeline": {
       "docomo-1999": {
