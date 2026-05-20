@@ -445,12 +445,16 @@ export function CumulativeChart({ data }: Props) {
               key={p.id}
               role="button"
               tabIndex={0}
-              aria-label={t('markerAria', {
+              aria-label={`${t('markerAria', {
                 year: p.year,
                 version: p.versionLabel,
                 added: p.newEmojiCount ?? 0,
                 total: p.runningTotal,
-              })}
+              })}${
+                compareIds.has(p.id) && diffResult
+                  ? ` · ${p.id === diffResult.fromNode.node.id ? t('diff.markerAriaA') : t('diff.markerAriaB')}`
+                  : ''
+              }`}
               aria-expanded={isActive}
               className="cursor-pointer focus:outline-none"
               onMouseEnter={() => setActiveId(p.id)}
@@ -496,7 +500,7 @@ export function CumulativeChart({ data }: Props) {
                 {p.highlightEmojis[0] ?? '·'}
               </text>
               {/* Year label below flagship markers */}
-              {p.flagship && !isActive && (
+              {p.flagship && !isActive && !compareIds.has(p.id) && (
                 <text
                   x={p.cx}
                   y={p.cy + baseR + 12}
@@ -532,6 +536,32 @@ export function CumulativeChart({ data }: Props) {
                   >
                     DRAFT
                   </text>
+                </g>
+              )}
+              {/* Compare A/B annotation */}
+              {compareIds.has(p.id) && diffResult && (
+                <g pointerEvents="none">
+                  <circle
+                    cx={p.cx}
+                    cy={p.cy}
+                    r={r}
+                    fill="none"
+                    stroke="var(--accent-01)"
+                    strokeWidth={4}
+                  />
+                  <g transform={`translate(${p.cx}, ${p.cy + baseR + 22})`}>
+                    <rect x={-9} y={-7} width={18} height={13} rx={3} fill="var(--accent-01)" />
+                    <text
+                      textAnchor="middle"
+                      dy={2}
+                      fontSize={9}
+                      fontWeight={900}
+                      fill="white"
+                      letterSpacing="0.05em"
+                    >
+                      {p.id === diffResult.fromNode.node.id ? 'A' : 'B'}
+                    </text>
+                  </g>
                 </g>
               )}
             </g>
