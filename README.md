@@ -11,7 +11,7 @@ Published on port **7777**.
 | 01 | history | 进化之路 | The Evolution Path | `#ff7f6e` peach |
 | 02 | criteria | 谁能成为 emoji | Who Gets In | `#6ed1b3` mint |
 
-§01 opens with a horizontal pin-and-translate timeline (Framer Motion `useScroll` + `useTransform`) running from DoCoMo 1999 through Emoji 18.0 (draft, 2026). Below it sits an **interactive cumulative-growth chart**: each Unicode version is a focusable emoji medallion (the version's first highlight emoji on a circle); decade-anchor years (1999 / 2010 / 2015 / 2020 / 2024 / 2026) get larger medallions and a year label. Three range-zoom buttons — `全部 / 2015 → 至今 / 2020 → 至今` — narrow the x-domain so the dense 2015-onward markers spread out and become individually clickable. Tooltips reveal year + version + +new + cumulative total + **growth-percent vs. previous** + narrative + source on hover / Tab+Enter / tap; click pins them; Escape or outside-click dismiss. Two **version-diff dropdowns** beneath the chart let the reader pick any two contributing versions and see the added count + growth % + representative new emojis in a card. Below all of that, an **interactive category treemap** plus a Unicode-version time slider show how the 9 Unicode CLDR emoji groups (Smileys & Emotion, People & Body, Animals & Nature, Food & Drink, Travel & Places, Activities, Objects, Symbols, Flags) take share of the cumulative catalogue from Unicode 6.0 (2010) through the latest release — drag the slider or hit play to watch the composition shift.
+§01 opens with a horizontal pin-and-translate timeline (Framer Motion `useScroll` + `useTransform`) running from DoCoMo 1999 through Emoji 18.0 (draft, 2026). Below it sits an **interactive cumulative-growth chart**: each Unicode version is a focusable emoji medallion (the version's first highlight emoji on a circle); decade-anchor years (1999 / 2010 / 2015 / 2020 / 2024 / 2026) get larger medallions and a year label. Three range-zoom buttons — `全部 / 2015 → 至今 / 2020 → 至今` — narrow the x-domain so the dense 2015-onward markers spread out and become individually clickable. Tooltips reveal year + version + +new + cumulative total + **growth-percent vs. previous** + narrative + source on hover / Tab+Enter / tap; click pins them; Escape or outside-click dismiss. Two **version-diff dropdowns** beneath the chart let the reader pick any two contributing versions and see the added count + growth % + representative new emojis in a card. Below all of that, an **interactive category treemap** plus a Unicode-version time slider show how the 9 Unicode CLDR emoji groups (Smileys & Emotion, People & Body, Animals & Nature, Food & Drink, Travel & Places, Activities, Objects, Symbols, Flags) take share of the cumulative catalogue from Unicode 6.0 (2010) through the latest release — drag the slider or hit play to watch the composition shift. Finally, an **interactive variant-complexity Sankey** decomposes the latest snapshot (Emoji 17.0, 3,944 entries) by the codepoint mechanism that produced each entry — base, skin-tone modifier, multi-skin-tone, ZWJ family, ZWJ role, hair-style, direction-flipped, and other ZWJ — and traces each mechanism into the same 9 CLDR groups, so you can see at a glance which mechanisms are doing most of the multiplying and where.
 
 §02 stacks a 5-step Unicode-proposal pipeline, a 6-card minimalist criteria grid (no decorative borders — tone conveyed by a small uppercase tag inside each card), 4 case cards (3 accepted including 🥟 dumpling / 🧕 headscarf / 🧉 mate, 1 rejected on policy grounds), and an **interactive cultural-origins world map**. Each pin on the map is a focusable button: hover / focus / click reveals a rich tooltip with the emoji + country code + year + cultural-origin label, with the same pin-and-dismiss pattern as the §01 chart.
 
@@ -23,7 +23,7 @@ Every quantitative claim carries a public, citable source — every number, perc
 - Tailwind CSS v4 (CSS-variable token system)
 - `next-intl` for locale-prefixed routing (`/zh`, `/en`)
 - Framer Motion (scrollytelling, layout animations, `<MotionConfig reducedMotion="user">` for global a11y)
-- `d3-scale` / `d3-shape` / `d3-geo` / `d3-hierarchy` + `world-atlas` topojson for custom SVG charts
+- `d3-scale` / `d3-shape` / `d3-geo` / `d3-hierarchy` / `d3-sankey` + `world-atlas` topojson for custom SVG charts
 - Vitest + React Testing Library
 
 ## Run
@@ -57,9 +57,9 @@ Then open `http://localhost:7777/` — you'll be redirected to `/zh`. Use the la
 ├── components/
 │   ├── Hero.tsx · TopNav.tsx · Footer.tsx · Providers.tsx
 │   ├── ui/                       # Section wrapper · Citation
-│   ├── chapter-01/               # EvolutionPath · TimelineCard · DecadeIndex · CumulativeChart · CategoryTreemap
+│   ├── chapter-01/               # EvolutionPath · TimelineCard · DecadeIndex · CumulativeChart · CategoryTreemap · VariantSankey
 │   └── chapter-02/               # WhoGetsIn · Pipeline · CriteriaCards · CaseCards · OriginMap
-├── data/                         # chapter-01.json · chapter-01-categories.json · chapter-02.json
+├── data/                         # chapter-01.json · chapter-01-categories.json · chapter-01-variants.json · chapter-02.json
 ├── messages/                     # zh.json · en.json — locale strings (parity-tested)
 ├── types/                        # Source · Chapter01–02 types
 ├── lib/                          # prefers-reduced-motion · countup · decade-jump
@@ -84,7 +84,7 @@ Every chapter has a typed JSON data file under `/data` and a localized-string fi
 Primary sources, by chapter:
 
 - §01 timeline — `emojipedia.org/emoji-versions` (per-version pages from Emoji 6.0 through 18.0 draft) + `unicode.org/emoji/charts` (cumulative count cross-check) + `moma.org` (DoCoMo collection) + `apple.com/newsroom` (Genmoji) + `blog.emojipedia.org/whats-new-in-unicode-17-0` + `blog.emojipedia.org/draft-emoji-list-for-2026-2027` (Emoji 17.0 + 18.0 draft)
-- §01 category treemap — `unicode.org/Public/emoji/latest/emoji-test.txt` (Unicode CLDR — canonical group + version-added metadata for every fully-qualified emoji). The script at `scripts/build-emoji-categories.mjs` parses this file into `data/chapter-01-categories.json`; re-run when a new Unicode version ships.
+- §01 category treemap and variant Sankey — `unicode.org/Public/emoji/latest/emoji-test.txt` (Unicode CLDR — canonical group + version-added metadata for every fully-qualified emoji). The script at `scripts/build-emoji-categories.mjs` parses this file into both `data/chapter-01-categories.json` (per-version 9-group counts) and `data/chapter-01-variants.json` (latest-version variant-mechanism × group decomposition); re-run when a new Unicode version ships.
 - §02 — `unicode.org/emoji/proposals.html` + individual L2 proposal PDFs at `unicode.org/L2/`
 
 The Footer aggregates every cited `source` into a deduplicated bibliography grouped by chapter.
@@ -118,6 +118,7 @@ Post-build refinements (designed against the `ui-ux-pro-max` and `frontend-desig
 
 - Interactive §01 cumulative-growth chart with emoji medallions, decade-milestone hierarchy, range-zoom for the dense 2015→ window, growth-percent in the tooltip, dynamic title, and version-diff dropdowns
 - §01 emoji category treemap with a Unicode-version time slider + play/pause, animated rect transitions, and 9 CLDR group tiles driven by `data/chapter-01-categories.json` (built from `unicode.org/Public/emoji/latest/emoji-test.txt`)
+- §01 variant-complexity Sankey: 8 variant mechanisms (base, skin-tone, multi-skin-tone, ZWJ family / role / other, hair-style, direction-flipped) flowing into the same 9 CLDR groups, driven by `data/chapter-01-variants.json` (also built from `emoji-test.txt`, classifier exported as `classifyEmojiVariant` for unit testing)
 - Emoji 17.0 (Sept 2025, 163 new) + Emoji 18.0 (draft, 2026) data, with stand-in glyphs and a draft badge
 - §02 minimalist criteria cards (left-edge stripe removed) and §02 interactive origin-map with the same pin/dismiss interaction pattern
 - Global a11y pass: MotionConfig + reduced-motion CSS + focus-visible rings throughout

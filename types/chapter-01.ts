@@ -44,3 +44,41 @@ export interface Chapter01CategoryData {
   frames: CategoryFrame[]
   source: Source
 }
+
+export type MechanismId =
+  | 'base'
+  | 'skin-tone'
+  | 'multi-skin-tone'
+  | 'zwj-family'
+  | 'zwj-role'
+  | 'zwj-other'
+  | 'hair-style'
+  | 'direction-flipped'
+
+export interface VariantMechanism {
+  id: MechanismId
+  count: number
+  share: number
+  examples: string[]
+}
+
+export interface VariantFlow {
+  mechanism: MechanismId
+  group: CategoryGroupKey
+  count: number
+  examples: string[]
+}
+
+export interface Chapter01VariantData {
+  groupOrder: CategoryGroupKey[]
+  mechanismOrder: MechanismId[]
+  snapshot: {
+    year: number
+    versionId: string
+    versionLabel: string
+    total: number
+  }
+  mechanisms: VariantMechanism[]
+  flows: VariantFlow[]
+  source: Source
+}

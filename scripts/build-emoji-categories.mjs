@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 /**
- * Build per-version per-group cumulative emoji counts from Unicode CLDR
- * `emoji-test.txt`. Writes `data/chapter-01-categories.json`.
+ * Build per-version per-group cumulative emoji counts AND a variant-mechanism
+ * snapshot for the latest version, both from Unicode CLDR `emoji-test.txt`.
+ *
+ *   data/chapter-01-categories.json  ← per-version 9-group counts
+ *   data/chapter-01-variants.json    ← latest-version variant decomposition
  *
  * Usage:
  *   node scripts/build-emoji-categories.mjs             # fetch from unicode.org
@@ -36,7 +39,6 @@ const VERSION_RELEASE = {
   '17.0': { year: 2025, label: 'Emoji 17.0' },
 }
 
-// Maps emoji-test.txt group strings to our stable kebab-case keys.
 const GROUP_KEYS = {
   'Smileys & Emotion':   'smileys-emotion',
   'People & Body':       'people-body',
@@ -49,13 +51,77 @@ const GROUP_KEYS = {
   'Flags':               'flags',
 }
 
-const GROUP_ORDER = [
+export const GROUP_ORDER = [
   'smileys-emotion', 'people-body', 'animals-nature',
   'food-drink', 'travel-places', 'activities',
   'objects', 'symbols', 'flags',
 ]
 
+export const MECHANISM_ORDER = [
+  'base', 'skin-tone', 'multi-skin-tone',
+  'zwj-family', 'zwj-role', 'zwj-other',
+  'hair-style', 'direction-flipped',
+]
+
 const SOURCE_URL = 'https://unicode.org/Public/emoji/latest/emoji-test.txt'
+
+// Codepoint groups referenced by the variant classifier (hex strings, no 'U+').
+const ZWJ = '200D'
+const SKIN_TONES = new Set(['1F3FB', '1F3FC', '1F3FD', '1F3FE', '1F3FF'])
+const HAIR_STYLES = new Set(['1F9B0', '1F9B1', '1F9B2', '1F9B3'])
+const DIRECTION_ARROWS = new Set(['27A1', '2194', '2195'])
+const PERSON_CODEPOINTS = new Set([
+  '1F466', // boy
+  '1F467', // girl
+  '1F468', // man
+  '1F469', // woman
+  '1F474', // old man
+  '1F475', // old woman
+  '1F476', // baby
+  '1F9D1', // person
+  '1F9D3', // older person
+])
+
+/**
+ * Classify a fully-qualified emoji into a primary variant mechanism, based
+ * solely on its codepoint sequence. Rules are evaluated top to bottom; the
+ * first match wins. The prioritisation labels each emoji under its most
+ * informative mechanism — e.g. a hair-style ZWJ with a skin tone reports as
+ * `hair-style`, not `skin-tone` or `zwj-role`.
+ *
+ * Exposed for unit testing.
+ *
+ * @param {string} codepoints space-separated hex codepoints, as emitted by
+ *   emoji-test.txt (e.g. `"1F468 200D 1F4BB"`).
+ * @returns {('base'|'skin-tone'|'multi-skin-tone'|'zwj-family'|'zwj-role'|'zwj-other'|'hair-style'|'direction-flipped')}
+ */
+export function classifyEmojiVariant(codepoints) {
+  // Strip variation selectors (FE0F) before counting — they're cosmetic.
+  const tokens = codepoints.split(/\s+/).filter(t => t && t !== 'FE0F')
+  const tokenSet = new Set(tokens)
+  const hasZwj = tokenSet.has(ZWJ)
+
+  const skinCount = tokens.filter(t => SKIN_TONES.has(t)).length
+
+  if (hasZwj) {
+    // Hair-style sequences are always ZWJ; check before generic role/family
+    // since 1F9B0..3 functionally describes the person, not their action.
+    if (tokens.some(t => HAIR_STYLES.has(t))) return 'hair-style'
+    // Direction-flipped sequences use ZWJ + arrow codepoint (with FE0F stripped).
+    if (tokens.some(t => DIRECTION_ARROWS.has(t))) return 'direction-flipped'
+    const personCount = tokens.filter(t => PERSON_CODEPOINTS.has(t)).length
+    if (personCount >= 2) return 'zwj-family'
+    // Multi-skin-tone handshakes (e.g. 1FAF1 1F3FB 200D 1FAF2 1F3FC) don't
+    // contain a "person" codepoint but read as a 2-skin-tone variant.
+    if (skinCount >= 2) return 'multi-skin-tone'
+    if (personCount === 1) return 'zwj-role'
+    return 'zwj-other'
+  }
+
+  if (skinCount >= 2) return 'multi-skin-tone'
+  if (skinCount === 1) return 'skin-tone'
+  return 'base'
+}
 
 const argFromFile = (() => {
   const i = process.argv.indexOf('--from-file')
@@ -87,7 +153,7 @@ function parseEmojiTest(text) {
 
   let currentGroup = null
   let fileVersion = null
-  const rows = []   // { codepoints, glyph, version, group }
+  const rows = []
 
   for (const raw of text.split('\n')) {
     const line = raw.trimEnd()
@@ -116,12 +182,7 @@ function parseEmojiTest(text) {
 }
 
 function buildFrames(rows) {
-  const versions = Object.keys(VERSION_RELEASE).sort((a, b) => {
-    const [aMaj, aMin] = a.split('.').map(Number)
-    const [bMaj, bMin] = b.split('.').map(Number)
-    return aMaj === bMaj ? aMin - bMin : aMaj - bMaj
-  })
-
+  const versions = Object.keys(VERSION_RELEASE).sort(semverCompare)
   const frames = []
   for (const v of versions) {
     const meta = VERSION_RELEASE[v]
@@ -131,9 +192,7 @@ function buildFrames(rows) {
     const samplesByGroup = Object.fromEntries(GROUP_ORDER.map(g => [g, []]))
     for (const r of upTo) {
       counts[r.group] = (counts[r.group] || 0) + 1
-      if (samplesByGroup[r.group].length < 6) {
-        samplesByGroup[r.group].push(r.glyph)
-      }
+      if (samplesByGroup[r.group].length < 6) samplesByGroup[r.group].push(r.glyph)
     }
     const total = Object.values(counts).reduce((a, b) => a + b, 0)
     frames.push({
@@ -146,6 +205,61 @@ function buildFrames(rows) {
     })
   }
   return frames
+}
+
+function buildVariantSnapshot(rows) {
+  // Latest version we know about that has data.
+  const versions = Object.keys(VERSION_RELEASE).sort(semverCompare)
+  const latest = versions.filter(v => rows.some(r => r.version === v)).pop()
+  const meta = VERSION_RELEASE[latest]
+
+  const classified = rows.map(r => ({ ...r, mechanism: classifyEmojiVariant(r.codepoints) }))
+
+  // Mechanism aggregates
+  const mechanisms = MECHANISM_ORDER.map(id => {
+    const subset = classified.filter(r => r.mechanism === id)
+    return {
+      id,
+      count: subset.length,
+      examples: subset.slice(0, 4).map(r => r.glyph),
+    }
+  })
+
+  // Flows: every (mechanism, group) pair with count > 0
+  const flows = []
+  for (const m of MECHANISM_ORDER) {
+    for (const g of GROUP_ORDER) {
+      const subset = classified.filter(r => r.mechanism === m && r.group === g)
+      if (subset.length === 0) continue
+      flows.push({
+        mechanism: m,
+        group: g,
+        count: subset.length,
+        examples: subset.slice(0, 4).map(r => r.glyph),
+      })
+    }
+  }
+
+  const total = classified.length
+  return {
+    snapshot: {
+      year: meta.year,
+      versionId: `emoji-${latest.replace('.', '-')}`,
+      versionLabel: meta.label,
+      total,
+    },
+    mechanisms: mechanisms.map(m => ({
+      ...m,
+      share: total === 0 ? 0 : m.count / total,
+    })),
+    flows,
+  }
+}
+
+function semverCompare(a, b) {
+  const [aMaj, aMin] = a.split('.').map(Number)
+  const [bMaj, bMin] = b.split('.').map(Number)
+  return aMaj === bMaj ? aMin - bMin : aMaj - bMaj
 }
 
 function semverLEq(a, b) {
@@ -161,33 +275,53 @@ async function main() {
   if (!rows.length) throw new Error('No fully-qualified rows parsed')
   console.log(`[parse] file version ${fileVersion}, ${rows.length} fully-qualified emoji parsed`)
 
+  const accessed = new Date().toISOString().slice(0, 10)
+  const sourceBlock = {
+    id: 'unicode-emoji-test',
+    title: {
+      zh: `Unicode CLDR · emoji-test.txt v${fileVersion}`,
+      en: `Unicode CLDR · emoji-test.txt v${fileVersion}`,
+    },
+    publisher: 'Unicode Consortium',
+    url: SOURCE_URL,
+    accessed,
+  }
+
+  // 1. Per-version 9-group counts
   const frames = buildFrames(rows)
   console.log(`[build] ${frames.length} frames`)
   for (const f of frames) {
     console.log(`         ${f.year} · ${f.versionLabel}  total=${f.total}`)
   }
+  const categoriesOut = { groupOrder: GROUP_ORDER, frames, source: sourceBlock }
+  const categoriesPath = resolve(REPO, 'data/chapter-01-categories.json')
+  writeFileSync(categoriesPath, JSON.stringify(categoriesOut, null, 2) + '\n')
+  console.log(`[write] ${categoriesPath}`)
 
-  const out = {
+  // 2. Variant-mechanism snapshot for the latest version
+  const variant = buildVariantSnapshot(rows)
+  const variantOut = {
     groupOrder: GROUP_ORDER,
-    frames,
-    source: {
-      id: 'unicode-emoji-test',
-      title: {
-        zh: `Unicode CLDR · emoji-test.txt v${fileVersion}`,
-        en: `Unicode CLDR · emoji-test.txt v${fileVersion}`,
-      },
-      publisher: 'Unicode Consortium',
-      url: SOURCE_URL,
-      accessed: new Date().toISOString().slice(0, 10),
-    },
+    mechanismOrder: MECHANISM_ORDER,
+    ...variant,
+    source: sourceBlock,
   }
-
-  const outPath = resolve(REPO, 'data/chapter-01-categories.json')
-  writeFileSync(outPath, JSON.stringify(out, null, 2) + '\n')
-  console.log(`[write] ${outPath}`)
+  console.log(`[build] variants snapshot at ${variant.snapshot.versionLabel}  total=${variant.snapshot.total}`)
+  for (const m of variant.mechanisms) {
+    console.log(`         ${m.id.padEnd(20)} count=${m.count}  share=${(m.share * 100).toFixed(1)}%`)
+  }
+  const variantPath = resolve(REPO, 'data/chapter-01-variants.json')
+  writeFileSync(variantPath, JSON.stringify(variantOut, null, 2) + '\n')
+  console.log(`[write] ${variantPath}`)
 }
 
-main().catch(err => {
-  console.error(err)
-  process.exit(1)
-})
+const invokedDirectly =
+  import.meta.url === `file://${process.argv[1]}` ||
+  import.meta.url === `file://${resolve(process.argv[1] || '')}`
+
+if (invokedDirectly) {
+  main().catch(err => {
+    console.error(err)
+    process.exit(1)
+  })
+}

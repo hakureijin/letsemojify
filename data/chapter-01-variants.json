@@ -1,0 +1,365 @@
+{
+  "groupOrder": [
+    "smileys-emotion",
+    "people-body",
+    "animals-nature",
+    "food-drink",
+    "travel-places",
+    "activities",
+    "objects",
+    "symbols",
+    "flags"
+  ],
+  "mechanismOrder": [
+    "base",
+    "skin-tone",
+    "multi-skin-tone",
+    "zwj-family",
+    "zwj-role",
+    "zwj-other",
+    "hair-style",
+    "direction-flipped"
+  ],
+  "snapshot": {
+    "year": 2025,
+    "versionId": "emoji-17-0",
+    "versionLabel": "Emoji 17.0",
+    "total": 3944
+  },
+  "mechanisms": [
+    {
+      "id": "base",
+      "count": 1665,
+      "examples": [
+        "😀",
+        "😃",
+        "😄",
+        "😁"
+      ],
+      "share": 0.4221602434077079
+    },
+    {
+      "id": "skin-tone",
+      "count": 665,
+      "examples": [
+        "👋🏻",
+        "👋🏼",
+        "👋🏽",
+        "👋🏾"
+      ],
+      "share": 0.1686105476673428
+    },
+    {
+      "id": "multi-skin-tone",
+      "count": 20,
+      "examples": [
+        "🫱🏻‍🫲🏼",
+        "🫱🏻‍🫲🏽",
+        "🫱🏻‍🫲🏾",
+        "🫱🏻‍🫲🏿"
+      ],
+      "share": 0.005070993914807302
+    },
+    {
+      "id": "zwj-family",
+      "count": 429,
+      "examples": [
+        "🧑🏻‍🐰‍🧑🏼",
+        "🧑🏻‍🐰‍🧑🏽",
+        "🧑🏻‍🐰‍🧑🏾",
+        "🧑🏻‍🐰‍🧑🏿"
+      ],
+      "share": 0.10877281947261663
+    },
+    {
+      "id": "zwj-role",
+      "count": 374,
+      "examples": [
+        "🧑‍⚕️",
+        "🧑🏻‍⚕️",
+        "🧑🏼‍⚕️",
+        "🧑🏽‍⚕️"
+      ],
+      "share": 0.09482758620689655
+    },
+    {
+      "id": "zwj-other",
+      "count": 609,
+      "examples": [
+        "😶‍🌫️",
+        "😮‍💨",
+        "😵‍💫",
+        "❤️‍🔥"
+      ],
+      "share": 0.15441176470588236
+    },
+    {
+      "id": "hair-style",
+      "count": 72,
+      "examples": [
+        "👨‍🦰",
+        "👨🏻‍🦰",
+        "👨🏼‍🦰",
+        "👨🏽‍🦰"
+      ],
+      "share": 0.018255578093306288
+    },
+    {
+      "id": "direction-flipped",
+      "count": 110,
+      "examples": [
+        "🙂‍↔️",
+        "🙂‍↕️",
+        "🚶‍➡️",
+        "🚶🏻‍➡️"
+      ],
+      "share": 0.027890466531440162
+    }
+  ],
+  "flows": [
+    {
+      "mechanism": "base",
+      "group": "smileys-emotion",
+      "count": 163,
+      "examples": [
+        "😀",
+        "😃",
+        "😄",
+        "😁"
+      ]
+    },
+    {
+      "mechanism": "base",
+      "group": "people-body",
+      "count": 158,
+      "examples": [
+        "👋",
+        "🤚",
+        "🖐️",
+        "✋"
+      ]
+    },
+    {
+      "mechanism": "base",
+      "group": "animals-nature",
+      "count": 155,
+      "examples": [
+        "🐵",
+        "🐒",
+        "🦍",
+        "🦧"
+      ]
+    },
+    {
+      "mechanism": "base",
+      "group": "food-drink",
+      "count": 129,
+      "examples": [
+        "🍇",
+        "🍈",
+        "🍉",
+        "🍊"
+      ]
+    },
+    {
+      "mechanism": "base",
+      "group": "travel-places",
+      "count": 219,
+      "examples": [
+        "🌍",
+        "🌎",
+        "🌏",
+        "🌐"
+      ]
+    },
+    {
+      "mechanism": "base",
+      "group": "activities",
+      "count": 85,
+      "examples": [
+        "🎃",
+        "🎄",
+        "🎆",
+        "🎇"
+      ]
+    },
+    {
+      "mechanism": "base",
+      "group": "objects",
+      "count": 265,
+      "examples": [
+        "👓",
+        "🕶️",
+        "🥽",
+        "🥼"
+      ]
+    },
+    {
+      "mechanism": "base",
+      "group": "symbols",
+      "count": 224,
+      "examples": [
+        "🏧",
+        "🚮",
+        "🚰",
+        "♿"
+      ]
+    },
+    {
+      "mechanism": "base",
+      "group": "flags",
+      "count": 267,
+      "examples": [
+        "🏁",
+        "🚩",
+        "🎌",
+        "🏴"
+      ]
+    },
+    {
+      "mechanism": "skin-tone",
+      "group": "people-body",
+      "count": 665,
+      "examples": [
+        "👋🏻",
+        "👋🏼",
+        "👋🏽",
+        "👋🏾"
+      ]
+    },
+    {
+      "mechanism": "multi-skin-tone",
+      "group": "people-body",
+      "count": 20,
+      "examples": [
+        "🫱🏻‍🫲🏼",
+        "🫱🏻‍🫲🏽",
+        "🫱🏻‍🫲🏾",
+        "🫱🏻‍🫲🏿"
+      ]
+    },
+    {
+      "mechanism": "zwj-family",
+      "group": "people-body",
+      "count": 429,
+      "examples": [
+        "🧑🏻‍🐰‍🧑🏼",
+        "🧑🏻‍🐰‍🧑🏽",
+        "🧑🏻‍🐰‍🧑🏾",
+        "🧑🏻‍🐰‍🧑🏿"
+      ]
+    },
+    {
+      "mechanism": "zwj-role",
+      "group": "people-body",
+      "count": 374,
+      "examples": [
+        "🧑‍⚕️",
+        "🧑🏻‍⚕️",
+        "🧑🏼‍⚕️",
+        "🧑🏽‍⚕️"
+      ]
+    },
+    {
+      "mechanism": "zwj-other",
+      "group": "smileys-emotion",
+      "count": 6,
+      "examples": [
+        "😶‍🌫️",
+        "😮‍💨",
+        "😵‍💫",
+        "❤️‍🔥"
+      ]
+    },
+    {
+      "mechanism": "zwj-other",
+      "group": "people-body",
+      "count": 592,
+      "examples": [
+        "🧔‍♂️",
+        "🧔🏻‍♂️",
+        "🧔🏼‍♂️",
+        "🧔🏽‍♂️"
+      ]
+    },
+    {
+      "mechanism": "zwj-other",
+      "group": "animals-nature",
+      "count": 5,
+      "examples": [
+        "🐕‍🦺",
+        "🐈‍⬛",
+        "🐻‍❄️",
+        "🐦‍⬛"
+      ]
+    },
+    {
+      "mechanism": "zwj-other",
+      "group": "food-drink",
+      "count": 2,
+      "examples": [
+        "🍋‍🟩",
+        "🍄‍🟫"
+      ]
+    },
+    {
+      "mechanism": "zwj-other",
+      "group": "objects",
+      "count": 1,
+      "examples": [
+        "⛓️‍💥"
+      ]
+    },
+    {
+      "mechanism": "zwj-other",
+      "group": "flags",
+      "count": 3,
+      "examples": [
+        "🏳️‍🌈",
+        "🏳️‍⚧️",
+        "🏴‍☠️"
+      ]
+    },
+    {
+      "mechanism": "hair-style",
+      "group": "people-body",
+      "count": 72,
+      "examples": [
+        "👨‍🦰",
+        "👨🏻‍🦰",
+        "👨🏼‍🦰",
+        "👨🏽‍🦰"
+      ]
+    },
+    {
+      "mechanism": "direction-flipped",
+      "group": "smileys-emotion",
+      "count": 2,
+      "examples": [
+        "🙂‍↔️",
+        "🙂‍↕️"
+      ]
+    },
+    {
+      "mechanism": "direction-flipped",
+      "group": "people-body",
+      "count": 108,
+      "examples": [
+        "🚶‍➡️",
+        "🚶🏻‍➡️",
+        "🚶🏼‍➡️",
+        "🚶🏽‍➡️"
+      ]
+    }
+  ],
+  "source": {
+    "id": "unicode-emoji-test",
+    "title": {
+      "zh": "Unicode CLDR · emoji-test.txt v17.0",
+      "en": "Unicode CLDR · emoji-test.txt v17.0"
+    },
+    "publisher": "Unicode Consortium",
+    "url": "https://unicode.org/Public/emoji/latest/emoji-test.txt",
+    "accessed": "2026-05-21"
+  }
+}

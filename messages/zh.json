@@ -129,6 +129,58 @@
       "emoji-18-0": {
         "narrative": "草案：9 个核心新 emoji + 10 个肤色变体（共 19 个）。候选包括「裂面」「酸黄瓜」「灯塔」「流星」与新的拇指手势。预计 2026 年 9 月随 Unicode 18.0 正式发布。徽章为视觉近似——草案字符的最终码点和字形仍可能调整。"
       }
+    },
+    "variantSankey": {
+      "eyebrow": "变体复杂度",
+      "title": "哪些机制把 emoji 总量乘大了？",
+      "subtitle": "在 {version} 的 {total} 个全限定 emoji 中，每条流向都标注了一种「让总量膨胀」的机制——把它流入九大类别里。点或聚焦节点 / 连线可查看详情。",
+      "columnLeft": "变体机制",
+      "columnRight": "类别归属",
+      "ariaLabel": "{version} 中 {total} 个 emoji 按变体机制 → CLDR 类别的流向图。",
+      "flowAria": "{mechanism} → {group}：{count} 个，占 {percent}%。按 Enter 键查看详情。",
+      "nodeAria": "{label}：{count} 个，占总量 {percent}%。按 Enter 键查看详情。",
+      "flowEyebrow": "流向",
+      "nodeEyebrow": "节点",
+      "tooltipCount": "数量",
+      "tooltipShare": "占总量",
+      "tooltipShareOfMech": "占该机制的 {percent}%",
+      "close": "关闭",
+      "a11ySummary": "{version} 变体机制总览",
+      "caption": "每个 emoji 只归入其最具代表性的机制（家庭组合优先于多肤色、发型优先于职业）。所以「肤色变体」只统计单纯的肤色变体，多人多肤色组合会被算作「家庭 ZWJ」或「多肤色组合」。",
+      "mechanisms": {
+        "base": {
+          "label": "基础 emoji",
+          "desc": "单码点，无任何修饰符。如 😀 🐶 🍕 ☀️。"
+        },
+        "skin-tone": {
+          "label": "肤色变体",
+          "desc": "在基础 emoji 上附加一个肤色修饰符（1F3FB–1F3FF），5 种肤色 × 适配人物 emoji = 大量变体。"
+        },
+        "multi-skin-tone": {
+          "label": "多肤色组合",
+          "desc": "握手 / 接吻 / 情侣等组合 emoji 中，每个参与者可以独立选择肤色，5×5=25 种组合。"
+        },
+        "zwj-family": {
+          "label": "家庭 ZWJ 组合",
+          "desc": "用零宽连接符（ZWJ, 200D）把多个人物 emoji 串成一个家庭或情侣。"
+        },
+        "zwj-role": {
+          "label": "职业 ZWJ 组合",
+          "desc": "一个人物 + ZWJ + 一个活动/物品，组成职业或角色（如 👨‍⚕️ 👩‍🚀 🧑‍🍳）。"
+        },
+        "zwj-other": {
+          "label": "其它 ZWJ 序列",
+          "desc": "其他 ZWJ 组合：🏳️‍🌈 彩虹旗、🏳️‍⚧️ 跨性别旗、👁️‍🗨️ 眼+对话框 等。"
+        },
+        "hair-style": {
+          "label": "发型修饰符",
+          "desc": "在人物 emoji 后通过 ZWJ + 1F9B0–1F9B3 指定红发 / 卷发 / 光头 / 白发。"
+        },
+        "direction-flipped": {
+          "label": "方向变体",
+          "desc": "通过 ZWJ + 方向箭头（27A1 / 2194 / 2195）让人物或动作朝向特定方向（如 🚶‍➡️ 🙂‍↔️）。"
+        }
+      }
     }
   },
   "ch02": {

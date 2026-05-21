@@ -129,6 +129,58 @@
         "symbols": "Symbols",
         "flags": "Flags"
       }
+    },
+    "variantSankey": {
+      "eyebrow": "Variant complexity",
+      "title": "What mechanisms multiply the catalogue?",
+      "subtitle": "In {version} we count {total} fully-qualified emoji. Each flow tags one mechanism that grows the total and traces it into the nine CLDR groups. Hover or focus a flow / node for detail.",
+      "columnLeft": "Variant mechanism",
+      "columnRight": "CLDR group",
+      "ariaLabel": "Sankey of {total} emoji at {version}, flowing from variant mechanisms into the nine Unicode CLDR groups.",
+      "flowAria": "{mechanism} → {group}: {count} emoji, {percent}% of the catalogue. Press Enter for details.",
+      "nodeAria": "{label}: {count} emoji, {percent}% of the catalogue. Press Enter for details.",
+      "flowEyebrow": "Flow",
+      "nodeEyebrow": "Node",
+      "tooltipCount": "Count",
+      "tooltipShare": "Share",
+      "tooltipShareOfMech": "{percent}% of this mechanism",
+      "close": "Close",
+      "a11ySummary": "Variant-mechanism summary for {version}",
+      "caption": "Each emoji is counted once under its most informative mechanism (family beats multi-skin-tone, hair beats role). So \"Skin-tone variant\" tallies only the pure single-person skin-tone variants; multi-person multi-tone combinations live under their family / multi-skin-tone bucket.",
+      "mechanisms": {
+        "base": {
+          "label": "Base emoji",
+          "desc": "Single codepoint, no modifier — 😀 🐶 🍕 ☀️."
+        },
+        "skin-tone": {
+          "label": "Skin-tone variant",
+          "desc": "Base emoji + one skin-tone modifier (1F3FB–1F3FF). Five tones × eligible human emoji = many variants."
+        },
+        "multi-skin-tone": {
+          "label": "Multi skin-tone",
+          "desc": "Handshake / kiss / couple combinations where each participant carries an independent skin tone — 5×5=25 combos."
+        },
+        "zwj-family": {
+          "label": "Family ZWJ",
+          "desc": "Zero-width joiner (200D) glues two or more person codepoints into a family or couple."
+        },
+        "zwj-role": {
+          "label": "Role ZWJ",
+          "desc": "One person + ZWJ + activity/object → profession or role (👨‍⚕️ 👩‍🚀 🧑‍🍳)."
+        },
+        "zwj-other": {
+          "label": "Other ZWJ",
+          "desc": "ZWJ sequences that aren't family/role/hair/direction: 🏳️‍🌈 rainbow flag, 🏳️‍⚧️ trans flag, 👁️‍🗨️ eye-in-speech-bubble."
+        },
+        "hair-style": {
+          "label": "Hair-style modifier",
+          "desc": "ZWJ + 1F9B0–1F9B3 specifies red / curly / bald / white hair on a person emoji."
+        },
+        "direction-flipped": {
+          "label": "Direction variant",
+          "desc": "ZWJ + direction arrow (27A1 / 2194 / 2195) flips a person or action to face a specific way (🚶‍➡️ 🙂‍↔️)."
+        }
+      }
     }
   },
   "ch02": {

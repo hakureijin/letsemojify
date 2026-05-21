@@ -24,6 +24,16 @@
   --cat-objects:         #b89272;
   --cat-symbols:         #f0c452;
   --cat-flags:           #6ed1b3;
+
+  /* Sankey mechanism palette — 8 hues for variant-complexity flows */
+  --mech-base:              #9aa0a6;
+  --mech-skin-tone:         #ff8a6c;
+  --mech-multi-skin-tone:   #e0654a;
+  --mech-zwj-family:        #6ed1b3;
+  --mech-zwj-role:          #6ab7f0;
+  --mech-zwj-other:         #c69bff;
+  --mech-hair-style:        #ffb547;
+  --mech-direction-flipped: #ff9aa7;
 }
 
 html, body { background: var(--bg); color: var(--ink); }
