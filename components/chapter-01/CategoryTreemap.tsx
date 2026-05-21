@@ -215,15 +215,26 @@ export function CategoryTreemap({ data }: Props) {
             className="w-full accent-[color:var(--accent-01)]"
           />
           <div className="relative h-4 mt-0.5">
-            {tickFrames.map(tf => (
-              <span
-                key={tf.versionId}
-                className="absolute -translate-x-1/2 text-[10px] tabular font-bold text-[color:var(--muted)]"
-                style={{ left: `${(tf.idx / (frames.length - 1)) * 100}%` }}
-              >
-                {tf.year}
-              </span>
-            ))}
+            {tickFrames.map(tf => {
+              // Anchor first/last labels to their edges so they don't spill
+              // outside the slider container (which causes ~14px right-edge
+              // overflow when -translate-x-1/2 is applied at left:100%).
+              const pct = (tf.idx / (frames.length - 1)) * 100
+              const isFirst = tf.idx === 0
+              const isLast  = tf.idx === frames.length - 1
+              const xform = isFirst ? 'translate-x-0'
+                         : isLast  ? '-translate-x-full'
+                         : '-translate-x-1/2'
+              return (
+                <span
+                  key={tf.versionId}
+                  className={`absolute text-[10px] tabular font-bold text-[color:var(--muted)] ${xform}`}
+                  style={{ left: `${pct}%` }}
+                >
+                  {tf.year}
+                </span>
+              )
+            })}
           </div>
         </div>
       </div>
@@ -241,11 +252,22 @@ export function CategoryTreemap({ data }: Props) {
           const groupLabel = t(`groups.${tile.key}` as never)
           const glyph = frame.samples[tile.key]?.[0] ?? ''
           const hasText = tile.w >= 96 && tile.h >= 64
-          // Narrow tiles stack label-on-top and count-on-bottom so neither
-          // collides with the other. Wide tiles keep the compact single-row
-          // layout (label-left, count-right).
-          const isNarrow = hasText && tile.w < 200
-          const textBandH = !hasText ? 0 : isNarrow ? 42 : 32
+          // Approx label width: CJK glyphs are ~1em wide, Latin uppercase
+          // bold + tracking averages ~0.95em per char. We use this to hide
+          // the label (keeping just the count) when the tile is so narrow
+          // the label would overflow horizontally.
+          const isCJK = /[一-鿿]/.test(groupLabel)
+          const labelEstWidth = isCJK
+            ? groupLabel.length * 11
+            : groupLabel.length * 9.5
+          const canShowLabel = hasText && tile.w >= labelEstWidth + 16
+          // Three layout tiers:
+          //   - Wide (>= 200px AND label fits): single row, label left + count right
+          //   - Narrow but label fits: stack label-on-top, count-below
+          //   - Label can't fit: just count, centered
+          const isWide = tile.w >= 200 && canShowLabel
+          const isStacked = canShowLabel && !isWide
+          const textBandH = !hasText ? 0 : isStacked ? 42 : 32
           // Emoji "stage" — the area above the text band that holds the glyph
           const stageH = Math.max(0, tile.h - textBandH)
           const stageCy = tile.y + stageH / 2 + (hasText ? -2 : 0)
@@ -321,29 +343,33 @@ export function CategoryTreemap({ data }: Props) {
                     opacity={0.08}
                     pointerEvents="none"
                   />
+                  {canShowLabel && (
+                    <motion.text
+                      animate={{
+                        x: isStacked ? tile.x + tile.w / 2 : tile.x + 12,
+                        y: tile.y + tile.h - (isStacked ? 26 : 11),
+                      }}
+                      transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
+                      textAnchor={isStacked ? 'middle' : 'start'}
+                      fontSize="10"
+                      fontWeight="800"
+                      letterSpacing="0.06em"
+                      fill="#1a1a1a"
+                      pointerEvents="none"
+                      style={{ textTransform: 'uppercase' }}
+                    >
+                      {groupLabel}
+                    </motion.text>
+                  )}
                   <motion.text
                     animate={{
-                      x: isNarrow ? tile.x + tile.w / 2 : tile.x + 12,
-                      y: tile.y + tile.h - (isNarrow ? 26 : 11),
+                      x: canShowLabel && isWide
+                        ? tile.x + tile.w - 12
+                        : tile.x + tile.w / 2,
+                      y: tile.y + tile.h - (isStacked ? 9 : 11),
                     }}
                     transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
-                    textAnchor={isNarrow ? 'middle' : 'start'}
-                    fontSize="10"
-                    fontWeight="800"
-                    letterSpacing="0.06em"
-                    fill="#1a1a1a"
-                    pointerEvents="none"
-                    style={{ textTransform: 'uppercase' }}
-                  >
-                    {groupLabel}
-                  </motion.text>
-                  <motion.text
-                    animate={{
-                      x: isNarrow ? tile.x + tile.w / 2 : tile.x + tile.w - 12,
-                      y: tile.y + tile.h - (isNarrow ? 9 : 11),
-                    }}
-                    transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
-                    textAnchor={isNarrow ? 'middle' : 'end'}
+                    textAnchor={canShowLabel && isWide ? 'end' : 'middle'}
                     fontSize="12"
                     fontWeight="900"
                     className="tabular"

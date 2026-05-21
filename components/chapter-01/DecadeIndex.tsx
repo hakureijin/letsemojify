@@ -16,7 +16,7 @@ export function DecadeIndex({ years, outerRef }: Props) {
     window.scrollTo({ top: top + innerScrollable * ratio, behavior: 'smooth' })
   }
   return (
-    <div className="flex gap-2 px-6 pt-4">
+    <div className="flex flex-wrap gap-2 pt-4">
       {years.map(y => (
         <button
           key={y}

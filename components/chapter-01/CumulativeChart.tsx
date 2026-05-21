@@ -7,9 +7,17 @@ import { Citation } from '@/components/ui/Citation'
 import type { Chapter01Data, TimelineNode } from '@/types/chapter-01'
 
 const W = 880
-const H = 320
+const H = 440
 const PAD = { l: 64, r: 24, t: 32, b: 48 }
 const HIT_RADIUS = 22 // 44px touch target diameter
+
+// The 1999–2010 stretch only has 2 contributing versions (DoCoMo, Unicode 6.0); a
+// linear x-axis gives it ~41% of the chart width and crams every Unicode/Emoji
+// version from 2014 onward into the remainder. When the visible range includes
+// the pre-2010 segment, we compress it to COMPRESS_PRE_WEIGHT of the width so the
+// dense high-growth era can breathe.
+const COMPRESS_BREAK_YEAR = 2010
+const COMPRESS_PRE_WEIGHT = 0.22
 
 type RangeId = 'all' | 'since-2015' | 'since-2020'
 
@@ -130,9 +138,29 @@ export function CumulativeChart({ data }: Props) {
 
   // 2. Build scales and paths
   const { points, hiddenAnchor, pathLine, pathArea, yTicks, xScale, yScale, xLabels } = useMemo(() => {
-    const xScale = scaleLinear()
-      .domain([rangeStart, Math.max(fullMaxYear, rangeStart + 1)])
-      .range([PAD.l, W - PAD.r])
+    const chartLeft = PAD.l
+    const chartRight = W - PAD.r
+    const chartWidth = chartRight - chartLeft
+    const compressed = rangeStart < COMPRESS_BREAK_YEAR
+
+    let xScale: (year: number) => number
+    if (compressed) {
+      const breakX = chartLeft + chartWidth * COMPRESS_PRE_WEIGHT
+      const leftScale = scaleLinear()
+        .domain([rangeStart, COMPRESS_BREAK_YEAR])
+        .range([chartLeft, breakX])
+      const rightScale = scaleLinear()
+        .domain([COMPRESS_BREAK_YEAR, Math.max(fullMaxYear, COMPRESS_BREAK_YEAR + 1)])
+        .range([breakX, chartRight])
+      xScale = (year: number) =>
+        year <= COMPRESS_BREAK_YEAR ? leftScale(year) : rightScale(year)
+    } else {
+      const linear = scaleLinear()
+        .domain([rangeStart, Math.max(fullMaxYear, rangeStart + 1)])
+        .range([chartLeft, chartRight])
+      xScale = (year: number) => linear(year)
+    }
+
     const yMax = Math.max(...fullSeries.map(d => d.runningTotal), 1) * 1.06
     const yScale = scaleLinear().domain([0, yMax]).nice().range([H - PAD.b, PAD.t])
 
@@ -610,11 +638,13 @@ export function CumulativeChart({ data }: Props) {
                   {p.year}
                 </text>
               )}
-              {/* Draft badge */}
+              {/* Draft badge — sit on the LEFT of the medallion since the
+                  draft point is always at the chart's right edge, where there
+                  isn't room for a badge on the right. */}
               {isDraft && (
                 <g pointerEvents="none">
                   <rect
-                    x={p.cx + baseR - 2}
+                    x={p.cx - baseR - 32}
                     y={p.cy - baseR - 10}
                     width={32}
                     height={12}
@@ -622,7 +652,7 @@ export function CumulativeChart({ data }: Props) {
                     fill="var(--muted)"
                   />
                   <text
-                    x={p.cx + baseR + 14}
+                    x={p.cx - baseR - 16}
                     y={p.cy - baseR - 4}
                     textAnchor="middle"
                     fontSize="8"
