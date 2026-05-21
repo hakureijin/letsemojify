@@ -17,6 +17,38 @@ const PAD = { top: 24, right: 12, bottom: 24, left: 12 }
 const NODE_WIDTH = 16
 const NODE_PADDING = 12
 
+// Sample N points along the cubic Bézier that d3-sankey's sankeyLinkHorizontal
+// draws between two nodes. The curve has control points at (midX, y0) and
+// (midX, y1) — y interpolates as a smoothstep, x as a cubic. Returns evenly
+// spaced points at t = 1/(N+1), 2/(N+1), …, N/(N+1), so the first and last
+// beads sit comfortably inside the link rather than on the node edges.
+function sampleSankeyCurve(
+  link: { source: { x1: number }; target: { x0: number }; y0?: number; y1?: number },
+  n: number,
+): Array<{ x: number; y: number }> {
+  const x0 = link.source.x1
+  const x1 = link.target.x0
+  const y0 = link.y0 ?? 0
+  const y1 = link.y1 ?? 0
+  const midX = (x0 + x1) / 2
+  const out: Array<{ x: number; y: number }> = []
+  for (let i = 1; i <= n; i++) {
+    const t = i / (n + 1)
+    const u = 1 - t
+    const x = u * u * u * x0 + 3 * u * u * t * midX + 3 * u * t * t * midX + t * t * t * x1
+    const y = y0 + (y1 - y0) * (3 * t * t - 2 * t * t * t)
+    out.push({ x, y })
+  }
+  return out
+}
+
+// Bead count grows with log2(value): a flow of ~1600 emoji gets ~9 beads,
+// ~100 gets ~6, ~20 gets ~4, single-digit flows get 1–2. Capped at 10 so the
+// largest flows don't get visually noisy.
+function beadCount(value: number): number {
+  return Math.max(1, Math.min(10, Math.round(Math.log2(value + 1) * 0.85)))
+}
+
 type NodeKind = 'mechanism' | 'group'
 type SelectionId = string // `mech::<id>` | `group::<id>` | `flow::<mech>::<group>`
 
@@ -283,12 +315,27 @@ export function VariantSankey({ data }: Props) {
         {/* Links */}
         <g>
           {(layout.links as Array<
-            SankeyLinkIn & { source: SankeyNodeIn; target: SankeyNodeIn; width: number }
+            SankeyLinkIn & {
+              source: SankeyNodeIn & { x1: number }
+              target: SankeyNodeIn & { x0: number }
+              width: number
+              y0: number
+              y1: number
+            }
           >).map((l, i) => {
             const id: SelectionId = `flow::${l.mechanism}::${l.group}`
             const isActive = visibleId === id
             const visible = isLinkVisible(l.mechanism, l.group)
-            const baseOpacity = visible ? (isActive ? 0.62 : 0.34) : 0.06
+            // Parent opacity controls overall visibility; ribbon and beads then
+            // have their own multiplicative opacity so the emoji glyphs stay
+            // crisp while the underlying ribbon is intentionally subtle.
+            const groupOpacity = visible ? 1 : 0.18
+            const ribbonOpacity = isActive ? 0.7 : 0.42
+            // Bead positions + sizing
+            const n = beadCount(l.value)
+            const positions = sampleSankeyCurve(l, n)
+            const beadSize = Math.max(13, Math.min(22, l.width * 0.55))
+            const examples = l.examples.length ? l.examples : data.flows.find(f => f.mechanism === l.mechanism && f.group === l.group)?.examples ?? []
             return (
               <motion.g
                 key={`l-${i}`}
@@ -316,7 +363,7 @@ export function VariantSankey({ data }: Props) {
                   }
                 }}
                 initial={reduced ? false : { opacity: 0 }}
-                animate={{ opacity: baseOpacity }}
+                animate={{ opacity: groupOpacity }}
                 transition={{ duration: reduced ? 0 : 0.4, delay: reduced ? 0 : Math.min(i * 0.012, 0.6) }}
               >
                 {/* Invisible hit overlay (twice the link thickness for easier targeting) */}
@@ -324,16 +371,42 @@ export function VariantSankey({ data }: Props) {
                   d={linkPath(l) ?? ''}
                   fill="none"
                   stroke="transparent"
-                  strokeWidth={Math.max(l.width + 8, 14)}
+                  strokeWidth={Math.max(l.width + 12, 18)}
                 />
-                {/* Visible link */}
+                {/* Visible ribbon — color-coded by mechanism, intentionally
+                    subdued so the emoji beads above can carry the meaning. */}
                 <path
                   d={linkPath(l) ?? ''}
                   fill="none"
                   stroke={`var(--mech-${l.mechanism})`}
                   strokeWidth={Math.max(l.width, 0.5)}
+                  opacity={ribbonOpacity}
                   style={{ pointerEvents: 'none' }}
                 />
+                {/* Emoji beads — only rendered while this flow is hovered,
+                    focused, or pinned. Keeps the default view clean. */}
+                {isActive && positions.map((p, j) => {
+                  const glyph = examples[j % Math.max(examples.length, 1)] || ''
+                  if (!glyph) return null
+                  return (
+                    <motion.text
+                      key={`b-${j}`}
+                      x={p.x}
+                      y={p.y}
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      fontSize={beadSize}
+                      pointerEvents="none"
+                      aria-hidden="true"
+                      style={{ fontVariantEmoji: 'emoji' }}
+                      initial={reduced ? false : { opacity: 0, scale: 0.6 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: reduced ? 0 : 0.18, delay: reduced ? 0 : j * 0.025, ease: 'easeOut' }}
+                    >
+                      {glyph}
+                    </motion.text>
+                  )
+                })}
               </motion.g>
             )
           })}

@@ -239,10 +239,17 @@ export function CategoryTreemap({ data }: Props) {
           const isActive = tile.key === visibleId
           const percent = (tile.count / frame.total) * 100
           const groupLabel = t(`groups.${tile.key}` as never)
-          const sampleEmoji = frame.samples[tile.key]?.[0] ?? ''
-          const showText = tile.w >= 90 && tile.h >= 56
-          const tooSmall = tile.w < 60 || tile.h < 40
-
+          const glyph = frame.samples[tile.key]?.[0] ?? ''
+          const hasText = tile.w >= 96 && tile.h >= 64
+          const textBandH = hasText ? 36 : 0
+          // Emoji "stage" — the area above the text band that holds the glyph
+          const stageH = Math.max(0, tile.h - textBandH)
+          const stageCy = tile.y + stageH / 2 + (hasText ? -2 : 0)
+          // Single hero glyph, auto-sized to whichever axis is tightest.
+          const emojiSize = Math.max(
+            18,
+            Math.min(96, Math.floor(Math.min(stageH * 0.78, tile.w - 24))),
+          )
           return (
             <motion.g
               key={tile.key}
@@ -275,34 +282,47 @@ export function CategoryTreemap({ data }: Props) {
                 animate={{ x: tile.x, y: tile.y, width: tile.w, height: tile.h }}
                 transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
                 fill={`var(--cat-${tile.key})`}
-                opacity={isActive ? 1 : 0.86}
+                opacity={isActive ? 1 : 0.9}
                 stroke={isActive ? 'var(--ink)' : 'transparent'}
                 strokeWidth={isActive ? 2 : 0}
-                rx={10}
+                rx={12}
               />
-              {!tooSmall && (
+              {/* Single hero emoji */}
+              {glyph && (
                 <motion.text
-                  animate={{
-                    x: tile.x + (showText ? 14 : tile.w / 2),
-                    y: tile.y + (showText ? 30 : tile.h / 2 + 6),
-                  }}
+                  animate={{ x: tile.x + tile.w / 2, y: stageCy }}
                   transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
-                  textAnchor={showText ? 'start' : 'middle'}
-                  fontSize={showText ? Math.min(28, tile.h * 0.35) : Math.min(22, tile.w * 0.35)}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fontSize={emojiSize}
                   pointerEvents="none"
+                  aria-hidden="true"
                   style={{ fontVariantEmoji: 'emoji' }}
                 >
-                  {sampleEmoji}
+                  {glyph}
                 </motion.text>
               )}
-              {showText && (
+              {hasText && (
                 <>
-                  <motion.text
-                    animate={{ x: tile.x + 14, y: tile.y + tile.h - 30 }}
+                  {/* Subtle dark scrim under the text band for legibility */}
+                  <motion.rect
+                    animate={{
+                      x: tile.x,
+                      y: tile.y + tile.h - textBandH,
+                      width: tile.w,
+                      height: textBandH,
+                    }}
                     transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
-                    fontSize="11"
+                    fill="black"
+                    opacity={0.08}
+                    pointerEvents="none"
+                  />
+                  <motion.text
+                    animate={{ x: tile.x + 12, y: tile.y + tile.h - 19 }}
+                    transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
+                    fontSize="10"
                     fontWeight="800"
-                    letterSpacing="0.05em"
+                    letterSpacing="0.08em"
                     fill="#1a1a1a"
                     pointerEvents="none"
                     style={{ textTransform: 'uppercase' }}
@@ -310,16 +330,17 @@ export function CategoryTreemap({ data }: Props) {
                     {groupLabel}
                   </motion.text>
                   <motion.text
-                    animate={{ x: tile.x + 14, y: tile.y + tile.h - 12 }}
+                    animate={{ x: tile.x + tile.w - 12, y: tile.y + tile.h - 19 }}
                     transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
-                    fontSize="14"
+                    textAnchor="end"
+                    fontSize="13"
                     fontWeight="900"
                     className="tabular"
                     fill="#1a1a1a"
                     pointerEvents="none"
                   >
                     {tile.count.toLocaleString(locale)}
-                    <tspan className="font-bold" fill="#3a3a3a" dx="6" fontSize="11">
+                    <tspan className="font-bold" fill="#3a3a3a" dx="6" fontSize="10">
                       {percent.toFixed(1)}%
                     </tspan>
                   </motion.text>
