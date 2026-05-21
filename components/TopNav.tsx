@@ -2,7 +2,7 @@
 import { useLocale, useTranslations } from 'next-intl'
 import { usePathname, useRouter } from '@/i18n/navigation'
 
-const CHAPTERS = ['ch01', 'ch02', 'ch03', 'ch04'] as const
+const CHAPTERS = ['ch01', 'ch02'] as const
 
 export function TopNav() {
   const t = useTranslations('nav')

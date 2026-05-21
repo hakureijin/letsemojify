@@ -2,8 +2,6 @@
   "nav": {
     "ch01": "01",
     "ch02": "02",
-    "ch03": "03",
-    "ch04": "04",
     "switchLangAria": "Switch to Chinese"
   },
   "hero": {
@@ -103,17 +101,60 @@
       "emoji-18-0": {
         "narrative": "Draft: 9 core new emojis + 10 skin-tone variants (19 total). Candidates include a cracking face, pickle, lighthouse, meteor, and new thumb gestures. Expected September 2026 release with Unicode 18.0. Medallion is a visual stand-in — draft codepoints and final glyphs are still subject to change."
       }
+    },
+    "categoryTreemap": {
+      "eyebrow": "Category mix",
+      "title": "Emoji breakdown by category",
+      "subtitle": "Drag the slider to watch how the 9 emoji categories take share of the growing catalogue, 2010 → today.",
+      "totalBy": "{version} cumulative",
+      "playAria": "Auto-advance through years",
+      "pauseAria": "Pause auto-advance",
+      "sliderLabel": "Time slider — snaps to Unicode/Emoji version release years",
+      "sliderAriaText": "{year} · {version} · {total} emoji total",
+      "ariaLabel": "Treemap of emoji by category — {year} {version}, {total} emoji total.",
+      "tileAria": "{group}: {count} emoji, {percent}% of the {version} catalogue. Press Enter for details.",
+      "tooltipCount": "Count",
+      "tooltipPercent": "Share",
+      "caption": "Starts at Unicode 6.0 (2010) — the first standardised, categorised emoji catalogue. The DoCoMo 1999 and iPhone JP 2007 eras predate this taxonomy.",
+      "close": "Close",
+      "a11ySummary": "Per-category counts for {version}",
+      "groups": {
+        "smileys-emotion": "Smileys & Emotion",
+        "people-body": "People & Body",
+        "animals-nature": "Animals & Nature",
+        "food-drink": "Food & Drink",
+        "travel-places": "Travel & Places",
+        "activities": "Activities",
+        "objects": "Objects",
+        "symbols": "Symbols",
+        "flags": "Flags"
+      }
     }
   },
   "ch02": {
     "title": "Who Gets In",
     "intro": "About 100 proposals are submitted to Unicode each year. The acceptance rate is roughly 30–60% — and it hinges on more than technical merit.",
     "pipeline": {
-      "submit": { "label": "Proposal", "desc": "Submitted to Unicode" },
-      "esc": { "label": "ESC Review", "desc": "Emoji Subcommittee" },
-      "utc": { "label": "UTC Vote", "desc": "Unicode Technical Committee" },
-      "release": { "label": "Release", "desc": "Unicode standard" },
-      "vendor": { "label": "Vendor", "desc": "Apple, Google, Samsung, …" }
+      "submit": {
+        "label": "Proposal",
+        "desc": "Submitted to Unicode"
+      },
+      "esc": {
+        "label": "ESC Review",
+        "desc": "Emoji Subcommittee"
+      },
+      "utc": {
+        "label": "UTC Vote",
+        "desc": "Unicode Technical Committee"
+      },
+      "release": {
+        "label": "Release",
+        "desc": "Unicode standard"
+      },
+      "vendor": {
+        "label": "Vendor",
+        "desc": "Apple, Google, Samsung, …"
+      }
     },
     "criteria": {
       "tone": {
@@ -174,124 +215,29 @@
       "close": "Close"
     },
     "origins": {
-      "dumpling-cn": { "label": "Dumpling · China" },
-      "headscarf-sa": { "label": "Headscarf · Middle East" },
-      "mate-ar": { "label": "Mate · Argentina" },
-      "sari-in": { "label": "Sari · India" },
-      "matryoshka-ru": { "label": "Matryoshka · Russia" },
-      "taco-mx": { "label": "Taco · Mexico" },
-      "pretzel-de": { "label": "Pretzel · Germany" },
-      "mooncake-cn": { "label": "Mooncake · China" }
-    }
-  },
-   "ch03": {
-    "title": "Always On",
-    "intro": "Gen Z is the first generation that has never put the phone out of sight. For them, emoji aren't decoration — they're a new grammar, punctuation, and tone of voice.",
-    "hero": {
-      "screenTime": { "label": "Daily screen time (Gen Z)" },
-      "emojiDailyUse": { "label": "Online users who use emoji" },
-      "phonePickups": { "label": "Phone checks per day (avg. American)" },
-      "almostConstantly": { "label": "Teens online “almost constantly”" }
-    },
-    "screenTime": {
-      "gen-z": { "label": "Gen Z" },
-      "millennial": { "label": "Millennial" },
-      "gen-x": { "label": "Gen X" },
-      "boomer": { "label": "Boomer" }
-    },
-    "topByGen": {
-      "gen-z": { "label": "Gen Z", "desc": "Irony · feeling · self-compassion" },
-      "millennial": { "label": "Millennial", "desc": "Direct · positive · affirming" },
-      "gen-x": { "label": "Gen X", "desc": "Polite · pragmatic · familiar" },
-      "boomer": { "label": "Boomer", "desc": "Statement · encouragement · literal" }
-    },
-    "semantic": {
-      "heading": "Same emoji, different meaning by generation",
-      "older": "Older generation",
-      "genZ": "Gen Z",
-      "disclosure": "Based on cited reporting and journalism — not a primary survey dataset.",
-      "thumbsup": {
-        "older": "“OK / agreed”",
-        "genZ": "“dismissive / passive / annoyed”"
+      "dumpling-cn": {
+        "label": "Dumpling · China"
       },
-      "lol": {
-        "older": "“Actually laughing out loud”",
-        "genZ": "“Cringe — use 💀 instead”"
+      "headscarf-sa": {
+        "label": "Headscarf · Middle East"
       },
-      "smile": {
-        "older": "“Friendly / polite”",
-        "genZ": "“Passive-aggressive / fake-smiling”"
-      }
-    },
-    "dayInLife": {
-      "heading": "24-hour phone-engagement intensity · generational comparison",
-      "caption": "24 hours on the x-axis; the y-axis shows each group's relative phone-engagement frequency (peak = 100%). The two curves track teens (Gen Z) versus all adults; you can see their peaks fall at different hours — teens have a steeper late-night ridge and a much later morning ramp-up, while adults follow a commute + lunch + early-evening rhythm.",
-      "methodology": "Methodology: the curves are 24-point series reconstructed from descriptive findings in published reports (not raw published data points). The teen curve draws on Common Sense Media's 2021 Census (ages 8–18) findings about out-of-school usage intensity; the adult curve draws on Reviews.org's 2023 U.S. cellphone-usage survey findings about morning, lunch, and evening peaks. A fully reproducible hour-by-generation public dataset doesn't currently exist.",
-      "ariaLabel": "24-hour phone engagement comparison line chart with two curves: Gen Z and all adults.",
-      "cellAria": "{hour}:00 hour — Gen Z around {genZ}%, all adults around {adults}%. Press Enter for details.",
-      "close": "Close",
-      "genZ": {
-        "label": "Gen Z / teens",
-        "desc": "Ages 8–18. Peak engagement falls in out-of-school hours: after-school, evening, late-night."
+      "mate-ar": {
+        "label": "Mate · Argentina"
       },
-      "allAdults": {
-        "label": "All adults",
-        "desc": "U.S. adult mixed sample. Peaks track the morning commute, lunch break, and early-evening leisure window."
+      "sari-in": {
+        "label": "Sari · India"
       },
-      "morning": "First-thing-morning phone check",
-      "lunch": "Lunch peak",
-      "afterSchool": "After-school surge",
-      "evening": "Evening peak",
-      "lateNight": "Late-night doomscroll"
-    }
-  },
-  "ch04": {
-    "title": "Beyond the Screen",
-    "intro": "26 years on, emoji are escaping the keyboard — generated, dimensionalized, worn on faces, made into brands, and stepped into space.",
-    "categories": {
-      "all": "All",
-      "ai": "AI",
-      "ar3d": "AR/3D",
-      "brand": "Brand",
-      "interface": "Interface",
-      "art": "Art"
-    },
-    "cases": {
-      "apple-genmoji": {
-        "title": "Genmoji",
-        "story": "iOS 18 generates personalized emoji from a natural-language prompt. Every user can now produce their own."
+      "matryoshka-ru": {
+        "label": "Matryoshka · Russia"
       },
-      "vision-pro-persona": {
-        "title": "Vision Pro Persona",
-        "story": "Apple Vision Pro maps a user's face and hand movements in real time onto a photorealistic 3D avatar — a Persona — bringing emoji-style self-expression from a flat screen into immersive spatial computing."
+      "taco-mx": {
+        "label": "Taco · Mexico"
       },
-      "snap-bitmoji-ar": {
-        "title": "Bitmoji AR Lenses",
-        "story": "Snap deeply integrated Bitmoji personal avatars with AR Lenses, letting users project their custom cartoon selves into the real world; by 2023, Bitmoji surpassed 250 million monthly active users."
+      "pretzel-de": {
+        "label": "Pretzel · Germany"
       },
-      "world-emoji-day-brands": {
-        "title": "World Emoji Day Brand Activations",
-        "story": "Every July 17th, hundreds of brands — from Coca-Cola to McDonald's to Google — launch global social-media campaigns built around custom emoji; World Emoji Day has become the calendar's signature moment for corporate emoji marketing."
-      },
-      "slack-emoji-workflow": {
-        "title": "Slack Emoji Workflow Triggers",
-        "story": "Slack's Workflow Builder lets teams use emoji reactions as automation triggers, turning a single-tap sticker into the starting point for cross-app business processes — making emoji a structured interface meta-language for workplace collaboration."
-      },
-      "moma-docomo": {
-        "title": "MoMA Acquires the Original Emoji",
-        "story": "Shigetaka Kurita's 176 original 1999 emoji, designed for NTT DoCoMo's i-mode, were permanently acquired by the Museum of Modern Art in 2016 — placing a set of 12×12-pixel communication glyphs squarely inside the art-historical canon."
-      },
-      "google-noto-emoji": {
-        "title": "Google Noto Emoji Open Font",
-        "story": "Launched with the goal of eliminating \"tofu\" (missing-character boxes), Google's Noto Emoji project provides an open-source, Unicode-compliant color emoji font maintained through Unicode 17.0 — serving as shared visual infrastructure for cross-platform emoji consistency."
-      },
-      "github-emoji-reactions": {
-        "title": "GitHub Emoji Reactions API",
-        "story": "GitHub added emoji reactions (👍 ❤️ 🚀 and more) to its REST API in 2016, enabling developers to annotate and filter issues, pull requests, and commits with structured emoji signals — turning a playful sticker into a machine-readable workflow primitive."
-      },
-      "wechat-sticker-economy": {
-        "title": "WeChat Sticker Open Platform",
-        "story": "Tencent's WeChat sticker platform lets artists publish paid and free packs; cumulative downloads exceeded billions by 2024 — a uniquely Chinese-internet pattern of emoji personalization that spawned a thriving creator economy."
+      "mooncake-cn": {
+        "label": "Mooncake · China"
       }
     }
   },

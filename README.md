@@ -1,6 +1,6 @@
 # Emoji 进化志 · The Evolution of Emoji
 
-A single-page bilingual (zh / en) scrollytelling web feature that tells four emoji-related trend stories anchored in publicly-sourced data, presented in a playful "Spotify Wrapped" register.
+A single-page bilingual (zh / en) scrollytelling web feature about emoji as a cultural artifact, anchored in publicly-sourced data and presented in a playful "Spotify Wrapped" register.
 
 Published on port **7777**.
 
@@ -10,16 +10,10 @@ Published on port **7777**.
 |---|------|------|---------|--------|
 | 01 | history | 进化之路 | The Evolution Path | `#ff7f6e` peach |
 | 02 | criteria | 谁能成为 emoji | Who Gets In | `#6ed1b3` mint |
-| 03 | genz | Z 世代手机依赖 | Always On | `#ffc857` sunshine |
-| 04 | future | 屏幕之外 | Beyond the Screen | `#8a7fff` violet |
 
-§01 opens with a horizontal pin-and-translate timeline (Framer Motion `useScroll` + `useTransform`) running from DoCoMo 1999 through Emoji 18.0 (draft, 2026). Below it sits an **interactive cumulative-growth chart**: each Unicode version is a focusable emoji medallion (the version's first highlight emoji on a circle); decade-anchor years (1999 / 2010 / 2015 / 2020 / 2024 / 2026) get larger medallions and a year label. Three range-zoom buttons — `全部 / 2015 → 至今 / 2020 → 至今` — narrow the x-domain so the dense 2015-onward markers spread out and become individually clickable. Tooltips reveal year + version + +new + cumulative total + **growth-percent vs. previous** + narrative + source on hover / Tab+Enter / tap; click pins them; Escape or outside-click dismiss. Edge-aware flipping keeps tooltips on-screen. Draft versions (currently Emoji 18.0) render with a dashed medallion stroke + muted color + a `DRAFT` badge.
+§01 opens with a horizontal pin-and-translate timeline (Framer Motion `useScroll` + `useTransform`) running from DoCoMo 1999 through Emoji 18.0 (draft, 2026). Below it sits an **interactive cumulative-growth chart**: each Unicode version is a focusable emoji medallion (the version's first highlight emoji on a circle); decade-anchor years (1999 / 2010 / 2015 / 2020 / 2024 / 2026) get larger medallions and a year label. Three range-zoom buttons — `全部 / 2015 → 至今 / 2020 → 至今` — narrow the x-domain so the dense 2015-onward markers spread out and become individually clickable. Tooltips reveal year + version + +new + cumulative total + **growth-percent vs. previous** + narrative + source on hover / Tab+Enter / tap; click pins them; Escape or outside-click dismiss. Two **version-diff dropdowns** beneath the chart let the reader pick any two contributing versions and see the added count + growth % + representative new emojis in a card. Below all of that, an **interactive category treemap** plus a Unicode-version time slider show how the 9 Unicode CLDR emoji groups (Smileys & Emotion, People & Body, Animals & Nature, Food & Drink, Travel & Places, Activities, Objects, Symbols, Flags) take share of the cumulative catalogue from Unicode 6.0 (2010) through the latest release — drag the slider or hit play to watch the composition shift.
 
 §02 stacks a 5-step Unicode-proposal pipeline, a 6-card minimalist criteria grid (no decorative borders — tone conveyed by a small uppercase tag inside each card), 4 case cards (3 accepted including 🥟 dumpling / 🧕 headscarf / 🧉 mate, 1 rejected on policy grounds), and an **interactive cultural-origins world map**. Each pin on the map is a focusable button: hover / focus / click reveals a rich tooltip with the emoji + country code + year + cultural-origin label, with the same pin-and-dismiss pattern as the §01 chart.
-
-§03's "Always On" block compares **Gen Z (teens) vs all adults on the same 24-hour axis** as two overlapping smoothed curves; hovering any hour column drops a vertical guide and pops a detail card showing both populations' values plus any documented spike label that applies. The chart includes an explicit methodology disclosure: the 24-point curves are reconstructed from descriptive findings in CSM 2021 (teens) and Reviews.org 2023 (adults), since a fully-reproducible public hour-by-generation dataset doesn't exist.
-
-§04 is a curated 9-case gallery (AI · AR/3D · Brand · Interface · Art) with chip-filtered Framer Motion layout reflow.
 
 Every quantitative claim carries a public, citable source — every number, percentage, date, and ranking has a `source` field in the data JSON and surfaces in the footer bibliography.
 
@@ -29,7 +23,7 @@ Every quantitative claim carries a public, citable source — every number, perc
 - Tailwind CSS v4 (CSS-variable token system)
 - `next-intl` for locale-prefixed routing (`/zh`, `/en`)
 - Framer Motion (scrollytelling, layout animations, `<MotionConfig reducedMotion="user">` for global a11y)
-- `d3-scale` / `d3-shape` / `d3-geo` + `world-atlas` topojson for custom SVG charts
+- `d3-scale` / `d3-shape` / `d3-geo` / `d3-hierarchy` + `world-atlas` topojson for custom SVG charts
 - Vitest + React Testing Library
 
 ## Run
@@ -63,20 +57,19 @@ Then open `http://localhost:7777/` — you'll be redirected to `/zh`. Use the la
 ├── components/
 │   ├── Hero.tsx · TopNav.tsx · Footer.tsx · Providers.tsx
 │   ├── ui/                       # Section wrapper · Citation
-│   ├── chapter-01/               # EvolutionPath · TimelineCard · DecadeIndex · CumulativeChart
-│   ├── chapter-02/               # WhoGetsIn · Pipeline · CriteriaCards · CaseCards · OriginMap
-│   ├── chapter-03/               # AlwaysOn · HeroStats · ScreenTimeBars · TopEmojisByGen · SemanticShift · DayInLife
-│   └── chapter-04/               # BeyondScreen · CategoryChips · CaseCard
-├── data/                         # chapter-{01..04}.json — typed source-cited content
+│   ├── chapter-01/               # EvolutionPath · TimelineCard · DecadeIndex · CumulativeChart · CategoryTreemap
+│   └── chapter-02/               # WhoGetsIn · Pipeline · CriteriaCards · CaseCards · OriginMap
+├── data/                         # chapter-01.json · chapter-01-categories.json · chapter-02.json
 ├── messages/                     # zh.json · en.json — locale strings (parity-tested)
-├── types/                        # Source · Chapter01–04 types
-├── lib/                          # prefers-reduced-motion · countup · decade-jump · filter
+├── types/                        # Source · Chapter01–02 types
+├── lib/                          # prefers-reduced-motion · countup · decade-jump
 ├── i18n/                         # routing · request · navigation
 ├── public/world-atlas/           # countries-110m.json
+├── scripts/                      # build-emoji-categories.mjs (fetches Unicode emoji-test.txt)
 ├── tests/                        # data contracts · logic · i18n parity
 ├── docs/superpowers/
-│   ├── specs/2026-05-11-emoji-trends-multi-topic-design.md
-│   └── plans/2026-05-11-emoji-trends-multi-topic.md
+│   ├── specs/                    # design specs
+│   └── plans/                    # implementation plans
 └── middleware.ts                 # next-intl locale routing
 ```
 
@@ -90,10 +83,9 @@ Every chapter has a typed JSON data file under `/data` and a localized-string fi
 
 Primary sources, by chapter:
 
-- §01 — `emojipedia.org/emoji-versions` (per-version pages from Emoji 6.0 through 18.0 draft) + `unicode.org/emoji/charts` (cumulative count cross-check) + `moma.org` (DoCoMo collection) + `apple.com/newsroom` (Genmoji) + `blog.emojipedia.org/whats-new-in-unicode-17-0` + `blog.emojipedia.org/draft-emoji-list-for-2026-2027` (Emoji 17.0 + 18.0 draft)
+- §01 timeline — `emojipedia.org/emoji-versions` (per-version pages from Emoji 6.0 through 18.0 draft) + `unicode.org/emoji/charts` (cumulative count cross-check) + `moma.org` (DoCoMo collection) + `apple.com/newsroom` (Genmoji) + `blog.emojipedia.org/whats-new-in-unicode-17-0` + `blog.emojipedia.org/draft-emoji-list-for-2026-2027` (Emoji 17.0 + 18.0 draft)
+- §01 category treemap — `unicode.org/Public/emoji/latest/emoji-test.txt` (Unicode CLDR — canonical group + version-added metadata for every fully-qualified emoji). The script at `scripts/build-emoji-categories.mjs` parses this file into `data/chapter-01-categories.json`; re-run when a new Unicode version ships.
 - §02 — `unicode.org/emoji/proposals.html` + individual L2 proposal PDFs at `unicode.org/L2/`
-- §03 — Pew Research · Reviews.org · Adweek/Emogi · Adobe · Common Sense Media Census · Dictionary.com · Deseret News · Bustle
-- §04 — Apple Newsroom · Apple Vision Pro Support · Bitmoji · Emojipedia · Slack Help · MoMA · Google Noto Emoji · GitHub Docs · Tencent
 
 The Footer aggregates every cited `source` into a deduplicated bibliography grouped by chapter.
 
@@ -124,10 +116,10 @@ This project was brainstormed, spec-written, plan-authored, reviewed, and execut
 
 Post-build refinements (designed against the `ui-ux-pro-max` and `frontend-design` skills):
 
-- Interactive §01 cumulative-growth chart with emoji medallions, decade-milestone hierarchy, range-zoom for the dense 2015→ window, growth-percent in the tooltip, and dynamic title
+- Interactive §01 cumulative-growth chart with emoji medallions, decade-milestone hierarchy, range-zoom for the dense 2015→ window, growth-percent in the tooltip, dynamic title, and version-diff dropdowns
+- §01 emoji category treemap with a Unicode-version time slider + play/pause, animated rect transitions, and 9 CLDR group tiles driven by `data/chapter-01-categories.json` (built from `unicode.org/Public/emoji/latest/emoji-test.txt`)
 - Emoji 17.0 (Sept 2025, 163 new) + Emoji 18.0 (draft, 2026) data, with stand-in glyphs and a draft badge
 - §02 minimalist criteria cards (left-edge stripe removed) and §02 interactive origin-map with the same pin/dismiss interaction pattern
-- §03 DayInLife refactor: single mixed-population heat-strip → two-curve generational comparison (Gen Z teens vs all adults) with explicit methodology disclosure
 - Global a11y pass: MotionConfig + reduced-motion CSS + focus-visible rings throughout
 
-The spec lives at `docs/superpowers/specs/2026-05-11-emoji-trends-multi-topic-design.md` and the plan at `docs/superpowers/plans/2026-05-11-emoji-trends-multi-topic.md`.
+Spec history under `docs/superpowers/specs/` and plan history under `docs/superpowers/plans/`.

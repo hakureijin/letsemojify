@@ -13,6 +13,17 @@
 
   --signal-cultural: #ffb84a;
   --signal-reject: #ff7a85;
+
+  /* Treemap category palette — 9 hues, warm-leaning to stay in the page family */
+  --cat-smileys-emotion: #ffb547;
+  --cat-people-body:     #ff8a6c;
+  --cat-animals-nature:  #7bcf8d;
+  --cat-food-drink:      #ff9aa7;
+  --cat-travel-places:   #6ab7f0;
+  --cat-activities:      #c69bff;
+  --cat-objects:         #b89272;
+  --cat-symbols:         #f0c452;
+  --cat-flags:           #6ed1b3;
 }
 
 html, body { background: var(--bg); color: var(--ink); }

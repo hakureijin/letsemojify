@@ -1,0 +1,1572 @@
+{
+  "groupOrder": [
+    "smileys-emotion",
+    "people-body",
+    "animals-nature",
+    "food-drink",
+    "travel-places",
+    "activities",
+    "objects",
+    "symbols",
+    "flags"
+  ],
+  "frames": [
+    {
+      "year": 2010,
+      "versionId": "emoji-0-6",
+      "versionLabel": "Unicode 6.0",
+      "counts": {
+        "smileys-emotion": 83,
+        "people-body": 64,
+        "animals-nature": 63,
+        "food-drink": 58,
+        "travel-places": 102,
+        "activities": 44,
+        "objects": 130,
+        "symbols": 162,
+        "flags": 13
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅",
+          "😂"
+        ],
+        "people-body": [
+          "👋",
+          "✋",
+          "👌",
+          "✌️",
+          "👈",
+          "👉"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🐶",
+          "🐩",
+          "🐺",
+          "🐱"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍌",
+          "🍍"
+        ],
+        "travel-places": [
+          "🌏",
+          "🗾",
+          "🌋",
+          "🗻",
+          "🏠",
+          "🏡"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "✨",
+          "🎈"
+        ],
+        "objects": [
+          "👓",
+          "👔",
+          "👕",
+          "👖",
+          "👗",
+          "👘"
+        ],
+        "symbols": [
+          "🏧",
+          "♿",
+          "🚹",
+          "🚺",
+          "🚻",
+          "🚼"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🇨🇳",
+          "🇩🇪",
+          "🇪🇸"
+        ]
+      },
+      "total": 719
+    },
+    {
+      "year": 2014,
+      "versionId": "emoji-0-7",
+      "versionLabel": "Unicode 7.0",
+      "counts": {
+        "smileys-emotion": 87,
+        "people-body": 74,
+        "animals-nature": 70,
+        "food-drink": 60,
+        "travel-places": 161,
+        "activities": 50,
+        "objects": 169,
+        "symbols": 173,
+        "flags": 14
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅",
+          "😂"
+        ],
+        "people-body": [
+          "👋",
+          "🖐️",
+          "✋",
+          "👌",
+          "✌️",
+          "👈"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🐶",
+          "🐕",
+          "🐩",
+          "🐺"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍌",
+          "🍍"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🗺️",
+          "🗾",
+          "🏔️"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "✨",
+          "🎈"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "👔",
+          "👕",
+          "👖",
+          "👗"
+        ],
+        "symbols": [
+          "🏧",
+          "♿",
+          "🚹",
+          "🚺",
+          "🚻",
+          "🚼"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏳️",
+          "🇨🇳",
+          "🇩🇪"
+        ]
+      },
+      "total": 858
+    },
+    {
+      "year": 2015,
+      "versionId": "emoji-1-0",
+      "versionLabel": "Unicode 8.0",
+      "counts": {
+        "smileys-emotion": 119,
+        "people-body": 400,
+        "animals-nature": 94,
+        "food-drink": 70,
+        "travel-places": 195,
+        "activities": 58,
+        "objects": 190,
+        "symbols": 202,
+        "flags": 15
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🐶",
+          "🐕",
+          "🐩",
+          "🐺"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "✨",
+          "🎈"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "👔",
+          "👕",
+          "👖",
+          "👗"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🇨🇳"
+        ]
+      },
+      "total": 1343
+    },
+    {
+      "year": 2016,
+      "versionId": "emoji-2-0",
+      "versionLabel": "Unicode 9.0",
+      "counts": {
+        "smileys-emotion": 121,
+        "people-body": 436,
+        "animals-nature": 94,
+        "food-drink": 70,
+        "travel-places": 195,
+        "activities": 58,
+        "objects": 190,
+        "symbols": 203,
+        "flags": 262
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🐶",
+          "🐕",
+          "🐩",
+          "🐺"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "✨",
+          "🎈"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "👔",
+          "👕",
+          "👖",
+          "👗"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🇦🇨"
+        ]
+      },
+      "total": 1629
+    },
+    {
+      "year": 2016,
+      "versionId": "emoji-3-0",
+      "versionLabel": "Emoji 3.0",
+      "counts": {
+        "smileys-emotion": 129,
+        "people-body": 541,
+        "animals-nature": 108,
+        "food-drink": 88,
+        "travel-places": 199,
+        "activities": 64,
+        "objects": 192,
+        "symbols": 203,
+        "flags": 262
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🐶",
+          "🐕",
+          "🐩"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "✨",
+          "🎈"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "👔",
+          "👕",
+          "👖",
+          "👗"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🇦🇨"
+        ]
+      },
+      "total": 1786
+    },
+    {
+      "year": 2016,
+      "versionId": "emoji-4-0",
+      "versionLabel": "Emoji 4.0",
+      "counts": {
+        "smileys-emotion": 129,
+        "people-body": 1134,
+        "animals-nature": 108,
+        "food-drink": 88,
+        "travel-places": 199,
+        "activities": 64,
+        "objects": 192,
+        "symbols": 206,
+        "flags": 264
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🐶",
+          "🐕",
+          "🐩"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "✨",
+          "🎈"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "👔",
+          "👕",
+          "👖",
+          "👗"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 2384
+    },
+    {
+      "year": 2017,
+      "versionId": "emoji-5-0",
+      "versionLabel": "Emoji 5.0",
+      "counts": {
+        "smileys-emotion": 139,
+        "people-body": 1333,
+        "animals-nature": 114,
+        "food-drink": 101,
+        "travel-places": 200,
+        "activities": 66,
+        "objects": 197,
+        "symbols": 206,
+        "flags": 267
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🐶",
+          "🐕",
+          "🐩"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "✨",
+          "🎈"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "👔",
+          "👕",
+          "👖",
+          "🧣"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 2623
+    },
+    {
+      "year": 2018,
+      "versionId": "emoji-11-0",
+      "versionLabel": "Emoji 11.0",
+      "counts": {
+        "smileys-emotion": 145,
+        "people-body": 1431,
+        "animals-nature": 125,
+        "food-drink": 107,
+        "travel-places": 204,
+        "activities": 76,
+        "objects": 217,
+        "symbols": 207,
+        "flags": 268
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🐶",
+          "🐕",
+          "🐩"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "👔",
+          "👕"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 2780
+    },
+    {
+      "year": 2019,
+      "versionId": "emoji-12-0",
+      "versionLabel": "Emoji 12.0",
+      "counts": {
+        "smileys-emotion": 148,
+        "people-body": 1606,
+        "animals-nature": 133,
+        "food-drink": 115,
+        "travel-places": 210,
+        "activities": 79,
+        "objects": 232,
+        "symbols": 219,
+        "flags": 268
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🦧",
+          "🐶",
+          "🐕"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "🦺",
+          "👔"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 3010
+    },
+    {
+      "year": 2019,
+      "versionId": "emoji-12-1",
+      "versionLabel": "Emoji 12.1",
+      "counts": {
+        "smileys-emotion": 148,
+        "people-body": 1774,
+        "animals-nature": 133,
+        "food-drink": 115,
+        "travel-places": 210,
+        "activities": 79,
+        "objects": 232,
+        "symbols": 219,
+        "flags": 268
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🦧",
+          "🐶",
+          "🐕"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "🦺",
+          "👔"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 3178
+    },
+    {
+      "year": 2020,
+      "versionId": "emoji-13-0",
+      "versionLabel": "Emoji 13.0",
+      "counts": {
+        "smileys-emotion": 150,
+        "people-body": 1837,
+        "animals-nature": 146,
+        "food-drink": 123,
+        "travel-places": 215,
+        "activities": 84,
+        "objects": 251,
+        "symbols": 220,
+        "flags": 269
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🦧",
+          "🐶",
+          "🐕"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "🦺",
+          "👔"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 3295
+    },
+    {
+      "year": 2020,
+      "versionId": "emoji-13-1",
+      "versionLabel": "Emoji 13.1",
+      "counts": {
+        "smileys-emotion": 155,
+        "people-body": 2049,
+        "animals-nature": 146,
+        "food-drink": 123,
+        "travel-places": 215,
+        "activities": 84,
+        "objects": 251,
+        "symbols": 220,
+        "flags": 269
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🦧",
+          "🐶",
+          "🐕"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "🦺",
+          "👔"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 3512
+    },
+    {
+      "year": 2021,
+      "versionId": "emoji-14-0",
+      "versionLabel": "Emoji 14.0",
+      "counts": {
+        "smileys-emotion": 162,
+        "people-body": 2136,
+        "animals-nature": 150,
+        "food-drink": 126,
+        "travel-places": 218,
+        "activities": 85,
+        "objects": 257,
+        "symbols": 221,
+        "flags": 269
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🦧",
+          "🐶",
+          "🐕"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "🦺",
+          "👔"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 3624
+    },
+    {
+      "year": 2022,
+      "versionId": "emoji-15-0",
+      "versionLabel": "Emoji 15.0",
+      "counts": {
+        "smileys-emotion": 166,
+        "people-body": 2148,
+        "animals-nature": 157,
+        "food-drink": 128,
+        "travel-places": 218,
+        "activities": 85,
+        "objects": 261,
+        "symbols": 223,
+        "flags": 269
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🦧",
+          "🐶",
+          "🐕"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍌"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "🦺",
+          "👔"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 3655
+    },
+    {
+      "year": 2023,
+      "versionId": "emoji-15-1",
+      "versionLabel": "Emoji 15.1",
+      "counts": {
+        "smileys-emotion": 168,
+        "people-body": 2260,
+        "animals-nature": 158,
+        "food-drink": 130,
+        "travel-places": 218,
+        "activities": 85,
+        "objects": 262,
+        "symbols": 223,
+        "flags": 269
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🦧",
+          "🐶",
+          "🐕"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍋‍🟩"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "🦺",
+          "👔"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 3773
+    },
+    {
+      "year": 2024,
+      "versionId": "emoji-16-0",
+      "versionLabel": "Emoji 16.0",
+      "counts": {
+        "smileys-emotion": 169,
+        "people-body": 2261,
+        "animals-nature": 159,
+        "food-drink": 131,
+        "travel-places": 218,
+        "activities": 85,
+        "objects": 264,
+        "symbols": 224,
+        "flags": 270
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🦧",
+          "🐶",
+          "🐕"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍋‍🟩"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "🦺",
+          "👔"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 3781
+    },
+    {
+      "year": 2025,
+      "versionId": "emoji-17-0",
+      "versionLabel": "Emoji 17.0",
+      "counts": {
+        "smileys-emotion": 171,
+        "people-body": 2418,
+        "animals-nature": 160,
+        "food-drink": 131,
+        "travel-places": 219,
+        "activities": 85,
+        "objects": 266,
+        "symbols": 224,
+        "flags": 270
+      },
+      "samples": {
+        "smileys-emotion": [
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😅"
+        ],
+        "people-body": [
+          "👋",
+          "👋🏻",
+          "👋🏼",
+          "👋🏽",
+          "👋🏾",
+          "👋🏿"
+        ],
+        "animals-nature": [
+          "🐵",
+          "🐒",
+          "🦍",
+          "🦧",
+          "🐶",
+          "🐕"
+        ],
+        "food-drink": [
+          "🍇",
+          "🍈",
+          "🍉",
+          "🍊",
+          "🍋",
+          "🍋‍🟩"
+        ],
+        "travel-places": [
+          "🌍",
+          "🌎",
+          "🌏",
+          "🌐",
+          "🗺️",
+          "🗾"
+        ],
+        "activities": [
+          "🎃",
+          "🎄",
+          "🎆",
+          "🎇",
+          "🧨",
+          "✨"
+        ],
+        "objects": [
+          "👓",
+          "🕶️",
+          "🥽",
+          "🥼",
+          "🦺",
+          "👔"
+        ],
+        "symbols": [
+          "🏧",
+          "🚮",
+          "🚰",
+          "♿",
+          "🚹",
+          "🚺"
+        ],
+        "flags": [
+          "🏁",
+          "🚩",
+          "🎌",
+          "🏴",
+          "🏳️",
+          "🏳️‍🌈"
+        ]
+      },
+      "total": 3944
+    }
+  ],
+  "source": {
+    "id": "unicode-emoji-test",
+    "title": {
+      "zh": "Unicode CLDR · emoji-test.txt v17.0",
+      "en": "Unicode CLDR · emoji-test.txt v17.0"
+    },
+    "publisher": "Unicode Consortium",
+    "url": "https://unicode.org/Public/emoji/latest/emoji-test.txt",
+    "accessed": "2026-05-21"
+  }
+}

@@ -2,8 +2,6 @@
   "nav": {
     "ch01": "01",
     "ch02": "02",
-    "ch03": "03",
-    "ch04": "04",
     "switchLangAria": "切换到英文"
   },
   "hero": {
@@ -49,6 +47,34 @@
         "moreCount": "…+{count} 更多",
         "markerAriaA": "对比起始",
         "markerAriaB": "对比结束"
+      }
+    },
+    "categoryTreemap": {
+      "eyebrow": "类别构成",
+      "title": "Emoji 按类别的分布",
+      "subtitle": "拖动滑块观察 2010 → 至今 emoji 总量在 9 大类别间的占比变化。",
+      "totalBy": "{version} 累计",
+      "playAria": "自动播放年份动画",
+      "pauseAria": "暂停自动播放",
+      "sliderLabel": "时间滑块：按 Unicode/Emoji 版本年份切换",
+      "sliderAriaText": "{year} 年 {version} · 共 {total} 个 emoji",
+      "ariaLabel": "Emoji 分类树状图：{year} 年 {version}，共 {total} 个 emoji。",
+      "tileAria": "{group}：{count} 个，占 {percent}%（{version}）。按 Enter 键查看详情。",
+      "tooltipCount": "数量",
+      "tooltipPercent": "占比",
+      "caption": "起点为 Unicode 6.0（2010）——这是首个标准化的、按类别归档的 emoji 目录。DoCoMo 1999 与 iPhone JP 2007 时期早于该归档体系。",
+      "close": "关闭",
+      "a11ySummary": "{version} 版本各类别 emoji 累计数",
+      "groups": {
+        "smileys-emotion": "笑脸与情绪",
+        "people-body": "人物与身体",
+        "animals-nature": "动物与自然",
+        "food-drink": "食物与饮品",
+        "travel-places": "旅行与地点",
+        "activities": "活动",
+        "objects": "物品",
+        "symbols": "符号",
+        "flags": "旗帜"
       }
     },
     "timeline": {
@@ -109,11 +135,26 @@
     "title": "谁能成为 emoji",
     "intro": "每年约 100 份提案，Unicode 通过率约 30–60%。能否通过，不只看技术，更看文化代表性。",
     "pipeline": {
-      "submit": { "label": "提交提案", "desc": "Proposal" },
-      "esc": { "label": "小组委评审", "desc": "ESC review" },
-      "utc": { "label": "UTC 表决", "desc": "UTC vote" },
-      "release": { "label": "Unicode 发布", "desc": "Standard release" },
-      "vendor": { "label": "厂商绘制", "desc": "Vendor design" }
+      "submit": {
+        "label": "提交提案",
+        "desc": "Proposal"
+      },
+      "esc": {
+        "label": "小组委评审",
+        "desc": "ESC review"
+      },
+      "utc": {
+        "label": "UTC 表决",
+        "desc": "UTC vote"
+      },
+      "release": {
+        "label": "Unicode 发布",
+        "desc": "Standard release"
+      },
+      "vendor": {
+        "label": "厂商绘制",
+        "desc": "Vendor design"
+      }
     },
     "criteria": {
       "tone": {
@@ -174,124 +215,29 @@
       "close": "关闭"
     },
     "origins": {
-      "dumpling-cn": { "label": "饺子 · 中国" },
-      "headscarf-sa": { "label": "头巾 · 中东" },
-      "mate-ar": { "label": "马黛茶 · 阿根廷" },
-      "sari-in": { "label": "纱丽 · 印度" },
-      "matryoshka-ru": { "label": "套娃 · 俄罗斯" },
-      "taco-mx": { "label": "墨西哥卷饼 · 墨西哥" },
-      "pretzel-de": { "label": "椒盐卷饼 · 德国" },
-      "mooncake-cn": { "label": "月饼 · 中国" }
-    }
-  },
-  "ch03": {
-    "title": "Always On",
-    "intro": "Gen Z 是第一代手机从未离开过视野的人类。他们的 emoji 不只是装饰，而是新一代的语法、标点、表情、情绪声调。",
-    "hero": {
-      "screenTime": { "label": "每日屏幕时间（Z 世代）" },
-      "emojiDailyUse": { "label": "在线用户中使用 emoji 的比例" },
-      "phonePickups": { "label": "每天解锁手机次数（美国平均）" },
-      "almostConstantly": { "label": "几乎随时在线的青少年" }
-    },
-    "screenTime": {
-      "gen-z": { "label": "Z 世代" },
-      "millennial": { "label": "千禧一代" },
-      "gen-x": { "label": "X 世代" },
-      "boomer": { "label": "婴儿潮一代" }
-    },
-    "topByGen": {
-      "gen-z": { "label": "Z 世代", "desc": "反讽 · 情绪 · 自我同情" },
-      "millennial": { "label": "千禧一代", "desc": "直接 · 积极 · 肯定" },
-      "gen-x": { "label": "X 世代", "desc": "礼貌 · 实用 · 熟悉" },
-      "boomer": { "label": "婴儿潮一代", "desc": "陈述 · 鼓励 · 字面" }
-    },
-    "semantic": {
-      "heading": "同一 emoji，不同代际的意思",
-      "older": "较年长一代",
-      "genZ": "Z 世代",
-      "disclosure": "本节解读基于公开报道与新闻媒体引用，非一手调研数据。",
-      "thumbsup": {
-        "older": "“同意 / 收到”",
-        "genZ": "“敷衍 / 被动 / 烦”"
+      "dumpling-cn": {
+        "label": "饺子 · 中国"
       },
-      "lol": {
-        "older": "“真的在笑”",
-        "genZ": "“过气了——用 💀 代替”"
+      "headscarf-sa": {
+        "label": "头巾 · 中东"
       },
-      "smile": {
-        "older": "“友好 / 礼貌”",
-        "genZ": "“阴阳怪气 / 皮笑肉不笑”"
-      }
-    },
-    "dayInLife": {
-      "heading": "24 小时手机交互强度 · 代际对比",
-      "caption": "横轴 24 小时，纵轴是该时段被该群体调起手机的相对频次（最高 = 100%）。两条曲线分别代表青少年 (Gen Z) 和全体成年人，可见两条曲线高峰位置不同——青少年的深夜峰更陡、清晨启动更晚，成年人则以早晚通勤 + 午间为典型节律。",
-      "methodology": "方法说明：曲线为基于公开报告中描述性发现重构的 24 点序列（非原始公开数据点）。青少年线源自 Common Sense Media 2021 普查（8–18 岁）关于校外时段使用强度的描述；成年人线源自 Reviews.org 2023 美国成人手机使用调查关于早晚高峰与午间峰的描述。完整可重复的小时级 × 代际数据集尚未公开发布。",
-      "ariaLabel": "24 小时手机使用强度对比折线图，两条曲线分别代表 Gen Z 与全体成年人。",
-      "cellAria": "{hour}:00 时段：Gen Z 约 {genZ}%，全体成年人约 {adults}%。按 Enter 键查看详情。",
-      "close": "关闭",
-      "genZ": {
-        "label": "Z 世代 / 青少年",
-        "desc": "8–18 岁青少年用户。校外时段 (放学后、晚间、深夜) 使用峰最高。"
+      "mate-ar": {
+        "label": "马黛茶 · 阿根廷"
       },
-      "allAdults": {
-        "label": "全体成年人",
-        "desc": "美国成年人混合样本。早晨通勤、午间、傍晚到夜初为典型峰位。"
+      "sari-in": {
+        "label": "纱丽 · 印度"
       },
-      "morning": "早起查看手机",
-      "lunch": "午间高峰",
-      "afterSchool": "放学后激增",
-      "evening": "晚间高峰",
-      "lateNight": "深夜刷屏"
-    }
-  },
-  "ch04": {
-    "title": "屏幕之外",
-    "intro": "26 年后，emoji 不再被键盘困住——它们正在生成、立体化、戴上身体、变成品牌、走进空间。",
-    "categories": {
-      "all": "全部",
-      "ai": "AI",
-      "ar3d": "AR/3D",
-      "brand": "品牌",
-      "interface": "界面",
-      "art": "艺术"
-    },
-    "cases": {
-      "apple-genmoji": {
-        "title": "Genmoji",
-        "story": "iOS 18 用自然语言生成个性化 emoji。AI 让每个用户都可以拥有专属表情。"
+      "matryoshka-ru": {
+        "label": "套娃 · 俄罗斯"
       },
-      "vision-pro-persona": {
-        "title": "Vision Pro Persona",
-        "story": "Apple Vision Pro 将用户的面部与手部动作实时映射为 3D 数字分身 Persona，在 FaceTime 通话中呈现真实感十足的空间临场感——emoji 式的自我表达从平面进入立体空间。"
+      "taco-mx": {
+        "label": "墨西哥卷饼 · 墨西哥"
       },
-      "snap-bitmoji-ar": {
-        "title": "Bitmoji AR 镜头",
-        "story": "Snap 将 Bitmoji 个人化卡通形象与 AR 镜头深度融合，让用户的专属表情人偶跃然于现实场景之中；截至 2023 年，Bitmoji 月活跃用户已超过 2.5 亿。"
+      "pretzel-de": {
+        "label": "椒盐卷饼 · 德国"
       },
-      "world-emoji-day-brands": {
-        "title": "品牌 Emoji 营销日",
-        "story": "每年 7 月 17 日，可口可乐、麦当劳、谷歌等数百家品牌通过定制 emoji 发起全球社交媒体活动——世界 Emoji 日已成为企业与消费者进行视觉对话的年度营销节点。"
-      },
-      "slack-emoji-workflow": {
-        "title": "Slack Emoji 工作流",
-        "story": "Slack 的 Workflow Builder 允许用户将 emoji 表情回应设置为自动化工作流的触发器，使一枚贴纸点击即可启动跨应用的业务流程——emoji 由此成为团队协作的结构化界面元语言。"
-      },
-      "moma-docomo": {
-        "title": "MoMA 收藏原始 Emoji",
-        "story": "栗田穰崇 1999 年为 NTT DoCoMo i-mode 设计的 176 个原始 emoji 于 2016 年被纽约现代艺术博物馆永久收藏，标志着这批 12×12 像素的通讯符号正式进入艺术史叙事。"
-      },
-      "google-noto-emoji": {
-        "title": "Google Noto Emoji 开源字体",
-        "story": "Google 以「No Tofu（消灭豆腐块）」为目标，将 Noto Emoji 打造为覆盖全部 Unicode 表情的开源彩色字体并持续迭代至 Unicode 17.0，成为跨平台 emoji 视觉一致性的公共基础设施。"
-      },
-      "github-emoji-reactions": {
-        "title": "GitHub Emoji 反应 API",
-        "story": "GitHub 于 2016 年将 emoji 反应（👍 ❤️ 🚀 等）纳入其 REST API，使开发者可以用结构化表情对议题、Pull Request 和提交进行标注与过滤——emoji 由此成为代码协作工作流中的机器可读界面原语。"
-      },
-      "wechat-sticker-economy": {
-        "title": "微信表情开放平台",
-        "story": "腾讯表情开放平台让艺术家发布付费/免费贴纸，截至 2024 年累计下载量已超数十亿次——中国互联网原生的「emoji 个性化扩展」现象催生了独特的创作者经济生态。"
+      "mooncake-cn": {
+        "label": "月饼 · 中国"
       }
     }
   },
