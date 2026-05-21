@@ -127,77 +127,46 @@
     }
   ],
   "origins": [
-    {
-      "id": "dumpling-cn",
-      "emoji": "🥟",
-      "country": "CN",
-      "lat": 35.86,
-      "lng": 104.20,
-      "year": 2017,
-      "labelKey": "ch02.origins.dumpling-cn.label"
-    },
-    {
-      "id": "headscarf-sa",
-      "emoji": "🧕",
-      "country": "SA",
-      "lat": 23.89,
-      "lng": 45.08,
-      "year": 2017,
-      "labelKey": "ch02.origins.headscarf-sa.label"
-    },
-    {
-      "id": "mate-ar",
-      "emoji": "🧉",
-      "country": "AR",
-      "lat": -38.42,
-      "lng": -63.62,
-      "year": 2019,
-      "labelKey": "ch02.origins.mate-ar.label"
-    },
-    {
-      "id": "sari-in",
-      "emoji": "🥻",
-      "country": "IN",
-      "lat": 20.59,
-      "lng": 78.96,
-      "year": 2019,
-      "labelKey": "ch02.origins.sari-in.label"
-    },
-    {
-      "id": "matryoshka-ru",
-      "emoji": "🪆",
-      "country": "RU",
-      "lat": 61.52,
-      "lng": 105.32,
-      "year": 2020,
-      "labelKey": "ch02.origins.matryoshka-ru.label"
-    },
-    {
-      "id": "taco-mx",
-      "emoji": "🌮",
-      "country": "MX",
-      "lat": 23.63,
-      "lng": -102.55,
-      "year": 2015,
-      "labelKey": "ch02.origins.taco-mx.label"
-    },
-    {
-      "id": "pretzel-de",
-      "emoji": "🥨",
-      "country": "DE",
-      "lat": 51.17,
-      "lng": 10.45,
-      "year": 2017,
-      "labelKey": "ch02.origins.pretzel-de.label"
-    },
-    {
-      "id": "mooncake-cn",
-      "emoji": "🥮",
-      "country": "CN",
-      "lat": 35.86,
-      "lng": 104.20,
-      "year": 2018,
-      "labelKey": "ch02.origins.mooncake-cn.label"
-    }
+    { "id": "dumpling-cn",      "emoji": "🥟", "country": "CN", "lat": 39.90,  "lng": 116.40, "year": 2017, "labelKey": "ch02.origins.dumpling-cn.label" },
+    { "id": "mooncake-cn",      "emoji": "🥮", "country": "CN", "lat": 31.23,  "lng": 121.47, "year": 2018, "labelKey": "ch02.origins.mooncake-cn.label" },
+    { "id": "red-envelope-cn",  "emoji": "🧧", "country": "CN", "lat": 23.13,  "lng": 113.27, "year": 2018, "labelKey": "ch02.origins.red-envelope-cn.label" },
+    { "id": "sushi-jp",         "emoji": "🍣", "country": "JP", "lat": 35.68,  "lng": 139.69, "year": 2010, "labelKey": "ch02.origins.sushi-jp.label" },
+    { "id": "bento-jp",         "emoji": "🍱", "country": "JP", "lat": 34.69,  "lng": 135.50, "year": 2010, "labelKey": "ch02.origins.bento-jp.label" },
+    { "id": "shinto-shrine-jp", "emoji": "⛩️", "country": "JP", "lat": 35.01,  "lng": 135.77, "year": 2014, "labelKey": "ch02.origins.shinto-shrine-jp.label" },
+    { "id": "hand-fan-kr",      "emoji": "🪭", "country": "KR", "lat": 37.57,  "lng": 126.98, "year": 2022, "labelKey": "ch02.origins.hand-fan-kr.label" },
+    { "id": "sari-in",          "emoji": "🥻", "country": "IN", "lat": 19.08,  "lng": 72.88,  "year": 2019, "labelKey": "ch02.origins.sari-in.label" },
+    { "id": "peacock-in",       "emoji": "🦚", "country": "IN", "lat": 28.61,  "lng": 77.21,  "year": 2018, "labelKey": "ch02.origins.peacock-in.label" },
+    { "id": "hindu-temple-in",  "emoji": "🛕", "country": "IN", "lat": 13.08,  "lng": 80.27,  "year": 2019, "labelKey": "ch02.origins.hindu-temple-in.label" },
+    { "id": "rickshaw-in",      "emoji": "🛺", "country": "IN", "lat": 22.57,  "lng": 88.36,  "year": 2019, "labelKey": "ch02.origins.rickshaw-in.label" },
+    { "id": "coconut-id",       "emoji": "🥥", "country": "ID", "lat": -6.21,  "lng": 106.85, "year": 2017, "labelKey": "ch02.origins.coconut-id.label" },
+    { "id": "noodles-vn",       "emoji": "🍜", "country": "VN", "lat": 21.03,  "lng": 105.85, "year": 2010, "labelKey": "ch02.origins.noodles-vn.label" },
+    { "id": "headscarf-sa",     "emoji": "🧕", "country": "SA", "lat": 24.71,  "lng": 46.68,  "year": 2017, "labelKey": "ch02.origins.headscarf-sa.label" },
+    { "id": "falafel-lb",       "emoji": "🧆", "country": "LB", "lat": 33.89,  "lng": 35.50,  "year": 2019, "labelKey": "ch02.origins.falafel-lb.label" },
+    { "id": "mosque-tr",        "emoji": "🕌", "country": "TR", "lat": 41.01,  "lng": 28.98,  "year": 2015, "labelKey": "ch02.origins.mosque-tr.label" },
+    { "id": "nazar-tr",         "emoji": "🧿", "country": "TR", "lat": 38.42,  "lng": 27.14,  "year": 2018, "labelKey": "ch02.origins.nazar-tr.label" },
+    { "id": "coffee-et",        "emoji": "☕", "country": "ET", "lat": 8.98,   "lng": 38.76,  "year": 2010, "labelKey": "ch02.origins.coffee-et.label" },
+    { "id": "drum-ng",          "emoji": "🪘", "country": "NG", "lat": 6.52,   "lng": 3.38,   "year": 2020, "labelKey": "ch02.origins.drum-ng.label" },
+    { "id": "giraffe-ke",       "emoji": "🦒", "country": "KE", "lat": -1.29,  "lng": 36.82,  "year": 2018, "labelKey": "ch02.origins.giraffe-ke.label" },
+    { "id": "camel-eg",         "emoji": "🐫", "country": "EG", "lat": 30.04,  "lng": 31.24,  "year": 2010, "labelKey": "ch02.origins.camel-eg.label" },
+    { "id": "pretzel-de",       "emoji": "🥨", "country": "DE", "lat": 48.14,  "lng": 11.58,  "year": 2017, "labelKey": "ch02.origins.pretzel-de.label" },
+    { "id": "beer-de",          "emoji": "🍺", "country": "DE", "lat": 52.52,  "lng": 13.41,  "year": 2010, "labelKey": "ch02.origins.beer-de.label" },
+    { "id": "matryoshka-ru",    "emoji": "🪆", "country": "RU", "lat": 55.75,  "lng": 37.62,  "year": 2020, "labelKey": "ch02.origins.matryoshka-ru.label" },
+    { "id": "baguette-fr",      "emoji": "🥖", "country": "FR", "lat": 48.85,  "lng": 2.35,   "year": 2017, "labelKey": "ch02.origins.baguette-fr.label" },
+    { "id": "croissant-fr",     "emoji": "🥐", "country": "FR", "lat": 45.76,  "lng": 4.83,   "year": 2016, "labelKey": "ch02.origins.croissant-fr.label" },
+    { "id": "cheese-fr",        "emoji": "🧀", "country": "FR", "lat": 43.61,  "lng": 3.88,   "year": 2016, "labelKey": "ch02.origins.cheese-fr.label" },
+    { "id": "pizza-it",         "emoji": "🍕", "country": "IT", "lat": 40.85,  "lng": 14.27,  "year": 2010, "labelKey": "ch02.origins.pizza-it.label" },
+    { "id": "spaghetti-it",     "emoji": "🍝", "country": "IT", "lat": 41.90,  "lng": 12.50,  "year": 2010, "labelKey": "ch02.origins.spaghetti-it.label" },
+    { "id": "olive-gr",         "emoji": "🫒", "country": "GR", "lat": 37.98,  "lng": 23.73,  "year": 2019, "labelKey": "ch02.origins.olive-gr.label" },
+    { "id": "accordion-pl",     "emoji": "🪗", "country": "PL", "lat": 52.23,  "lng": 21.01,  "year": 2020, "labelKey": "ch02.origins.accordion-pl.label" },
+    { "id": "taco-mx",          "emoji": "🌮", "country": "MX", "lat": 19.43,  "lng": -99.13, "year": 2015, "labelKey": "ch02.origins.taco-mx.label" },
+    { "id": "tamale-mx",        "emoji": "🫔", "country": "MX", "lat": 17.07,  "lng": -96.72, "year": 2020, "labelKey": "ch02.origins.tamale-mx.label" },
+    { "id": "pinata-mx",        "emoji": "🪅", "country": "MX", "lat": 20.97,  "lng": -89.62, "year": 2020, "labelKey": "ch02.origins.pinata-mx.label" },
+    { "id": "avocado-mx",       "emoji": "🥑", "country": "MX", "lat": 19.70,  "lng": -101.20,"year": 2016, "labelKey": "ch02.origins.avocado-mx.label" },
+    { "id": "mate-ar",          "emoji": "🧉", "country": "AR", "lat": -34.61, "lng": -58.38, "year": 2019, "labelKey": "ch02.origins.mate-ar.label" },
+    { "id": "llama-pe",         "emoji": "🦙", "country": "PE", "lat": -13.53, "lng": -71.97, "year": 2018, "labelKey": "ch02.origins.llama-pe.label" },
+    { "id": "bagel-us",         "emoji": "🥯", "country": "US", "lat": 40.71,  "lng": -74.01, "year": 2018, "labelKey": "ch02.origins.bagel-us.label" },
+    { "id": "kangaroo-au",      "emoji": "🦘", "country": "AU", "lat": -33.87, "lng": 151.21, "year": 2018, "labelKey": "ch02.origins.kangaroo-au.label" },
+    { "id": "boomerang-au",     "emoji": "🪃", "country": "AU", "lat": -25.34, "lng": 131.04, "year": 2020, "labelKey": "ch02.origins.boomerang-au.label" },
+    { "id": "kiwi-nz",          "emoji": "🥝", "country": "NZ", "lat": -36.85, "lng": 174.76, "year": 2015, "labelKey": "ch02.origins.kiwi-nz.label" }
   ]
 }

@@ -6,7 +6,7 @@
   },
   "hero": {
     "eyebrow": "A DATA STORY",
-    "title": "Emoji 进化志",
+    "title": "Let's emojify: Trends and Patterns in Emoji Usage",
     "subtitle": "从 📟 到 🤖 · 1999–2026",
     "scrollCue": "scroll"
   },
@@ -260,37 +260,59 @@
     "map": {
       "eyebrow": "文化代表性 · 地理来源",
       "title": "近年新增 emoji 的文化原点",
-      "hint": "悬停或聚焦每个图钉查看背景，点击可固定",
+      "hint": "拖动平移 · 滚轮缩放 · 点击图钉查看详情",
       "ariaLabel": "世界地图，标记了 {count} 个文化代表性 emoji 的地理来源。",
       "pinAria": "{emoji} 来自 {country}，{year} 年被收录。按 Enter 键查看详情。",
       "loading": "地图加载中…",
-      "close": "关闭"
+      "close": "关闭",
+      "zoomIn": "放大",
+      "zoomOut": "缩小",
+      "reset": "复位",
+      "zoomLevel": "{level}×",
+      "regionsCount": "共 {count} 个原点 · 覆盖 {countries} 个国家/地区"
     },
     "origins": {
-      "dumpling-cn": {
-        "label": "饺子 · 中国"
-      },
-      "headscarf-sa": {
-        "label": "头巾 · 中东"
-      },
-      "mate-ar": {
-        "label": "马黛茶 · 阿根廷"
-      },
-      "sari-in": {
-        "label": "纱丽 · 印度"
-      },
-      "matryoshka-ru": {
-        "label": "套娃 · 俄罗斯"
-      },
-      "taco-mx": {
-        "label": "墨西哥卷饼 · 墨西哥"
-      },
-      "pretzel-de": {
-        "label": "椒盐卷饼 · 德国"
-      },
-      "mooncake-cn": {
-        "label": "月饼 · 中国"
-      }
+      "dumpling-cn":      { "label": "饺子 · 中国 北京" },
+      "mooncake-cn":      { "label": "月饼 · 中国 上海" },
+      "red-envelope-cn":  { "label": "红包 · 中国 广州" },
+      "sushi-jp":         { "label": "寿司 · 日本 东京" },
+      "bento-jp":         { "label": "便当 · 日本 大阪" },
+      "shinto-shrine-jp": { "label": "神社鸟居 · 日本 京都" },
+      "hand-fan-kr":      { "label": "折扇 · 韩国 首尔" },
+      "sari-in":          { "label": "纱丽 · 印度 孟买" },
+      "peacock-in":       { "label": "孔雀 · 印度 新德里" },
+      "hindu-temple-in":  { "label": "印度神庙 · 印度 金奈" },
+      "rickshaw-in":      { "label": "三轮摩托 · 印度 加尔各答" },
+      "coconut-id":       { "label": "椰子 · 印度尼西亚 雅加达" },
+      "noodles-vn":       { "label": "热汤面 · 越南 河内" },
+      "headscarf-sa":     { "label": "头巾 · 沙特阿拉伯 利雅得" },
+      "falafel-lb":       { "label": "炸豆丸子 · 黎巴嫩 贝鲁特" },
+      "mosque-tr":        { "label": "清真寺 · 土耳其 伊斯坦布尔" },
+      "nazar-tr":         { "label": "纳扎尔护符 · 土耳其 伊兹密尔" },
+      "coffee-et":        { "label": "咖啡 · 埃塞俄比亚 亚的斯亚贝巴" },
+      "drum-ng":          { "label": "长鼓 · 尼日利亚 拉各斯" },
+      "giraffe-ke":       { "label": "长颈鹿 · 肯尼亚 内罗毕" },
+      "camel-eg":         { "label": "双峰骆驼 · 埃及 开罗" },
+      "pretzel-de":       { "label": "椒盐脆饼 · 德国 慕尼黑" },
+      "beer-de":          { "label": "啤酒杯 · 德国 柏林" },
+      "matryoshka-ru":    { "label": "套娃 · 俄罗斯 莫斯科" },
+      "baguette-fr":      { "label": "法棍 · 法国 巴黎" },
+      "croissant-fr":     { "label": "可颂 · 法国 里昂" },
+      "cheese-fr":        { "label": "奶酪 · 法国 蒙彼利埃" },
+      "pizza-it":         { "label": "披萨 · 意大利 那不勒斯" },
+      "spaghetti-it":     { "label": "意面 · 意大利 罗马" },
+      "olive-gr":         { "label": "橄榄 · 希腊 雅典" },
+      "accordion-pl":     { "label": "手风琴 · 波兰 华沙" },
+      "taco-mx":          { "label": "墨西哥卷饼 · 墨西哥 墨西哥城" },
+      "tamale-mx":        { "label": "玉米粽 · 墨西哥 瓦哈卡" },
+      "pinata-mx":        { "label": "皮纳塔 · 墨西哥 尤卡坦" },
+      "avocado-mx":       { "label": "牛油果 · 墨西哥 米却肯州" },
+      "mate-ar":          { "label": "马黛茶 · 阿根廷 布宜诺斯艾利斯" },
+      "llama-pe":         { "label": "羊驼 · 秘鲁 库斯科" },
+      "bagel-us":         { "label": "贝果 · 美国 纽约" },
+      "kangaroo-au":      { "label": "袋鼠 · 澳大利亚 悉尼" },
+      "boomerang-au":     { "label": "回旋镖 · 澳大利亚 乌鲁鲁" },
+      "kiwi-nz":          { "label": "猕猴桃 · 新西兰 奥克兰" }
     }
   },
   "footer": {

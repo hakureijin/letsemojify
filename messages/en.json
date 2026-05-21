@@ -6,7 +6,7 @@
   },
   "hero": {
     "eyebrow": "A DATA STORY",
-    "title": "The Evolution of Emoji",
+    "title": "Let's emojify: Trends and Patterns in Emoji Usage",
     "subtitle": "From 📟 to 🤖 · 1999–2026",
     "scrollCue": "scroll"
   },
@@ -260,37 +260,59 @@
     "map": {
       "eyebrow": "Cultural representativeness · geographic origins",
       "title": "Where recent emoji came from",
-      "hint": "Hover or focus a pin to see context; click to pin",
+      "hint": "Drag to pan · scroll to zoom · click a pin for details",
       "ariaLabel": "World map showing geographic origins of {count} culturally-representative emojis.",
       "pinAria": "{emoji} from {country}, added in {year}. Press Enter for details.",
       "loading": "Map loading…",
-      "close": "Close"
+      "close": "Close",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "reset": "Reset view",
+      "zoomLevel": "{level}×",
+      "regionsCount": "{count} origins · {countries} countries"
     },
     "origins": {
-      "dumpling-cn": {
-        "label": "Dumpling · China"
-      },
-      "headscarf-sa": {
-        "label": "Headscarf · Middle East"
-      },
-      "mate-ar": {
-        "label": "Mate · Argentina"
-      },
-      "sari-in": {
-        "label": "Sari · India"
-      },
-      "matryoshka-ru": {
-        "label": "Matryoshka · Russia"
-      },
-      "taco-mx": {
-        "label": "Taco · Mexico"
-      },
-      "pretzel-de": {
-        "label": "Pretzel · Germany"
-      },
-      "mooncake-cn": {
-        "label": "Mooncake · China"
-      }
+      "dumpling-cn":      { "label": "Dumpling · Beijing, China" },
+      "mooncake-cn":      { "label": "Mooncake · Shanghai, China" },
+      "red-envelope-cn":  { "label": "Red Envelope · Guangzhou, China" },
+      "sushi-jp":         { "label": "Sushi · Tokyo, Japan" },
+      "bento-jp":         { "label": "Bento Box · Osaka, Japan" },
+      "shinto-shrine-jp": { "label": "Shinto Shrine · Kyoto, Japan" },
+      "hand-fan-kr":      { "label": "Folding Hand Fan · Seoul, Korea" },
+      "sari-in":          { "label": "Sari · Mumbai, India" },
+      "peacock-in":       { "label": "Peacock · Delhi, India" },
+      "hindu-temple-in":  { "label": "Hindu Temple · Chennai, India" },
+      "rickshaw-in":      { "label": "Auto Rickshaw · Kolkata, India" },
+      "coconut-id":       { "label": "Coconut · Jakarta, Indonesia" },
+      "noodles-vn":       { "label": "Steaming Noodles · Hanoi, Vietnam" },
+      "headscarf-sa":     { "label": "Headscarf · Riyadh, Saudi Arabia" },
+      "falafel-lb":       { "label": "Falafel · Beirut, Lebanon" },
+      "mosque-tr":        { "label": "Mosque · Istanbul, Türkiye" },
+      "nazar-tr":         { "label": "Nazar Amulet · Izmir, Türkiye" },
+      "coffee-et":        { "label": "Coffee · Addis Ababa, Ethiopia" },
+      "drum-ng":          { "label": "Long Drum · Lagos, Nigeria" },
+      "giraffe-ke":       { "label": "Giraffe · Nairobi, Kenya" },
+      "camel-eg":         { "label": "Two-Hump Camel · Cairo, Egypt" },
+      "pretzel-de":       { "label": "Pretzel · Munich, Germany" },
+      "beer-de":          { "label": "Beer Mug · Berlin, Germany" },
+      "matryoshka-ru":    { "label": "Matryoshka · Moscow, Russia" },
+      "baguette-fr":      { "label": "Baguette · Paris, France" },
+      "croissant-fr":     { "label": "Croissant · Lyon, France" },
+      "cheese-fr":        { "label": "Cheese Wedge · Montpellier, France" },
+      "pizza-it":         { "label": "Pizza · Naples, Italy" },
+      "spaghetti-it":     { "label": "Spaghetti · Rome, Italy" },
+      "olive-gr":         { "label": "Olive · Athens, Greece" },
+      "accordion-pl":     { "label": "Accordion · Warsaw, Poland" },
+      "taco-mx":          { "label": "Taco · Mexico City, Mexico" },
+      "tamale-mx":        { "label": "Tamale · Oaxaca, Mexico" },
+      "pinata-mx":        { "label": "Piñata · Yucatán, Mexico" },
+      "avocado-mx":       { "label": "Avocado · Michoacán, Mexico" },
+      "mate-ar":          { "label": "Mate · Buenos Aires, Argentina" },
+      "llama-pe":         { "label": "Llama · Cusco, Peru" },
+      "bagel-us":         { "label": "Bagel · New York, USA" },
+      "kangaroo-au":      { "label": "Kangaroo · Sydney, Australia" },
+      "boomerang-au":     { "label": "Boomerang · Uluru, Australia" },
+      "kiwi-nz":          { "label": "Kiwi Fruit · Auckland, New Zealand" }
     }
   },
   "footer": {
