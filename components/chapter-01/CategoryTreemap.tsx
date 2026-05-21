@@ -241,7 +241,11 @@ export function CategoryTreemap({ data }: Props) {
           const groupLabel = t(`groups.${tile.key}` as never)
           const glyph = frame.samples[tile.key]?.[0] ?? ''
           const hasText = tile.w >= 96 && tile.h >= 64
-          const textBandH = hasText ? 36 : 0
+          // Narrow tiles stack label-on-top and count-on-bottom so neither
+          // collides with the other. Wide tiles keep the compact single-row
+          // layout (label-left, count-right).
+          const isNarrow = hasText && tile.w < 200
+          const textBandH = !hasText ? 0 : isNarrow ? 42 : 32
           // Emoji "stage" — the area above the text band that holds the glyph
           const stageH = Math.max(0, tile.h - textBandH)
           const stageCy = tile.y + stageH / 2 + (hasText ? -2 : 0)
@@ -318,11 +322,15 @@ export function CategoryTreemap({ data }: Props) {
                     pointerEvents="none"
                   />
                   <motion.text
-                    animate={{ x: tile.x + 12, y: tile.y + tile.h - 19 }}
+                    animate={{
+                      x: isNarrow ? tile.x + tile.w / 2 : tile.x + 12,
+                      y: tile.y + tile.h - (isNarrow ? 26 : 11),
+                    }}
                     transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
+                    textAnchor={isNarrow ? 'middle' : 'start'}
                     fontSize="10"
                     fontWeight="800"
-                    letterSpacing="0.08em"
+                    letterSpacing="0.06em"
                     fill="#1a1a1a"
                     pointerEvents="none"
                     style={{ textTransform: 'uppercase' }}
@@ -330,10 +338,13 @@ export function CategoryTreemap({ data }: Props) {
                     {groupLabel}
                   </motion.text>
                   <motion.text
-                    animate={{ x: tile.x + tile.w - 12, y: tile.y + tile.h - 19 }}
+                    animate={{
+                      x: isNarrow ? tile.x + tile.w / 2 : tile.x + tile.w - 12,
+                      y: tile.y + tile.h - (isNarrow ? 9 : 11),
+                    }}
                     transition={{ duration: reduced ? 0 : ANIM_MS / 1000, ease: 'easeInOut' }}
-                    textAnchor="end"
-                    fontSize="13"
+                    textAnchor={isNarrow ? 'middle' : 'end'}
+                    fontSize="12"
                     fontWeight="900"
                     className="tabular"
                     fill="#1a1a1a"
