@@ -22,9 +22,9 @@ type Profile = {
 }
 
 const PROFILES: Record<LayoutProfile, Profile> = {
-  desktop: { cols: 16, rows: 10, rx: 240, ry: 140, baseSize: 28, sizeJitter: 8 },
-  mobile:  { cols: 10, rows: 12, rx: 160, ry: 110, baseSize: 22, sizeJitter: 6 },
-  short:   { cols: 12, rows: 6,  rx: 220, ry: 90,  baseSize: 22, sizeJitter: 6 },
+  desktop: { cols: 22, rows: 14, rx: 260, ry: 150, baseSize: 22, sizeJitter: 8 },
+  mobile:  { cols: 12, rows: 16, rx: 170, ry: 120, baseSize: 18, sizeJitter: 6 },
+  short:   { cols: 16, rows: 8,  rx: 220, ry: 90,  baseSize: 18, sizeJitter: 6 },
 }
 
 // Deterministic PRNG so SSR and CSR produce identical positions.
@@ -76,11 +76,13 @@ export function computeLayout(
 
   // Sort emojis by era ascending so the chronological reading flows visually
   const ordered = [...emojis].sort((a, b) => a.era - b.era)
+  if (ordered.length === 0) return []
 
-  const limit = Math.min(surviving.length, ordered.length)
-
-  return surviving.slice(0, limit).map((cell, i) => {
-    const e = ordered[i]
+  // Fill every surviving cell — when there are more cells than unique emojis,
+  // wrap modulo so the wallpaper stays dense (mild duplicates are acceptable
+  // in a 200+ tile field and preserve chronological flow).
+  return surviving.map((cell, i) => {
+    const e = ordered[i % ordered.length]
     const sizeRand = mulberry32(cell.r * cfg.cols + cell.c + 999)()
     const size = cfg.baseSize + sizeRand * cfg.sizeJitter
     // Opacity ramps from 0.35 at the edge of the safe ellipse to 0.85 farther out

@@ -202,31 +202,45 @@ export function EmojiField({ labelEnlarge, labelShrink }: Props) {
       className="absolute inset-0 overflow-hidden hero-vignette"
       role="presentation"
     >
-      {positioned.map((p, i) => (
-        <button
-          key={`${p.char}-${i}`}
-          ref={el => { emojiRefs.current[i] = el }}
-          type="button"
-          aria-pressed={active.has(i)}
-          aria-label={(active.has(i) ? labelShrink : labelEnlarge).replace('__CHAR__', p.char)}
-          data-active={active.has(i) ? 'true' : 'false'}
-          className="hero-emoji-btn"
-          onClick={(e) => {
-            e.stopPropagation()
-            toggle(i)
-          }}
-          style={{
-            position: 'absolute',
-            left: `${p.x}px`,
-            top: `${p.y}px`,
-            opacity: p.opacity,
-            fontSize: `${p.size}px`,
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          <span aria-hidden="true">{p.char}</span>
-        </button>
-      ))}
+      {positioned.map((p, i) => {
+        // Per-emoji ambient drift desync — deterministic from index
+        const driftDuration = 6 + ((i * 7) % 60) / 10  // 6.0 – 12.0 s
+        const driftDelay = -((i * 0.37) % 5)            // negative: pre-rolled, no startup gap
+        return (
+          <span
+            key={`${p.char}-${i}`}
+            className="hero-emoji-drift"
+            style={{
+              position: 'absolute',
+              left: `${p.x}px`,
+              top: `${p.y}px`,
+              opacity: p.opacity,
+              transform: 'translate(-50%, -50%)',
+              ['--drift-duration' as string]: `${driftDuration}s`,
+              ['--drift-delay' as string]: `${driftDelay}s`,
+            }}
+          >
+            <button
+              ref={el => { emojiRefs.current[i] = el }}
+              type="button"
+              aria-pressed={active.has(i)}
+              aria-label={(active.has(i) ? labelShrink : labelEnlarge).replace('__CHAR__', p.char)}
+              data-active={active.has(i) ? 'true' : 'false'}
+              className="hero-emoji-btn"
+              onClick={(e) => {
+                e.stopPropagation()
+                toggle(i)
+              }}
+              style={{
+                fontSize: `${p.size}px`,
+                display: 'block',
+              }}
+            >
+              <span aria-hidden="true">{p.char}</span>
+            </button>
+          </span>
+        )
+      })}
     </div>
   )
 }
