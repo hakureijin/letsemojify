@@ -13,8 +13,6 @@
     "shrink": "Shrink {char}"
   },
   "ch01": {
-    "title": "The Evolution Path",
-    "intro": "In 26 years, emoji grew from one mobile carrier's 176 12×12-pixel icons into a 3,790+ cross-platform, cross-cultural visual vocabulary.",
     "chart": {
       "eyebrow": "Cumulative growth",
       "title": "Unicode emoji total · 1999 → {lastYear}",
