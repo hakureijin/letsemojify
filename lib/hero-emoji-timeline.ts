@@ -1,0 +1,197 @@
+export type HeroEmoji = { char: string; era: number }
+
+// Curated emoji timeline 1999 -> 2026, sorted by era ascending.
+// Composed of: (a) highlightEmojis from data/chapter-01.json timeline,
+// (b) hand-picked era-appropriate supplements to reach a dense ~140 wallpaper.
+// Each char appears exactly once.
+export const HERO_EMOJIS: HeroEmoji[] = [
+  // 1999 - DoCoMo i-mode launch (176 12x12 icons)
+  { char: '☀️', era: 1999 },
+  { char: '☁️', era: 1999 },
+  { char: '☂️', era: 1999 },
+  { char: '❄️', era: 1999 },
+  { char: '⭐', era: 1999 },
+  { char: '🌙', era: 1999 },
+  { char: '☎️', era: 1999 },
+  { char: '📞', era: 1999 },
+  { char: '✉️', era: 1999 },
+  { char: '📠', era: 1999 },
+  { char: '💾', era: 1999 },
+  { char: '📺', era: 1999 },
+  { char: '📻', era: 1999 },
+  { char: '🎵', era: 1999 },
+  { char: '🎬', era: 1999 },
+  { char: '❤️', era: 1999 },
+  { char: '💔', era: 1999 },
+  { char: '🐶', era: 1999 },
+  { char: '🐱', era: 1999 },
+  { char: '🌸', era: 2003 },
+
+  // 2007 - iPhone JP launch
+  { char: '📱', era: 2007 },
+  { char: '🍣', era: 2007 },
+  { char: '🍙', era: 2007 },
+  { char: '🎌', era: 2007 },
+  { char: '🗼', era: 2007 },
+  { char: '🎏', era: 2007 },
+  { char: '🌅', era: 2007 },
+  { char: '⛩️', era: 2007 },
+  { char: '🍵', era: 2007 },
+
+  // 2010 - Unicode 6.0 mass-market standardisation
+  { char: '😀', era: 2010 },
+  { char: '😂', era: 2010 },
+  { char: '😍', era: 2010 },
+  { char: '😎', era: 2010 },
+  { char: '😭', era: 2010 },
+  { char: '🙏', era: 2010 },
+  { char: '👍', era: 2010 },
+  { char: '🎉', era: 2010 },
+  { char: '🎂', era: 2010 },
+  { char: '🍔', era: 2010 },
+  { char: '🍕', era: 2010 },
+  { char: '🐼', era: 2010 },
+  { char: '🐰', era: 2010 },
+  { char: '🦁', era: 2010 },
+  { char: '🌍', era: 2010 },
+  { char: '⚽', era: 2010 },
+  { char: '🚗', era: 2010 },
+  { char: '✈️', era: 2010 },
+  { char: '🚀', era: 2010 },
+
+  // 2014 - Unicode 7.0 (Webdings/Wingdings absorbed)
+  { char: '🖕', era: 2014 },
+  { char: '🙊', era: 2014 },
+  { char: '😈', era: 2014 },
+  { char: '🌶️', era: 2014 },
+  { char: '🕷️', era: 2014 },
+  { char: '🖥️', era: 2014 },
+  { char: '🎙️', era: 2014 },
+
+  // 2015 - Fitzpatrick skin-tone modifiers + family ZWJ
+  { char: '👍🏼', era: 2015 },
+  { char: '👍🏾', era: 2015 },
+  { char: '👨‍👩‍👧', era: 2015 },
+  { char: '🌮', era: 2015 },
+  { char: '🌯', era: 2015 },
+  { char: '🦄', era: 2015 },
+  { char: '🤳', era: 2016 },
+  { char: '🥑', era: 2016 },
+
+  // 2017 - Unicode 10.0 (dumpling, headscarf, mate)
+  { char: '🤔', era: 2017 },
+  { char: '🤷', era: 2017 },
+  { char: '🙌', era: 2017 },
+  { char: '🥟', era: 2017 },
+  { char: '🧕', era: 2017 },
+  { char: '🦒', era: 2017 },
+
+  // 2018 - Unicode 11.0 (versions jump to align with Unicode)
+  { char: '🥶', era: 2018 },
+  { char: '🥵', era: 2018 },
+  { char: '🥳', era: 2018 },
+  { char: '🦸', era: 2018 },
+  { char: '🦹', era: 2018 },
+  { char: '🥁', era: 2018 },
+  { char: '🧁', era: 2018 },
+
+  // 2019 - Unicode 12.0 + 12.1 (accessibility + neutral)
+  { char: '🦾', era: 2019 },
+  { char: '🧏', era: 2019 },
+  { char: '🥱', era: 2019 },
+  { char: '🧑‍🤝‍🧑', era: 2019 },
+  { char: '🧑‍🦰', era: 2019 },
+  { char: '🧑‍🦱', era: 2019 },
+  { char: '🧉', era: 2019 },
+  { char: '🦥', era: 2019 },
+
+  // 2020 - Unicode 13.0 + 13.1 (pandemic-era emotional vocab)
+  { char: '🥲', era: 2020 },
+  { char: '🪆', era: 2020 },
+  { char: '🫀', era: 2020 },
+  { char: '😶‍🌫️', era: 2020 },
+  { char: '❤️‍🔥', era: 2020 },
+  { char: '🧔‍♀️', era: 2020 },
+  { char: '🤍', era: 2020 },
+  { char: '🤎', era: 2020 },
+  { char: '🥺', era: 2020 },
+  { char: '🧘', era: 2020 },
+  { char: '🏃', era: 2020 },
+
+  // 2021 - Unicode 14.0 (heart hands, melting face)
+  { char: '🫶', era: 2021 },
+  { char: '🫠', era: 2021 },
+  { char: '🫡', era: 2021 },
+  { char: '🤝', era: 2021 },
+  { char: '🪐', era: 2021 },
+  { char: '🌌', era: 2021 },
+
+  // 2022 - Unicode 15.0 (pink heart, shaking face, lotus)
+  { char: '🩷', era: 2022 },
+  { char: '🫨', era: 2022 },
+  { char: '🪷', era: 2022 },
+  { char: '🪶', era: 2022 },
+  { char: '🦤', era: 2022 },
+  { char: '🦣', era: 2022 },
+
+  // 2023 - Unicode 15.1 (direction-flipped sequences)
+  { char: '🙂‍↕️', era: 2023 },
+  { char: '🍋‍🟩', era: 2023 },
+  { char: '🍄‍🟫', era: 2023 },
+  { char: '🐦‍🔥', era: 2023 },
+  { char: '🪼', era: 2023 },
+
+  // 2024 - Unicode 16.0 (small year) + Apple Genmoji
+  { char: '🫩', era: 2024 },
+  { char: '🪾', era: 2024 },
+  { char: '🫆', era: 2024 },
+  { char: '🤖', era: 2024 },
+  { char: '✨', era: 2024 },
+  { char: '🎨', era: 2024 },
+  { char: '🧠', era: 2024 },
+
+  // 2025 - Unicode 17.0 (twisted face, fight cloud, orca)
+  { char: '💥', era: 2025 },
+  { char: '🐳', era: 2025 },
+  { char: '🎺', era: 2025 },
+  { char: '🪨', era: 2025 },
+  { char: '🪵', era: 2025 },
+  { char: '🐚', era: 2025 },
+
+  // 2026 - Unicode 18.0 draft
+  { char: '😬', era: 2026 },
+  { char: '🥒', era: 2026 },
+  { char: '☄️', era: 2026 },
+  { char: '🏮', era: 2026 },
+  { char: '⚙️', era: 2026 },
+
+  // Bonus density fillers spread across eras to reach ~140 total
+  { char: '🎭', era: 2010 },
+  { char: '🎯', era: 2010 },
+  { char: '🌈', era: 2010 },
+  { char: '🔥', era: 2010 },
+  { char: '💯', era: 2010 },
+  { char: '💪', era: 2010 },
+  { char: '🍎', era: 2010 },
+  { char: '🍞', era: 2010 },
+  { char: '☕', era: 2010 },
+  { char: '🍺', era: 2010 },
+  { char: '🦋', era: 2010 },
+  { char: '🌊', era: 2010 },
+  { char: '🌳', era: 2010 },
+  { char: '🌻', era: 2010 },
+  { char: '🍀', era: 2010 },
+  { char: '⚡', era: 2010 },
+  { char: '🎈', era: 2010 },
+  { char: '🎁', era: 2010 },
+  { char: '🎮', era: 2014 },
+  { char: '📷', era: 2014 },
+  { char: '🎧', era: 2014 },
+  { char: '🚲', era: 2014 },
+  { char: '🦊', era: 2016 },
+  { char: '🦉', era: 2016 },
+  { char: '🥨', era: 2016 },
+  { char: '🥓', era: 2016 },
+  { char: '🦷', era: 2018 },
+  { char: '🥥', era: 2018 },
+].sort((a, b) => a.era - b.era)
