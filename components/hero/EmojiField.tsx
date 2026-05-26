@@ -1,6 +1,6 @@
 'use client'
 
-import { useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { HERO_EMOJIS } from '@/lib/hero-emoji-timeline'
@@ -18,13 +18,23 @@ function pickProfile(vw: number, vh: number): LayoutProfile {
   return 'desktop'
 }
 
-export function EmojiField({ labelEnlarge }: Props) {
+export function EmojiField({ labelEnlarge, labelShrink }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const debounceRef = useRef<number | null>(null)
   const emojiRefs = useRef<(HTMLButtonElement | null)[]>([])
   const quickToRefs = useRef<Array<{ x: (v: number) => void; y: (v: number) => void } | null>>([])
   const [size, setSize] = useState<{ vw: number; vh: number } | null>(null)
+  const [active, setActive] = useState<Set<number>>(new Set())
   const reducedMotion = usePrefersReducedMotion()
+
+  const toggle = (i: number) => {
+    setActive(prev => {
+      const next = new Set(prev)
+      if (next.has(i)) next.delete(i)
+      else next.add(i)
+      return next
+    })
+  }
 
   useLayoutEffect(() => {
     const el = containerRef.current
@@ -51,6 +61,7 @@ export function EmojiField({ labelEnlarge }: Props) {
     return computeLayout(HERO_EMOJIS, size.vw, size.vh, profile)
   }, [size])
 
+  // Hover magnetic push
   useGSAP(
     () => {
       if (reducedMotion || !size) return
@@ -72,6 +83,7 @@ export function EmojiField({ labelEnlarge }: Props) {
       const STRENGTH = 28
 
       const handleMove = (e: MouseEvent) => {
+        if (active.size > 0) return  // freeze hover while click-pop is active
         const rect = container.getBoundingClientRect()
         mouseX = e.clientX - rect.left
         mouseY = e.clientY - rect.top
@@ -102,6 +114,7 @@ export function EmojiField({ labelEnlarge }: Props) {
           cancelAnimationFrame(rafId)
           rafId = null
         }
+        if (active.size > 0) return  // don't snap-back while click-pop is active
         const targets = emojiRefs.current.filter(Boolean) as HTMLButtonElement[]
         gsap.to(targets, {
           x: 0,
@@ -120,8 +133,64 @@ export function EmojiField({ labelEnlarge }: Props) {
         if (rafId !== null) cancelAnimationFrame(rafId)
       }
     },
-    { scope: containerRef, dependencies: [positioned, reducedMotion, size] },
+    { scope: containerRef, dependencies: [positioned, reducedMotion, size, active] },
   )
+
+  // Click toggle: scale active emojis + push neighbours
+  useGSAP(
+    () => {
+      if (!size) return
+      const dur = reducedMotion ? 0.001 : 0.5
+      const easeActive = reducedMotion ? 'none' : 'back.out(1.7)'
+      const easeInactive = reducedMotion ? 'none' : 'back.out(1.4)'
+
+      positioned.forEach((p, i) => {
+        const el = emojiRefs.current[i]
+        if (!el) return
+
+        if (active.has(i)) {
+          gsap.to(el, {
+            scale: 3,
+            duration: dur,
+            ease: easeActive,
+          })
+        } else {
+          let pushX = 0
+          let pushY = 0
+          active.forEach(j => {
+            const a = positioned[j]
+            if (!a) return
+            const dx = p.x - a.x
+            const dy = p.y - a.y
+            const d = Math.hypot(dx, dy)
+            if (d > 0 && d < 120) {
+              const f = (1 - d / 120) * 36
+              pushX += (dx / d) * f
+              pushY += (dy / d) * f
+            }
+          })
+          gsap.to(el, {
+            scale: 1,
+            x: pushX,
+            y: pushY,
+            duration: dur,
+            ease: easeInactive,
+          })
+        }
+      })
+    },
+    { scope: containerRef, dependencies: [active, positioned, reducedMotion, size] },
+  )
+
+  // Esc collapses all popped emojis
+  useEffect(() => {
+    if (active.size === 0) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActive(new Set())
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [active])
 
   return (
     <div
@@ -134,8 +203,14 @@ export function EmojiField({ labelEnlarge }: Props) {
           key={`${p.char}-${i}`}
           ref={el => { emojiRefs.current[i] = el }}
           type="button"
-          aria-label={labelEnlarge.replace('__CHAR__', p.char)}
+          aria-pressed={active.has(i)}
+          aria-label={(active.has(i) ? labelShrink : labelEnlarge).replace('__CHAR__', p.char)}
+          data-active={active.has(i) ? 'true' : 'false'}
           className="hero-emoji-btn"
+          onClick={(e) => {
+            e.stopPropagation()
+            toggle(i)
+          }}
           style={{
             position: 'absolute',
             left: `${p.x}px`,
