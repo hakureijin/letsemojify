@@ -68,6 +68,10 @@ export function EmojiField({ labelEnlarge, labelShrink }: Props) {
       const container = containerRef.current
       if (!container) return
 
+      // Skip magnetic push on touch-only devices (no fine pointer)
+      const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+      if (!hasFinePointer) return
+
       quickToRefs.current = emojiRefs.current.map(el => {
         if (!el) return null
         return {
