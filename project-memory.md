@@ -1,14 +1,16 @@
 # VINCI · Project Memory
 
-Last updated: 2026-05-21 (revised — origin-map expanded to 41 pins across 23 countries with pan/zoom/pinch interaction; treemap per-tile label-fit logic, DRAFT badge moved to the left of the medallion, DecadeIndex flex-wraps on narrow viewports, Sankey on-demand beads, treemap hero-emoji layout)
+Last updated: 2026-05-26 (revised — Hero replaced with `<EmojiField>` interactive emoji wallpaper: ~140 emojis chronologically positioned 1999→2026, GSAP magnetic-push hover + click-to-enlarge toggle, central avoidance ellipse + cream vignette keep title legible)
 
 ## Current project
 
 **Emoji 进化志 · The Evolution of Emoji** — a single-page bilingual (zh/en) scrollytelling web feature about emoji as a cultural artifact, deployed on port `7777`.
 
 - README · `./README.md`
-- Specs · `docs/superpowers/specs/2026-05-11-emoji-trends-multi-topic-design.md`, `…/2026-05-20-emoji-version-diff-design.md`, `…/2026-05-21-ch01-category-treemap-design.md`, `…/2026-05-21-ch01-variant-sankey-design.md`
-- Plans · `docs/superpowers/plans/2026-05-11-emoji-trends-multi-topic.md`, `…/2026-05-20-emoji-version-diff.md`
+- Specs · `docs/superpowers/specs/2026-05-11-emoji-trends-multi-topic-design.md`, `…/2026-05-20-emoji-version-diff-design.md`, `…/2026-05-21-ch01-category-treemap-design.md`, `…/2026-05-21-ch01-variant-sankey-design.md`, `…/2026-05-26-emoji-hero-design.md`
+- Plans · `docs/superpowers/plans/2026-05-11-emoji-trends-multi-topic.md`, `…/2026-05-20-emoji-version-diff.md`, `…/2026-05-26-emoji-hero.md`
+
+**Hero** (`components/Hero.tsx` + `components/hero/EmojiField.tsx`) — flat cream background with an **interactive emoji wallpaper**: ~140 emojis ordered chronologically by era (1999→2026, left→right / top→bottom), positioned by the pure `lib/hero-emoji-layout.ts` helper (deterministic mulberry32 jitter, central safe-ellipse drop, opacity ramp). Source list `lib/hero-emoji-timeline.ts` blends chapter-01 `highlightEmojis` with curated era-appropriate supplements. GSAP (free core + `@gsap/react`) drives a **magnetic-push hover** (single rAF-throttled `mousemove` → per-emoji `quickTo`, 100 px radius, `elastic.out(1, 0.5)` spring-back on `mouseleave`) and a **click-to-enlarge toggle** (active emojis `scale: 3` with `back.out(1.7)`, neighbours within 120 px receive summed push vectors from all active emojis). Esc collapses all popped emojis. Hover handler freezes while any emoji is active to avoid conflicting transforms. `prefers-reduced-motion` skips the hover listener and makes click changes instant; touch-only devices (`matchMedia('(hover: hover) and (pointer: fine)')`) skip magnetic push but still get click. A `.hero-vignette::after` radial-gradient overlay washes the centre with `var(--bg)` so the title / eyebrow / subtitle / scroll cue stay at WCAG-AA contrast despite the dense backdrop. Each emoji is a `<button>` with `aria-pressed` + per-locale `aria-label` template (`hero.enlarge` / `hero.shrink` in `messages/{zh,en}.json`).
 
 The site has two chapter sections, in time order:
 
